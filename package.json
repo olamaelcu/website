@@ -14,15 +14,16 @@
 		"format": "prettier --write .",
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run && npm run test:e2e",
-		"test:e2e": "playwright test"
+		"test:e2e": "playwright test",
+		"deploy:preview": "surge build",
+		"deploy": "surge build"
 	},
 	"devDependencies": {
 		"@awesome.me/webawesome": "^3.5.0",
 		"@eslint/compat": "^2.0.4",
 		"@eslint/js": "^10.0.1",
-		"@inlang/paraglide-js": "^2.15.2",
 		"@playwright/test": "^1.59.1",
-		"@sveltejs/adapter-auto": "^7.0.1",
+		"@sveltejs/adapter-static": "^3.0.0",
 		"@sveltejs/kit": "^2.57.0",
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@types/node": "^24",
@@ -39,6 +40,7 @@
 		"postcss-nested": "^7.0.2",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.5.1",
+		"surge": "^0.27.3",
 		"svelte": "^5.55.2",
 		"svelte-check": "^4.4.6",
 		"typescript": "^6.0.2",
