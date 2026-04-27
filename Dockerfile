@@ -10,9 +10,9 @@ RUN yarn build
 
 FROM node:20-alpine
 
-WORKDIR /app
-RUN corepack enable && yarn add -g serve
+RUN npm install -g serve
 
+WORKDIR /app
 COPY --from=builder /app/build ./build
 
 EXPOSE 3000
