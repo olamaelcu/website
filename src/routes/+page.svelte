@@ -16,7 +16,6 @@
 		max-width: var(--size-content-3);
 		margin: var(--size-1) auto;
 		padding: var(--size-4);
-		color: var(--text-1);
 
 		h1 {
 			font-family: var(--font-display);

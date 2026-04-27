@@ -43,6 +43,17 @@ a {
 	color: var(--link);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+cite {
+	font-family: var(--font-serif);
+}
+
 ::selection {
 	background-color: var(--accent);
 	color: var(--gray-0);
@@ -91,6 +102,7 @@ main {
 	flex: 1 1;
 	display: flex;
 	flex-direction: row;
+	color: var(--text-1);
 }
 
 footer {
@@ -102,4 +114,15 @@ footer {
 	header > nav.lang > a > span {
 		display: none;
 	}
+}
+
+section.lead {
+	p {
+		font-size: var(--font-size-3);
+		line-height: var(--font-lineheight-3);
+	}
+}
+
+ul {
+	list-style-type: square;
 }
