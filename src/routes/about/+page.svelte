@@ -1,0 +1,28 @@
+<h1>About</h1>
+<p>
+	<strong>Olamaelcu</strong> is a portmaneau of the names of two characters from literature that has
+	heavily influened <a href="https://www.jacky.wtf/">Jacky</a>. The first being Lauren Olamina, from
+	Octavia Bulter's Parable of the Sower and the latter being Maelcum, the pilot of the Marcus Garvey
+	in William Gibson's Neuromancer. Each person had critical roles in their book as navigators and
+	wayfinders. <strong>The hope is that Olamaelcu does the same for social Web experiences</strong>.
+</p>
+<p>
+	There's more to come on the background of this venture and its ambitions &dash; it's the
+	cumulation of years of opinion and research into something more of an actionable lab. The ambition
+	is to match that of
+	<a href="https://inc.sh/">Ideas Never Cease</a>,
+	<a href="https://www.inkandswitch.com/">Ink&Switch</a> and others whose public experimentation has encouraged
+	this forward move.
+</p>
+
+<style>
+	:global(main) {
+		margin: 0 auto;
+		width: 80vw;
+		max-width: var(--size-content-3);
+		flex-direction: column;
+	}
+	p {
+		margin: var(--size-3) 0;
+	}
+</style>

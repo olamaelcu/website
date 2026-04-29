@@ -12,8 +12,7 @@
 		<span>Olamaelcu</span>
 	</a>
 	<nav class="places">
-		<!-- <a href={resolve('/about')}>About</a> -->
-		<!-- <a href={resolve('/projects')}>Projects</a> -->
+		<a href={resolve('/about')}>About</a>
 		<!-- <a href={resolve('/work')}>Work</a> -->
 	</nav>
 	<!-- <nav class="lang"> -->
@@ -27,4 +26,6 @@
 <main>
 	{@render children()}
 </main>
-<footer></footer>
+<footer>
+	Olamaelcu, a software lab by <a href="https://www.jacky.wtf">Jacky</a>
+</footer>

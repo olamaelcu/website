@@ -1,13 +1,17 @@
 <script lang="ts">
+	import ProjectNav from '$lib/components/projectNav.svelte';
+
 	let { children } = $props();
 </script>
+
+<ProjectNav />
 
 {@render children()}
 
 <style>
 	:global(main) {
-		max-width: var(--size-content-3);
 		margin: 0 auto;
-		width: 100%;
+		width: 80vw;
+		flex-direction: column;
 	}
 </style>

@@ -1,7 +1,20 @@
+<script>
+	import ProjectNav from '$lib/components/projectNav.svelte';
+</script>
+
+<ProjectNav />
+
 <section class="lead">
-	<h1>A Software Lab</h1>
+	<h1>Projects</h1>
 	<p>
-		It's run and managed by <a href="https://www.jacky.wtf/">Jacky</a> &mdash; still in incubation.
+		Olamaelcu's all about making things &mdash; complete or not &mdash; that people can experiment
+		with and understand.
+	</p>
+	<h2>Mission</h2>
+	<p>
+		The goal is to take ideas that we're familiar with and some novel and aim to release them for
+		experimentation and eventual productization. The user community is the one who gets to develop
+		the perspectives of the experience &mdash; the actual consumer.
 	</p>
 </section>
 
@@ -20,5 +33,9 @@
 		h1 {
 			font-family: var(--font-display);
 		}
+	}
+
+	h2 {
+		margin-top: var(--size-3);
 	}
 </style>
