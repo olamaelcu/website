@@ -1,5 +1,10 @@
+<script>
+	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
+</script>
+
 <section class="lead">
 	<h1>Scratchback</h1>
+	<ProjectStatus status={STATUSES.INCUBATING} />
 	<p>
 		Live services, game state synchronization and achievements for indepenent game developers and
 		studios alike leveraging <a href="https://atproto.com/" target="_blank">ATProto</a>.

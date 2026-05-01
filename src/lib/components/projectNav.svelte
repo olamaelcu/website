@@ -3,9 +3,10 @@
 </script>
 
 <nav>
-	<span>Incubating</span>
+	<span>Projects</span>
 	<a href={resolve('/projects/scratchback')}>Scratchback</a>
-	<a href={resolve('/projects/wotb')}>WOTB</a>
+	<!-- <a href={resolve('/projects/wotb')}>WOTB</a> -->
+	<!-- <a href={resolve('/projects/livtet')}>Livtet</a> -->
 </nav>
 
 <style>
