@@ -1,10 +1,28 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { MetaTags } from 'svelte-meta-tags';
 	import '../app.css';
 	import '@awesome.me/webawesome/dist/styles/webawesome.css';
 
 	let { children } = $props();
 </script>
+
+<MetaTags
+	title="Olamaelcu"
+	description="A software lab making things for people to experiment with and understand."
+	canonical="https://olamaelcu.net"
+	openGraph={{
+		type: 'website',
+		siteName: 'Olamaelcu',
+		url: 'https://olamaelcu.net',
+		images: [
+			{
+				url: 'https://olamaelcu.net/favicon.png',
+				alt: 'Olamaelcu logo'
+			}
+		]
+	}}
+/>
 
 <header>
 	<a class="logotype" href={resolve('/')}>

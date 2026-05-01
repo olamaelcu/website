@@ -2357,6 +2357,7 @@ __metadata:
     surge: "npm:^0.27.3"
     svelte: "npm:^5.55.2"
     svelte-check: "npm:^4.4.6"
+    svelte-meta-tags: "npm:^4.6.0"
     typescript: "npm:^6.0.2"
     typescript-eslint: "npm:^8.58.1"
     vite: "npm:^8.0.7"
@@ -2724,6 +2725,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"schema-dts@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "schema-dts@npm:1.1.5"
+  checksum: 10c0/babe23a1577c75c5df79d73acf34af3399e60928eab46f2236a0c4212061f5778d613a31c9e9ec86a2807d20b1ea460673d72d3fe1f64fb7543867460e607f76
+  languageName: node
+  linkType: hard
+
 "semver@npm:^7.3.5, semver@npm:^7.6.3, semver@npm:^7.7.2, semver@npm:^7.7.3":
   version: 7.7.4
   resolution: "semver@npm:7.7.4"
@@ -2923,6 +2931,17 @@ __metadata:
     svelte:
       optional: true
   checksum: 10c0/9b7bc592989ccdb5a04b98fcfafab602a3f2537988867261ad41f1a3b6deab121b2082d81b02c7a7db6d3da95ffe42496540569426f34b14c32088c5e0c26993
+  languageName: node
+  linkType: hard
+
+"svelte-meta-tags@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "svelte-meta-tags@npm:4.6.0"
+  dependencies:
+    schema-dts: "npm:^1.1.5"
+  peerDependencies:
+    svelte: ^5.0.0
+  checksum: 10c0/772e18eccb590df00950b0af58881f431424a4f9562d64abfe444238eb64ae8ace39d6e904ed3f2530f5eebd8883d5461444d20a35ee5ce48e4da37a9c3fc62c
   languageName: node
   linkType: hard
 

@@ -1,3 +1,12 @@
+<script lang="ts">
+	import { MetaTags } from 'svelte-meta-tags';
+</script>
+
+<MetaTags
+	title="Word on the Block | Olamaelcu"
+	description="An experiment in music curation from those who you follow in the Atmosphere, exclusively for Blacksky."
+/>
+
 <section class="lead">
 	<h1>Word on the Block</h1>
 	<p>

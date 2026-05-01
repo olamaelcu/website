@@ -54,6 +54,7 @@
 		"@fontsource/inconsolata": "^5.2.8",
 		"@fontsource/kalnia": "^5.2.9",
 		"@fontsource/space-grotesk": "^5.2.10",
-		"@fontsource/tourney": "^5.2.8"
+		"@fontsource/tourney": "^5.2.8",
+		"svelte-meta-tags": "^4.6.0"
 	}
 }

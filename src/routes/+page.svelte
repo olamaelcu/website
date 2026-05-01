@@ -1,6 +1,12 @@
 <script>
+	import { MetaTags } from 'svelte-meta-tags';
 	import ProjectNav from '$lib/components/projectNav.svelte';
 </script>
+
+<MetaTags
+	title="Projects | Olamaelcu"
+	description="Olamaelcu's all about making things — complete or not — that people can experiment with and understand."
+/>
 
 <ProjectNav />
 

@@ -1,6 +1,12 @@
 <script>
+	import { MetaTags } from 'svelte-meta-tags';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 </script>
+
+<MetaTags
+	title="Scratchback | Olamaelcu"
+	description="Live services, game state synchronization and achievements for independent game developers and studios alike leveraging ATProto."
+/>
 
 <section class="lead">
 	<h1>Scratchback</h1>
