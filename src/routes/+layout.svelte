@@ -52,5 +52,6 @@
 	{@render children()}
 </main>
 <footer>
-	Olamaelcu, a software lab by <a href="https://www.jacky.wtf">Jacky</a>
+	Olamaelcu, a software lab by <a href="https://www.jacky.wtf">Jacky</a> &mdash;
+	<a href="https://plausible.io/olamaelcu.net">Analytics</a>
 </footer>
