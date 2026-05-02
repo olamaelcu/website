@@ -11,7 +11,7 @@
 <p>
 	<strong>Olamaelcu</strong> is a portmaneau of the names of two characters from literature that has
 	heavily influened <a href="https://www.jacky.wtf/">Jacky</a>. The first being Lauren Olamina, from
-	Octavia Bulter's Parable of the Sower and the latter being Maelcum, the pilot of the
+	Octavia Butler's <em>Parable of the Sower</em> and the latter being Maelcum, the pilot of the
 	<em>Marcus Garvey</em>
 	ship in William Gibson's Neuromancer. Each person had critical roles in their book as navigators and
 	wayfinders.

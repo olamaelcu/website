@@ -1,10 +1,17 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { onMount } from 'svelte';
 	import { MetaTags } from 'svelte-meta-tags';
+	import { trackClick } from '$lib/analytics';
 	import '../app.css';
 	import '@awesome.me/webawesome/dist/styles/webawesome.css';
 
 	let { children } = $props();
+
+	onMount(() => {
+		document.addEventListener('click', trackClick);
+		return () => document.removeEventListener('click', trackClick);
+	});
 </script>
 
 <MetaTags
