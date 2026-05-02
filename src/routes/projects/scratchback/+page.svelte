@@ -13,7 +13,8 @@
 	<ProjectStatus status={STATUSES.INCUBATING} />
 	<p>
 		Live services, game state synchronization and achievements for indepenent game developers and
-		studios alike leveraging <a href="https://atproto.com/?ref=olamaelcu" target="_blank">ATProto</a>.
+		studios alike leveraging <a href="https://atproto.com/?ref=olamaelcu" target="_blank">ATProto</a
+		>.
 	</p>
 	<h2>Planned Features</h2>
 	<ul>

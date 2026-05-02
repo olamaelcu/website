@@ -66,6 +66,7 @@ async function generateOgImage(post: Post, root: string): Promise<Buffer> {
 	const svg = await satori(
 		{
 			type: 'div',
+			key: null,
 			props: {
 				style: {
 					width: '1200px',
