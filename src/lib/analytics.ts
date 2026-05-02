@@ -33,4 +33,16 @@ export function trackClick(event: MouseEvent): void {
 	trackEvent('click', { props: { text, href: href ?? '', outbound: isOutbound(href ?? null) } });
 }
 
+export function trackCommit(commit: string | undefined): void {
+	if (typeof window === 'undefined') return;
+	(
+		window.plausible as (
+			event: string,
+			opts?: { props: Record<string, string | number | boolean> }
+		) => void
+	)('commit', {
+		props: commit !== undefined ? { commit } : {}
+	});
+}
+
 export { trackEvent };

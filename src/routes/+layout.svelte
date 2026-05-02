@@ -2,13 +2,14 @@
 	import { resolve } from '$app/paths';
 	import { onMount } from 'svelte';
 	import { MetaTags } from 'svelte-meta-tags';
-	import { trackClick } from '$lib/analytics';
+	import { trackClick, trackCommit } from '$lib/analytics';
 	import '../app.css';
 	import '@awesome.me/webawesome/dist/styles/webawesome.css';
 
-	let { children } = $props();
+	let { data, children } = $props();
 
 	onMount(() => {
+		trackCommit(data.commit);
 		document.addEventListener('click', trackClick);
 		return () => document.removeEventListener('click', trackClick);
 	});
@@ -53,5 +54,6 @@
 </main>
 <footer>
 	Olamaelcu, a software lab by <a href="https://www.jacky.wtf">Jacky</a> &mdash;
-	<a href="https://plausible.io/olamaelcu.net">Analytics</a>
+	<a href="https://plausible.io/olamaelcu.net">Analytics</a>&mdash;
+	<code>{data.commit ? `$COMMIT` : ''}</code>
 </footer>

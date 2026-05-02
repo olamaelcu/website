@@ -12,3 +12,4 @@ vite.config.ts.timestamp-*
 Thumbs.db
 .opencode/node_modules/
 .opencode/package-lock.json
+src/lib/commit.ts
