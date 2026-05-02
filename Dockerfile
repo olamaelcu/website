@@ -1,4 +1,4 @@
-FROM node:20-alpine AS builder
+FROM node:20-bookworm AS builder
 
 WORKDIR /app
 
@@ -7,19 +7,14 @@ RUN corepack enable && yarn install --frozen-lockfile
 
 COPY . .
 ARG GIT_REV
-RUN <<'EOF'
-cat > src/lib/commit.ts <<EOFCOMMIT
-export const COMMIT: string | undefined = '${GIT_REV}';
-EOFCOMMIT
-EOF
+RUN node -e "require('fs').writeFileSync('src/lib/commit.ts', 'export const COMMIT: string | undefined = \\x27'+(process.env.GIT_REV||'')+'\\x27;')"
 RUN yarn build
 
-FROM node:20-alpine
-
-RUN npm install -g serve
+FROM node:20-bookworm
 
 WORKDIR /app
 COPY --from=builder /app/build ./build
 
 EXPOSE 3000
-CMD ["serve", "-s", "build", "-l", "3000"]
+ENV PORT=3000
+CMD ["node", "build"]

@@ -33,14 +33,14 @@ export function trackClick(event: MouseEvent): void {
 	const href = anchor?.getAttribute('href') ?? undefined;
 	const text = target.textContent?.trim() ?? '';
 
-	window.plausible('click', {
+	window.plausible?.('click', {
 		props: { text, href: href ?? '', outbound: isOutbound(href ?? null) }
 	});
 }
 
 export function trackCommit(commit: string | undefined): void {
 	if (typeof window === 'undefined') return;
-	window.plausible('commit', {
+	window.plausible?.('commit', {
 		props: commit !== undefined ? { commit } : {}
 	});
 }

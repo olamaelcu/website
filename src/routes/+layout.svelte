@@ -40,6 +40,7 @@
 	</a>
 	<nav class="places">
 		<a href={resolve('/about')}>About</a>
+		<a href={resolve('/blog')}>Blog</a>
 		<!-- <a href={resolve('/work')}>Work</a> -->
 	</nav>
 	<!-- <nav class="lang"> -->

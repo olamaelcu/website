@@ -1,9 +1,10 @@
 import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { ogImagePlugin } from './src/plugins/dynamicOgImage.ts';
 
 export default defineConfig({
-	plugins: [sveltekit()],
+	plugins: [sveltekit(), ogImagePlugin()],
 	test: {
 		expect: { requireAssertions: true },
 		projects: [
