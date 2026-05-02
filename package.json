@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "node scripts/generate-commit.ts && vite dev",
 		"prebuild": "node scripts/generate-commit.ts",
 		"build": "vite build",
 		"preview": "vite preview",
