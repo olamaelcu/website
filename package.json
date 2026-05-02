@@ -55,6 +55,7 @@
 		"@fontsource/kalnia": "^5.2.9",
 		"@fontsource/space-grotesk": "^5.2.10",
 		"@fontsource/tourney": "^5.2.8",
+		"plausible-tracker": "^0.3.9",
 		"svelte-meta-tags": "^4.6.0"
 	}
 }
