@@ -1,10 +1,17 @@
-import Plausible from 'plausible-tracker';
+declare global {
+	interface Window {
+		plausible: (
+			event: string,
+			opts?: { props?: Record<string, string | number | boolean> }
+		) => void;
+	}
+}
 
-const { trackEvent, enableAutoOutboundTracking } = Plausible({
-	domain: 'olamaelcu.net'
-});
-
-enableAutoOutboundTracking();
+export interface ClickEventProps {
+	text: string;
+	href: string | null;
+	outbound: boolean;
+}
 
 function isOutbound(href: string | null): boolean {
 	if (!href) return false;
@@ -16,13 +23,9 @@ function isOutbound(href: string | null): boolean {
 	}
 }
 
-export interface ClickEventProps {
-	text: string;
-	href: string | null;
-	outbound: boolean;
-}
-
 export function trackClick(event: MouseEvent): void {
+	if (typeof document === 'undefined') return;
+
 	const target = event.target as HTMLElement | null;
 	if (!target || target.nodeType === Node.TEXT_NODE) return;
 
@@ -30,19 +33,33 @@ export function trackClick(event: MouseEvent): void {
 	const href = anchor?.getAttribute('href') ?? undefined;
 	const text = target.textContent?.trim() ?? '';
 
-	trackEvent('click', { props: { text, href: href ?? '', outbound: isOutbound(href ?? null) } });
+	window.plausible('click', {
+		props: { text, href: href ?? '', outbound: isOutbound(href ?? null) }
+	});
 }
 
 export function trackCommit(commit: string | undefined): void {
 	if (typeof window === 'undefined') return;
-	(
-		window.plausible as (
-			event: string,
-			opts?: { props: Record<string, string | number | boolean> }
-		) => void
-	)('commit', {
+	window.plausible('commit', {
 		props: commit !== undefined ? { commit } : {}
 	});
 }
 
-export { trackEvent };
+let outboundTrackingEnabled = false;
+
+export function enableOutboundTracking(): void {
+	if (typeof document === 'undefined' || outboundTrackingEnabled) return;
+	outboundTrackingEnabled = true;
+
+	document.addEventListener('click', (e: MouseEvent) => {
+		const target = e.target as HTMLElement | null;
+		if (!target) return;
+		const anchor = target.closest('a');
+		if (!anchor) return;
+		const href = anchor.getAttribute('href');
+		if (!href) return;
+		if (isOutbound(href)) {
+			window.plausible('outbound', { props: { href } });
+		}
+	});
+}

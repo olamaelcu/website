@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { onMount } from 'svelte';
 	import { MetaTags } from 'svelte-meta-tags';
-	import { trackClick, trackCommit } from '$lib/analytics';
+	import { trackClick, trackCommit, enableOutboundTracking } from '$lib/analytics';
 	import '../app.css';
 	import '@awesome.me/webawesome/dist/styles/webawesome.css';
 
@@ -10,6 +10,7 @@
 
 	onMount(() => {
 		trackCommit(data.commit);
+		enableOutboundTracking();
 		document.addEventListener('click', trackClick);
 		return () => document.removeEventListener('click', trackClick);
 	});
