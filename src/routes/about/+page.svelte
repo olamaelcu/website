@@ -10,7 +10,7 @@
 <h1>About</h1>
 <p>
 	<strong>Olamaelcu</strong> is a portmaneau of the names of two characters from literature that has
-	heavily influened <a href="https://www.jacky.wtf/">Jacky</a>. The first being Lauren Olamina, from
+	heavily influened <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a>. The first being Lauren Olamina, from
 	Octavia Butler's <em>Parable of the Sower</em> and the latter being Maelcum, the pilot of the
 	<em>Marcus Garvey</em>
 	ship in William Gibson's Neuromancer. Each person had critical roles in their book as navigators and
@@ -21,8 +21,8 @@
 	There's more to come on the background of this venture and its ambitions &dash; it's the
 	cumulation of years of opinion and research into something more of an actionable lab. The ambition
 	is to match that of
-	<a href="https://inc.sh/">Ideas Never Cease</a>,
-	<a href="https://www.inkandswitch.com/">Ink&Switch</a> and others whose public experimentation has encouraged
+	<a href="https://inc.sh/?ref=olamaelcu">Ideas Never Cease</a>,
+	<a href="https://www.inkandswitch.com/?ref=olamaelcu">Ink&Switch</a> and others whose public experimentation has encouraged
 	this forward move.
 </p>
 

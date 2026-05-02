@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { MetaTags } from 'svelte-meta-tags';
 	import { trackClick, trackCommit, enableOutboundTracking } from '$lib/analytics';
@@ -14,6 +15,8 @@
 		document.addEventListener('click', trackClick);
 		return () => document.removeEventListener('click', trackClick);
 	});
+
+	let plausibleUrl = $derived(`https://plausible.io/olamaelcu.net?f=is,page,${$page.url.pathname}`);
 </script>
 
 <MetaTags
@@ -55,7 +58,7 @@
 	{@render children()}
 </main>
 <footer>
-	Olamaelcu, a software lab by <a href="https://www.jacky.wtf">Jacky</a> &mdash;
-	<a href="https://plausible.io/olamaelcu.net">Analytics</a>&mdash;
-	<code>{data.commit ? `$COMMIT` : ''}</code>
+	Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a>&nbsp;&mdash;
+	<a href={plausibleUrl}>Analytics</a>&nbsp;&mdash;
+	<code>{data.commit ? data.commit : ''}</code>
 </footer>

@@ -66,14 +66,13 @@
 	}
 	.post-list a {
 		color: var(--text-1);
-		text-decoration: none;
+		text-decoration: underline;
 	}
 	.post-list a:hover {
 		text-decoration: underline;
 	}
 	time {
-		font-size: 0.875rem;
-		opacity: 0.6;
+		font-size: var(--font-size-3);
 		flex-shrink: 0;
 	}
 

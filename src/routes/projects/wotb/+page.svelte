@@ -11,7 +11,7 @@
 	<h1>Word on the Block</h1>
 	<p>
 		An experiment in music curation from those who you follow in the Atmosphere, exclusively for <a
-			href="https://www.blackskyweb.xyz/">Blacksky</a
+			href="https://www.blackskyweb.xyz/?ref=olamaelcu">Blacksky</a
 		>.
 	</p>
 	<h2>Planned Features</h2>
@@ -20,11 +20,11 @@
 		<li>Connect with existing media services to help syndicate your listening history.</li>
 		<li>
 			In honor of <a
-				href="https://www.refinery29.com/en-us/2020/12/10208481/jewel-ham-artist-spotify-wrapped-internship"
+				href="https://www.refinery29.com/en-us/2020/12/10208481/jewel-ham-artist-spotify-wrapped-internship?ref=olamaelcu"
 				>the Black woman who invented <strong>Spotify Wrapped</strong></a
 			>
 			concept, one can share and create a <strong>Jeweled List</strong>. Thank you
-			<a href="https://www.whateverjewel.world/">Jewel Ham</a>.
+			<a href="https://www.whateverjewel.world/?ref=olamaelcu">Jewel Ham</a>.
 		</li>
 	</ul>
 </section>
