@@ -5,7 +5,6 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
 	preprocess: [vitePreprocess({ style: true, script: true })],
 	kit: {
-		origin: 'https://olamaelcu.net',
 		adapter: adapter()
 	}
 };

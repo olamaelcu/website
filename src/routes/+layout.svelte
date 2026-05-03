@@ -58,5 +58,7 @@
 	Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a>&nbsp;&mdash;
 	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 	<a href={plausibleUrl}>Analytics</a>&nbsp;&mdash;
+	<a href={resolve('/terms')}>Terms</a>&nbsp;&mdash;
+	<a href={resolve('/privacy')}>Privacy</a>&nbsp;&mdash;
 	<code>{data.commit ? data.commit : ''}</code>
 </footer>
