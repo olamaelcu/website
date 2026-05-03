@@ -14,10 +14,9 @@ RUN yarn build
 
 FROM node:20-bookworm
 
-RUN npm install -g serve
-
 WORKDIR /app
 COPY --from=builder /app/build ./build
 
 EXPOSE 3000
-CMD ["serve", "-s", "build", "-l", "3000"]
+ENV PORT=3000
+CMD ["node", "build"]
