@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY package.json yarn.lock ./
 RUN corepack enable && yarn install --frozen-lockfile
+RUN node -e "require('fs').writeFileSync('.yarnrc.yml', 'nodeLinker: node-modules\n')"
+RUN yarn install --frozen-lockfile
 
 COPY . .
 ARG GIT_REV
@@ -12,9 +14,10 @@ RUN yarn build
 
 FROM node:20-bookworm
 
+RUN npm install -g serve
+
 WORKDIR /app
 COPY --from=builder /app/build ./build
 
 EXPOSE 3000
-ENV PORT=3000
-CMD ["node", "build"]
+CMD ["serve", "-s", "build", "-l", "3000"]
