@@ -8,8 +8,23 @@ export async function entries() {
 	return posts.map((p) => ({ year: p.year, slug: p.slug }));
 }
 
-export async function load({ params }) {
+export async function load({ params, url }) {
 	const post = await getPostAsync(params.year, params.slug);
 	if (!post) throw error(404);
-	return { post };
+
+	const origin = url.origin;
+	const canonicalUrl = `${origin}/blog/${post.year}/${post.slug}`;
+	const ogImageUrl = `${origin}/blog-og/${post.slug}.png`;
+
+	return {
+		post,
+		metaTags: {
+			title: `${post.title} — Olamaelcu`,
+			description: post.description,
+			canonical: canonicalUrl,
+			ogImage: ogImageUrl,
+			twitterCard: 'summary_large_image',
+			twitterImage: ogImageUrl
+		}
+	};
 }

@@ -6,7 +6,13 @@ export async function entries(): Promise<Array<{ year?: string }>> {
 	return [{}];
 }
 
-export async function load() {
+export async function load({ url }) {
 	const posts = await getAllPostsAsync();
-	return { posts };
+	const origin = url.origin;
+
+	return {
+		posts,
+		atomFeed: `${origin}/feed/atom`,
+		jsonFeed: `${origin}/feed/json`
+	};
 }

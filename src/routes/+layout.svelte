@@ -17,22 +17,57 @@
 	});
 
 	let plausibleUrl = $derived(`https://plausible.io/olamaelcu.net?f=is,page,${$page.url.pathname}`);
+
+	let resolvedCanonicalUrl = $derived(data.metaTags?.canonical ?? 'https://olamaelcu.net');
+	let resolvedOgImageUrl = $derived(data.metaTags?.ogImage ?? 'https://olamaelcu.net/favicon.png');
+	let resolvedOgTitle = $derived(data.metaTags?.title ?? 'Olamaelcu');
+	let resolvedOgDescription = $derived(
+		data.metaTags?.description ??
+			'A software lab making things for people to experiment with and understand.'
+	);
+	let resolvedTwitterCard = $derived<'summary_large_image'>(
+		(data.metaTags?.twitterCard as 'summary_large_image') ?? 'summary_large_image'
+	);
+	let resolvedTwitterImage = $derived(
+		data.metaTags?.twitterImage ?? 'https://olamaelcu.net/favicon.png'
+	);
+	let resolvedTwitterTitle = $derived(data.metaTags?.title ?? 'Olamaelcu');
+	let resolvedTwitterDescription = $derived(
+		data.metaTags?.description ??
+			'A software lab making things for people to experiment with and understand.'
+	);
 </script>
 
+<svelte:head>
+	<link
+		rel="alternate"
+		type="application/atom+xml"
+		href="https://olamaelcu.net/feed/atom"
+		title="Olamaelcu Blog - ATOM Feed"
+	/>
+	<link
+		rel="alternate"
+		type="application/feed+json"
+		href="https://olamaelcu.net/feed/json"
+		title="Olamaelcu Blog - JSON Feed"
+	/>
+</svelte:head>
+
 <MetaTags
-	title="Olamaelcu"
-	description="A software lab making things for people to experiment with and understand."
-	canonical="https://olamaelcu.net"
+	title={resolvedOgTitle}
+	description={resolvedOgDescription}
+	canonical={resolvedCanonicalUrl}
 	openGraph={{
 		type: 'website',
 		siteName: 'Olamaelcu',
 		url: 'https://olamaelcu.net',
-		images: [
-			{
-				url: 'https://olamaelcu.net/favicon.png',
-				alt: 'Olamaelcu logo'
-			}
-		]
+		images: [{ url: resolvedOgImageUrl, alt: 'Olamaelcu logo' }]
+	}}
+	twitter={{
+		cardType: resolvedTwitterCard,
+		image: resolvedTwitterImage,
+		title: resolvedTwitterTitle,
+		description: resolvedTwitterDescription
 	}}
 />
 

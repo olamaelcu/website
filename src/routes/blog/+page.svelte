@@ -3,7 +3,7 @@
 	import { resolve } from '$app/paths';
 
 	let { data }: { data: PageData } = $props();
-	let { posts } = $derived(data);
+	let { posts, atomFeed, jsonFeed } = $derived(data);
 
 	let byYear = $derived(
 		posts.reduce<Record<string, typeof posts>>((acc, p) => {
@@ -16,10 +16,29 @@
 <svelte:head>
 	<title>Blog — Olamaelcu</title>
 	<meta name="description" content="Thoughts, tutorials, and updates from Olamaelcu." />
+	<link
+		rel="alternate"
+		type="application/atom+xml"
+		href={atomFeed}
+		title="Olamaelcu Blog - ATOM Feed"
+	/>
+	<link
+		rel="alternate"
+		type="application/feed+json"
+		href={jsonFeed}
+		title="Olamaelcu Blog - JSON Feed"
+	/>
 </svelte:head>
 
 <section>
 	<h1>Blog</h1>
+
+	<div class="feed-links">
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+		<a href={atomFeed} target="_blank" rel="noopener noreferrer">ATOM Feed</a>
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+		<a href={jsonFeed} target="_blank" rel="noopener noreferrer">JSON Feed</a>
+	</div>
 
 	{#each Object.entries(byYear).sort(([a], [b]) => b.localeCompare(a)) as [year, yearPosts] (year)}
 		<section>
@@ -80,5 +99,21 @@
 		max-width: var(--size-content-3);
 		margin: 0 auto;
 		width: 100%;
+	}
+
+	.feed-links {
+		margin-bottom: 2rem;
+		display: flex;
+		gap: 1rem;
+	}
+	.feed-links a {
+		padding: 0.5rem 1rem;
+		background: var(--surface-2);
+		border-radius: 4px;
+		text-decoration: none;
+		font-size: 0.875rem;
+	}
+	.feed-links a:hover {
+		background: var(--surface-3);
 	}
 </style>

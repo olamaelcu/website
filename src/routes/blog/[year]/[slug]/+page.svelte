@@ -5,16 +5,6 @@
 	let { post } = $derived(data);
 </script>
 
-<svelte:head>
-	<title>{post.title} — Olamaelcu</title>
-	<meta name="description" content={post.description} />
-	<meta property="og:title" content={post.title} />
-	<meta property="og:description" content={post.description} />
-	<meta property="og:image" content={`/blog-og/${post.slug}.png`} />
-	<meta property="og:type" content="article" />
-	<meta name="twitter:card" content="summary_large_image" />
-</svelte:head>
-
 <article>
 	<header>
 		<time datetime={post.date}>{post.date}</time>
