@@ -63,6 +63,10 @@ async function generateOgImage(post: Post, root: string): Promise<Buffer> {
 	const fontPath = join(root, 'node_modules/@fontsource/kalnia/files/kalnia-latin-400-normal.woff');
 	const fontData = readFileSync(fontPath);
 
+	const logoPath = join(root, 'static', 'favicon.png');
+	const logoData = readFileSync(logoPath);
+	const logoBase64 = logoData.toString('base64');
+
 	const svg = await satori(
 		{
 			type: 'div',
@@ -93,12 +97,34 @@ async function generateOgImage(post: Post, root: string): Promise<Buffer> {
 									type: 'div',
 									props: {
 										style: {
-											fontSize: '18px',
-											color: '#78716c',
-											letterSpacing: '0.05em',
-											textTransform: 'uppercase'
+											display: 'flex',
+											alignItems: 'center',
+											gap: '12px'
 										},
-										children: 'Olamaelcu'
+										children: [
+											{
+												type: 'img',
+												props: {
+													src: `data:image/png;base64,${logoBase64}`,
+													style: {
+														width: '40px',
+														height: '40px'
+													}
+												}
+											},
+											{
+												type: 'div',
+												props: {
+													style: {
+														fontSize: '18px',
+														color: '#78716c',
+														letterSpacing: '0.05em',
+														textTransform: 'uppercase'
+													},
+													children: 'Olamaelcu'
+												}
+											}
+										]
 									}
 								},
 								{

@@ -1,9 +1,32 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	let { data }: { data: PageData } = $props();
-	let { post } = $derived(data);
+	let { post, metaTags } = $derived(data);
+
+	let twitterCard = $derived<'summary_large_image'>(
+		(metaTags.twitterCard as 'summary_large_image') ?? 'summary_large_image'
+	);
 </script>
+
+<MetaTags
+	title={metaTags.title}
+	description={metaTags.description}
+	canonical={metaTags.canonical}
+	openGraph={{
+		type: 'article',
+		title: metaTags.title,
+		description: metaTags.description,
+		images: [{ url: metaTags.ogImage, alt: 'Post OG Image' }]
+	}}
+	twitter={{
+		cardType: twitterCard,
+		image: metaTags.twitterImage,
+		title: metaTags.title,
+		description: metaTags.description
+	}}
+/>
 
 <article>
 	<header>

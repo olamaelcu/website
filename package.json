@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "node scripts/generate-commit.ts && vite dev",
+		"dev": "tsx scripts/generate-commit.ts && vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "playwright install && svelte-kit sync || echo ''",
@@ -44,6 +44,7 @@
 		"surge": "^0.27.3",
 		"svelte": "^5.55.2",
 		"svelte-check": "^4.4.6",
+		"tsx": "^4.21.0",
 		"typescript": "^6.0.2",
 		"typescript-eslint": "^8.58.1",
 		"vite": "^8.0.7",
