@@ -3,7 +3,7 @@ FROM node:20-bookworm AS builder
 WORKDIR /app
 
 COPY package.json yarn.lock ./
-RUN npm install --frozen-lockfile 2>/dev/null || npm install
+RUN npm install --frozen-lockfile
 
 COPY . .
 ARG GIT_REV
