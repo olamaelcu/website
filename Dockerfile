@@ -2,10 +2,10 @@ FROM node:20-bookworm AS builder
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .yarn/ ./
+ENV COREPACK_OFFLINE=1
 RUN corepack enable && yarn install --frozen-lockfile
 RUN node -e "require('fs').writeFileSync('.yarnrc.yml', 'nodeLinker: node-modules\n')"
-RUN yarn install --frozen-lockfile
 
 COPY . .
 ARG GIT_REV
