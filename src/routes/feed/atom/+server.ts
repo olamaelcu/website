@@ -1,10 +1,10 @@
 import { generateAtomFeed } from '$lib/feed';
+import { SITE_URL } from '$lib/constants';
 
 export const prerender = true;
 
-export async function GET({ url }) {
-	const origin = url.origin;
-	const feed = await generateAtomFeed(origin);
+export async function GET() {
+	const feed = await generateAtomFeed(SITE_URL);
 
 	return new Response(feed, {
 		headers: {

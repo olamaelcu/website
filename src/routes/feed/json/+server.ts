@@ -1,10 +1,10 @@
 import { generateJsonFeed } from '$lib/feed';
+import { SITE_URL } from '$lib/constants';
 
 export const prerender = true;
 
-export async function GET({ url }) {
-	const origin = url.origin;
-	const feed = await generateJsonFeed(origin);
+export async function GET() {
+	const feed = await generateJsonFeed(SITE_URL);
 
 	return new Response(feed, {
 		headers: {

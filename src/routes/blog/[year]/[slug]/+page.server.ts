@@ -1,4 +1,5 @@
 import { getAllPostsAsync, getPostAsync } from '$lib/posts';
+import { SITE_URL } from '$lib/constants';
 import { error } from '@sveltejs/kit';
 
 export const prerender = true;
@@ -8,13 +9,12 @@ export async function entries() {
 	return posts.map((p) => ({ year: p.year, slug: p.slug }));
 }
 
-export async function load({ params, url }) {
+export async function load({ params }) {
 	const post = await getPostAsync(params.year, params.slug);
 	if (!post) throw error(404);
 
-	const origin = url.origin;
-	const canonicalUrl = `${origin}/blog/${post.year}/${post.slug}`;
-	const ogImageUrl = `${origin}/blog-og/${post.slug}.png`;
+	const canonicalUrl = `${SITE_URL}/blog/${post.year}/${post.slug}`;
+	const ogImageUrl = `${SITE_URL}/blog-og/${post.slug}.png`;
 
 	return {
 		post,
