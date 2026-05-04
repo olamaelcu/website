@@ -3,14 +3,12 @@ FROM node:20-bookworm AS builder
 WORKDIR /app
 
 COPY package.json yarn.lock ./
-RUN curl -fsSL https://github.com/yarnpkg/yarn/releases/download/v4.14.1/yarn-4.14.1.cjs -o /usr/local/bin/yarn && chmod +x /usr/local/bin/yarn
-RUN node -e "require('fs').writeFileSync('.yarnrc.yml', 'nodeLinker: node-modules\n')"
-RUN yarn install --frozen-lockfile
+RUN npm install --frozen-lockfile 2>/dev/null || npm install
 
 COPY . .
 ARG GIT_REV
 RUN node -e "require('fs').writeFileSync('src/lib/commit.ts', 'export const COMMIT: string | undefined = \\x27'+(process.env.GIT_REV||'')+'\\x27;')"
-RUN yarn build
+RUN npm run build
 
 FROM node:20-bookworm
 
