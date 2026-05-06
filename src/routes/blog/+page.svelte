@@ -58,13 +58,11 @@
 <style>
 	h1 {
 		font-size: var(--text-3xl);
-		margin-bottom: var(--wa-space-m);
 	}
 	h2 {
 		font-size: var(--text-sm);
 		font-weight: normal;
 		opacity: 0.6;
-		margin-bottom: var(--wa-space-xs);
 		font-family: var(--font-sans);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;

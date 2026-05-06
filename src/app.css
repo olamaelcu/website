@@ -144,7 +144,7 @@ footer {
 }
 
 section.lead {
-	p {
+	p:first-of-type {
 		font-size: var(--text-lg);
 		line-height: var(--leading-relaxed);
 		margin-bottom: var(--wa-space-m);
@@ -158,4 +158,9 @@ section.lead {
 
 ul {
 	list-style-type: square;
+}
+
+li {
+	font-size: var(--text-base);
+	line-height: var(--leading-relaxed);
 }

@@ -9,8 +9,10 @@
 />
 
 <section class="lead">
-	<h1>Scratchback</h1>
-	<ProjectStatus status={STATUSES.INCUBATING} />
+	<div class="title-row">
+		<h1>Scratchback</h1>
+		<ProjectStatus status={STATUSES.INCUBATING} />
+	</div>
 	<p>
 		Live services, game state synchronization and achievements for indepenent game developers and
 		studios alike leveraging <a href="https://atproto.com/?ref=olamaelcu" target="_blank">ATProto</a

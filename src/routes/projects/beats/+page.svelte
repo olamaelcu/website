@@ -9,8 +9,10 @@
 />
 
 <section class="lead">
-	<h1>Beats</h1>
-	<ProjectStatus status={STATUSES.INCUBATING} />
+	<div class="title-row">
+		<h1>Beats</h1>
+		<ProjectStatus status={STATUSES.INCUBATING} />
+	</div>
 	<p>
 		An experiment in music curation from those who you follow in the Atmosphere, <strong
 			>exclusively for <a href="https://www.blackskyweb.xyz/?ref=olamaelcu">Blacksky</a></strong

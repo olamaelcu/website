@@ -53,14 +53,6 @@
 
 		> main {
 			line-height: var(--leading-normal);
-
-			:global(p) {
-				margin: var(--wa-space-xs) 0;
-
-				&:first-child {
-					margin-top: 0;
-				}
-			}
 		}
 	}
 
@@ -73,7 +65,6 @@
 	h1 {
 		font-family: var(--font-display);
 		font-size: var(--text-3xl);
-		margin-top: var(--wa-space-2xs);
 		flex: 1 1;
 		text-align: center;
 	}
@@ -91,7 +82,7 @@
 	.tags li {
 		background: var(--surface-2);
 		padding: 0.125rem 0.5rem;
-		border-radius: 999px;
+		border-radius: 0.25rem;
 		font-size: var(--text-xs);
 		max-width: fit-content;
 	}
