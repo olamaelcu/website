@@ -31,10 +31,10 @@
 	:global(main) {
 		margin: 0 auto;
 		width: 80vw;
-		max-width: var(--size-content-3);
+		max-width: var(--content-3);
 		flex-direction: column;
 	}
 	p {
-		margin: var(--size-3) 0;
+		margin: var(--wa-space-m) 0;
 	}
 </style>

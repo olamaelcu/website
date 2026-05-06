@@ -34,7 +34,6 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.17.0",
 		"globals": "^17.4.0",
-		"open-props": "^1.7.23",
 		"playwright": "^1.59.1",
 		"postcss": "^8.5.12",
 		"postcss-custom-media": "^12.0.1",

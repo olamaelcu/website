@@ -33,8 +33,8 @@
 
 <style>
 	span {
-		padding: var(--size-2);
-		margin: 0 var(--size-1);
+		padding: var(--wa-space-xs);
+		margin: 0 var(--wa-space-2xs);
 		text-transform: uppercase;
 		font-family: var(--font-mono);
 	}

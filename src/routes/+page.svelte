@@ -37,9 +37,9 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		max-width: var(--size-content-3);
-		margin: var(--size-1) auto;
-		padding: var(--size-4);
+		max-width: var(--content-3);
+		margin: var(--wa-space-2xs) auto;
+		padding: var(--wa-space-l);
 
 		h1 {
 			font-family: var(--font-display);
@@ -47,6 +47,6 @@
 	}
 
 	h2 {
-		margin-top: var(--size-3);
+		margin-top: var(--wa-space-m);
 	}
 </style>

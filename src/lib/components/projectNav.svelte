@@ -11,14 +11,14 @@
 
 <style>
 	nav {
-		max-width: var(--size-content-2);
-		margin: var(--size-1) auto;
+		max-width: var(--content-2);
+		margin: var(--wa-space-2xs) auto;
 		span {
 			text-transform: uppercase;
 		}
 
 		a {
-			padding: 0 var(--size-1);
+			padding: 0 var(--wa-space-2xs);
 		}
 	}
 </style>

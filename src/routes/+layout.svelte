@@ -63,4 +63,3 @@
 	<a href={resolve('/privacy')}>Privacy</a>&nbsp;&mdash;
 	<code>{data.commit ? data.commit : ''}</code>
 </footer>
-

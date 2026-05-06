@@ -91,12 +91,12 @@
 		text-decoration: underline;
 	}
 	time {
-		font-size: var(--font-size-3);
+		font-size: var(--wa-font-size-l);
 		flex-shrink: 0;
 	}
 
 	section {
-		max-width: var(--size-content-3);
+		max-width: var(--content-3);
 		margin: 0 auto;
 		width: 100%;
 	}

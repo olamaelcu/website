@@ -11,7 +11,7 @@
 	:global(main) {
 		margin: 0 auto;
 		width: 80vw;
-		max-width: var(--size-content-3);
+		max-width: var(--content-3);
 		flex-direction: column;
 	}
 </style>

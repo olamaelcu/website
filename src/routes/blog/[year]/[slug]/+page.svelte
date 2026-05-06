@@ -48,14 +48,14 @@
 
 <style>
 	article {
-		max-width: var(--size-content-3);
+		max-width: var(--content-3);
 		margin: 0 auto;
 
 		> main {
-			line-height: var(--font-lineheight-3);
+			line-height: var(--wa-line-height-normal);
 
 			:global(p) {
-				margin: var(--size-2) 0;
+				margin: var(--wa-space-xs) 0;
 
 				&:first-child {
 					margin-top: 0;
@@ -77,7 +77,7 @@
 		text-align: center;
 	}
 	time {
-		font-size: var(--font-size-3);
+		font-size: var(--wa-font-size-l);
 	}
 	.tags {
 		list-style: none;

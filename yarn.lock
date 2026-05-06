@@ -3248,7 +3248,6 @@ __metadata:
     globals: "npm:^17.4.0"
     gray-matter: "npm:^4.0.3"
     marked: "npm:^18.0.3"
-    open-props: "npm:^1.7.23"
     plausible-tracker: "npm:^0.3.9"
     playwright: "npm:^1.59.1"
     postcss: "npm:^8.5.12"
@@ -3269,13 +3268,6 @@ __metadata:
     vitest-browser-svelte: "npm:^2.1.0"
   languageName: unknown
   linkType: soft
-
-"open-props@npm:^1.7.23":
-  version: 1.7.23
-  resolution: "open-props@npm:1.7.23"
-  checksum: 10c0/2fd5db10db38950eef224d54ddec60a54cbf18201e39f5c720f92153c782255a0c0aca420809611da3166692c449467ca8babeaf151dd2e29fd80c94d6729058
-  languageName: node
-  linkType: hard
 
 "optionator@npm:^0.9.3":
   version: 0.9.4

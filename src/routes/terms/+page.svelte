@@ -88,21 +88,20 @@
 	:global(main) {
 		margin: 0 auto;
 		width: 80vw;
-		max-width: var(--size-content-3);
+		max-width: var(--content-3);
 		flex-direction: column;
 	}
 	p {
-		margin: var(--size-3) 0;
+		margin: var(--wa-space-m) 0;
 	}
 	h2 {
-		margin-top: var(--size-4);
+		margin-top: var(--wa-space-l);
 	}
 	ul {
-		margin: var(--size-2) 0;
-		padding-left: var(--size-4);
+		margin: var(--wa-space-xs) 0;
+		padding-left: var(--wa-space-l);
 	}
 	li {
-		margin: var(--size-1) 0;
+		margin: var(--wa-space-2xs) 0;
 	}
 </style>
-
