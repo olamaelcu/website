@@ -41,6 +41,7 @@
 	<nav class="places">
 		<a href={resolve('/about')}>About</a>
 		<a href={resolve('/blog')}>Blog</a>
+		<a href="https://waitlist.olamaelcu.net">Waitlist</a>
 		<!-- <a href={resolve('/work')}>Work</a> -->
 	</nav>
 	<!-- <nav class="lang"> -->
@@ -62,3 +63,4 @@
 	<a href={resolve('/privacy')}>Privacy</a>&nbsp;&mdash;
 	<code>{data.commit ? data.commit : ''}</code>
 </footer>
+

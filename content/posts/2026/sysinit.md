@@ -14,11 +14,12 @@ flagship services or tools can be found at [the projects page](/projects).
 
 ### The Plans
 
-There's going to be a mix of services that are full on projects who have their
-own vanity domains, [Scratchback](/projects/scratchback) being one and other
-ones being part of a larger tool or interface that'll live under the domain
-`lab.olamaelcu.net`. Things like the tool to help generate your own music feed
-for ATProto will live there.
+I'm aiming to release the things I've been hammering on for some time slowly to
+everyone. The easiest way to be notified when a new service is available before
+it's made more generally available is by [signing up for the waitlist][1]. Once
+signed in and when spots are available, you'll be able to log into the services
+you opted into. You can view all of the projects [for opting in][2] &mdash;
+before you decide to commit.
 
 ### The Purpose
 
@@ -29,3 +30,6 @@ agent](https://www.jacky.wtf/work) and I'd like to spend that time working on
 something I've written and engaged in for the last few years &mdash; the open
 social Web. I'll have [time for folks who'd like to
 talk](https://cal.com/jackyalcine) about ideas that'd like to bring to fruition around the social Web.
+
+[1]: https://waitlist.olamaelcu.net
+[2]: /projects

@@ -8,12 +8,12 @@
 />
 
 <h1>Terms of Service</h1>
-<p>Last updated: 2026</p>
+<p>Last updated: 05/05/2026</p>
 
 <p>
-	Welcome to Olamaelcu. These Terms of Service ("Terms") govern your access to and use of the services,
-	experiments, and applications provided by Olamaelcu ("we," "us," or "our"). By using any of our
-	services, you agree to be bound by these Terms.
+	Welcome to Olamaelcu. These Terms of Service ("Terms") govern your access to and use of the
+	services, experiments, and applications provided by Olamaelcu ("we," "us," or "our"). By using any
+	of our services, you agree to be bound by these Terms.
 </p>
 
 <h2>Accounts</h2>
@@ -30,10 +30,18 @@
 <ul>
 	<li>Unlawful, fraudulent, or malicious</li>
 	<li>Defamatory, harassing, threatening, or harmful to others</li>
-	<li>An infringement of intellectual property rights (copyright, trademark, patent, or other proprietary rights)</li>
+	<li>
+		An infringement of intellectual property rights (copyright, trademark, patent, or other
+		proprietary rights)
+	</li>
 	<li>Spam, unsolicited communications, or automated mass activity</li>
-	<li>An attempt to gain unauthorized access, bypass security measures, introduce malware, or probe for vulnerabilities</li>
-	<li>Disruptive to, overloading of, or otherwise impairing the normal operation of the services</li>
+	<li>
+		An attempt to gain unauthorized access, bypass security measures, introduce malware, or probe
+		for vulnerabilities
+	</li>
+	<li>
+		Disruptive to, overloading of, or otherwise impairing the normal operation of the services
+	</li>
 </ul>
 
 <h2>User Content</h2>
@@ -46,21 +54,22 @@
 <h2>Intellectual Property</h2>
 <p>
 	Olamaelcu retains all rights to the services, including but not limited to the name "Olamaelcu,"
-	associated branding, original content, and any code or design elements we provide. You may not
-	use our branding without prior written permission.
+	associated branding, original content, and any code or design elements we provide. You may not use
+	our branding without prior written permission.
 </p>
 
 <h2>Limitation of Liability</h2>
 <p>
 	THE SERVICES ARE PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
 	BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
-	NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED, SECURE, OR ERROR-FREE.
+	NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED, SECURE, OR
+	ERROR-FREE.
 </p>
 
 <h2>Service Suspension</h2>
 <p>
-	We reserve the right to suspend or terminate access to services that violate these Terms,
-	engage in prohibited activities, or otherwise misuse the services.
+	We reserve the right to suspend or terminate access to services that violate these Terms, engage
+	in prohibited activities, or otherwise misuse the services.
 </p>
 
 <h2>Governing Law</h2>
@@ -96,3 +105,4 @@
 		margin: var(--size-1) 0;
 	}
 </style>
+

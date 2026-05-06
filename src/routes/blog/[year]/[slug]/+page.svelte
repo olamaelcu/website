@@ -63,10 +63,12 @@
 			}
 		}
 	}
+
 	header {
 		margin-bottom: 2rem;
 		display: flex;
 		align-items: center;
+		flex-direction: row;
 	}
 	h1 {
 		font-family: var(--font-display);

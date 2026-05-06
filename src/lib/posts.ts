@@ -1,6 +1,19 @@
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
+// Function to add UTM parameters to external links in HTML
+function addUtmToLinks(html: string, slug: string): string {
+	const utmParams = `utm_source=olamaelcu.net&utm_medium=blog&utm_campaign=${slug}_post`;
+
+	return html.replace(/href=(["'])(https?:\/\/[^"']+)\1/gi, (match, quote, url) => {
+		if (url.includes('utm_')) {
+			return match;
+		}
+		const separator = url.includes('?') ? '&' : '?';
+		return `href=${quote}${url}${separator}${utmParams}${quote}`;
+	});
+}
+
 export interface PostMeta {
 	slug: string;
 	year: string;
@@ -36,7 +49,7 @@ function parsePost(filePath: string, raw: string): Post {
 		date: dateStr,
 		description: String(data.description ?? ''),
 		tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-		content: marked(content) as string
+		content: addUtmToLinks(marked(content) as string, slug)
 	};
 }
 

@@ -22,6 +22,11 @@
 		experimentation and eventual productization. The user community is the one who gets to develop
 		the perspectives of the experience &mdash; the actual consumer.
 	</p>
+	<p>
+		You can sign up to know when projects drop at <a href="https://waitlist.olamaelcu.net"
+			>waitlist.olamaelcu.net</a
+		>.
+	</p>
 </section>
 
 <style>
