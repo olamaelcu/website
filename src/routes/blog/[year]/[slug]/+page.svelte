@@ -52,7 +52,7 @@
 		margin: 0 auto;
 
 		> main {
-			line-height: var(--wa-line-height-normal);
+			line-height: var(--leading-normal);
 
 			:global(p) {
 				margin: var(--wa-space-xs) 0;
@@ -65,19 +65,20 @@
 	}
 
 	header {
-		margin-bottom: 2rem;
+		margin-bottom: var(--wa-space-m);
 		display: flex;
 		align-items: center;
 		flex-direction: row;
 	}
 	h1 {
 		font-family: var(--font-display);
-		margin-top: 0.5rem;
+		font-size: var(--text-3xl);
+		margin-top: var(--wa-space-2xs);
 		flex: 1 1;
 		text-align: center;
 	}
 	time {
-		font-size: var(--wa-font-size-l);
+		font-size: var(--text-base);
 	}
 	.tags {
 		list-style: none;
@@ -91,7 +92,7 @@
 		background: var(--surface-2);
 		padding: 0.125rem 0.5rem;
 		border-radius: 999px;
-		font-size: 0.75rem;
+		font-size: var(--text-xs);
 		max-width: fit-content;
 	}
 </style>

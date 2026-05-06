@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 </script>
 
 <svelte:head>
@@ -14,6 +15,28 @@
 			<a href={resolve('/projects/scratchback')}>
 				<strong>Scratchback</strong>
 				<span>Game state sync and achievements via ATProto</span>
+				<ProjectStatus status={STATUSES.INCUBATING} />
+			</a>
+		</li>
+		<li>
+			<a href={resolve('/projects/beats')}>
+				<strong>Beats</strong>
+				<span>Music curation from your social graph</span>
+				<ProjectStatus status={STATUSES.INCUBATING} />
+			</a>
+		</li>
+		<li>
+			<a href={resolve('/projects/livtet')}>
+				<strong>Livtet</strong>
+				<span>Local-first, ATProto-friendly book management</span>
+				<ProjectStatus status={STATUSES.INCUBATING} />
+			</a>
+		</li>
+		<li>
+			<a href={resolve('/projects/ticaye')}>
+				<strong>Ticaye</strong>
+				<span>Coming soon</span>
+				<ProjectStatus status={STATUSES.INCUBATING} />
 			</a>
 		</li>
 	</ul>
@@ -26,31 +49,41 @@
 	}
 	h1 {
 		font-family: var(--font-display);
-		margin-top: 0.5rem;
+		margin-top: var(--wa-space-xs);
 	}
 	.projects {
 		list-style: none;
 		padding: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: var(--wa-space-m);
 	}
 	.projects a {
-		display: block;
-		padding: 1rem;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-rows: auto auto;
+		gap: 0 var(--wa-space-xs);
+		padding: var(--wa-space-m);
 		border: 1px solid var(--surface-2);
-		border-radius: 0.5rem;
+		border-radius: var(--wa-border-radius-m);
 		text-decoration: none;
 	}
 	.projects a:hover {
 		border-color: var(--surface-3);
 	}
 	.projects strong {
-		display: block;
-		margin-bottom: 0.25rem;
+		grid-column: 1;
+		grid-row: 1;
 	}
 	.projects span {
-		font-size: 0.875rem;
+		grid-column: 1;
+		grid-row: 2;
+		font-size: var(--text-sm);
 		opacity: 0.7;
+	}
+	.projects :global(.project-status) {
+		grid-column: 2;
+		grid-row: 1 / span 2;
+		align-self: center;
 	}
 </style>

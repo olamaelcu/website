@@ -29,7 +29,7 @@
 	});
 </script>
 
-<span>{label}</span>
+<span class="project-status">{label}</span>
 
 <style>
 	span {
@@ -37,5 +37,6 @@
 		margin: 0 var(--wa-space-2xs);
 		text-transform: uppercase;
 		font-family: var(--font-mono);
+		font-size: var(--text-xs);
 	}
 </style>

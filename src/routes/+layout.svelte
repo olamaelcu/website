@@ -41,22 +41,15 @@
 	<nav class="places">
 		<a href={resolve('/about')}>About</a>
 		<a href={resolve('/blog')}>Blog</a>
+		<a href={resolve('/projects')}>Projects</a>
 		<a href="https://waitlist.olamaelcu.net">Waitlist</a>
-		<!-- <a href={resolve('/work')}>Work</a> -->
 	</nav>
-	<!-- <nav class="lang"> -->
-	<!-- 	{#each locales as locale (locale)} -->
-	<!-- 		<a href={resolve(localizeHref(page.url.pathname, { locale }) as Pathname)} -->
-	<!-- 			>{flagForLocale(locale)}<span>&nbsp;{nativeLocaleName(locale)}</span></a -->
-	<!-- 		> -->
-	<!-- 	{/each} -->
-	<!-- </nav> -->
 </header>
 <main>
 	{@render children()}
 </main>
 <footer>
-	Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a>&nbsp;&mdash;
+	Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a><br />
 	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 	<a href={plausibleUrl}>Analytics</a>&nbsp;&mdash;
 	<a href={resolve('/terms')}>Terms</a>&nbsp;&mdash;

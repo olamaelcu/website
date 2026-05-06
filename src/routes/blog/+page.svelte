@@ -57,13 +57,14 @@
 
 <style>
 	h1 {
-		margin-bottom: 2rem;
+		font-size: var(--text-3xl);
+		margin-bottom: var(--wa-space-m);
 	}
 	h2 {
-		font-size: 1rem;
+		font-size: var(--text-sm);
 		font-weight: normal;
 		opacity: 0.6;
-		margin-bottom: 0.75rem;
+		margin-bottom: var(--wa-space-xs);
 		font-family: var(--font-sans);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
@@ -71,7 +72,7 @@
 	.post-list {
 		list-style: none;
 		padding: 0;
-		margin: 0 0 2rem;
+		margin: 0 0 var(--wa-space-m);
 	}
 	.post-list li {
 		display: flex;
@@ -85,13 +86,14 @@
 	}
 	.post-list a {
 		color: var(--text-1);
+		font-size: var(--text-base);
 		text-decoration: underline;
 	}
 	.post-list a:hover {
 		text-decoration: underline;
 	}
 	time {
-		font-size: var(--wa-font-size-l);
+		font-size: var(--text-base);
 		flex-shrink: 0;
 	}
 
@@ -102,7 +104,7 @@
 	}
 
 	.feed-links {
-		margin-bottom: 2rem;
+		margin-bottom: var(--wa-space-m);
 		display: flex;
 		gap: 1rem;
 	}
@@ -111,7 +113,7 @@
 		background: var(--surface-2);
 		border-radius: 4px;
 		text-decoration: none;
-		font-size: 0.875rem;
+		font-size: var(--text-sm);
 	}
 	.feed-links a:hover {
 		background: var(--surface-3);

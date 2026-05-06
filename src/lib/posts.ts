@@ -19,6 +19,7 @@ export interface PostMeta {
 	year: string;
 	title: string;
 	date: string;
+	draft?: boolean;
 	description: string;
 	tags: string[];
 }
@@ -31,6 +32,7 @@ function parsePost(filePath: string, raw: string): Post {
 	const { data, content } = matter(raw);
 	const slug = filePath.replace(/.*\/(.*)\.md$/, '$1');
 	const rawDate = data.date;
+	const draft = data.draft ?? false;
 	let dateStr: string;
 	if (rawDate instanceof Date) {
 		dateStr = rawDate.toISOString().slice(0, 10);
@@ -49,7 +51,8 @@ function parsePost(filePath: string, raw: string): Post {
 		date: dateStr,
 		description: String(data.description ?? ''),
 		tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-		content: addUtmToLinks(marked(content) as string, slug)
+		content: addUtmToLinks(marked(content) as string, slug),
+		draft
 	};
 }
 
@@ -61,6 +64,7 @@ export async function getAllPostsAsync(): Promise<Post[]> {
 	}) as Record<string, string>;
 	return Object.entries(files)
 		.map(([path, raw]) => parsePost(path, raw))
+		.filter((post) => post.draft === import.meta.env.DEV)
 		.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
