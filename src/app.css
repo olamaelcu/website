@@ -9,7 +9,7 @@
 
 :root {
 	--accent: #2f1b25;
-	--link: #a15e49;
+	--link: #4f46e5;
 
 	--font-sans: 'Space Grotesk', system-ui, sans-serif;
 	--font-display: 'Tourney', system-ui, sans-serif;
@@ -47,6 +47,7 @@
 		--surface-2: var(--wa-color-neutral-20);
 		--surface-3: var(--wa-color-neutral-30);
 		--border-1: var(--wa-color-neutral-40);
+		--link: #818cf8;
 	}
 }
 
