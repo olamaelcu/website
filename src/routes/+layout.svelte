@@ -2,7 +2,9 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { browser, dev } from '$app/environment';
 	import { QueryClientProvider } from '@tanstack/svelte-query';
+	import { SvelteQueryDevtools } from '@tanstack/svelte-query-devtools';
 	import { trackClick, trackCommit, enableOutboundTracking } from '$lib/analytics';
 	import '../app.css';
 	import '@awesome.me/webawesome/dist/styles/webawesome.css';
@@ -59,3 +61,7 @@
 		<code>{data.commit ? data.commit : ''}</code>
 	</footer>
 </QueryClientProvider>
+
+{#if dev}
+	<SvelteQueryDevtools client={data.queryClient} />
+{/if}

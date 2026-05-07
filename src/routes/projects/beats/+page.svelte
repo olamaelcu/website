@@ -2,6 +2,7 @@
 	import { MetaTags } from 'svelte-meta-tags';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 	import SeatCount from '$lib/components/seatCount.svelte';
+	import ProfileAvatar from '$lib/components/profileAvatar.svelte';
 </script>
 
 <MetaTags
@@ -36,14 +37,20 @@
 	</ul>
 	<h2>Credit</h2>
 	<p>
-		Thanks to <a href="https://blacksky.community/profile/did:plc:w3vda6vzfsi6xa5acotbavzx/"
-			>@jeniusj.blacksky.app</a
-		>
+		Thanks to
+		<span class="user-link">
+			<ProfileAvatar did="did:plc:w3vda6vzfsi6xa5acotbavzx" size={20} />
+			<a href="https://blacksky.community/profile/did:plc:w3vda6vzfsi6xa5acotbavzx/"
+				>@jeniusj.blacksky.app</a
+			>
+		</span>
 		and
-		<a
-			href="https://blacksky.community/profile/did:plc:r4ubfvtnwl2inh3c3dmuiqck/post/3mas2ew7xx22o/"
-			>@tre.blacksky.app</a
-		>
+		<span class="user-link">
+			<ProfileAvatar did="did:plc:mqplt3ok3pc5h4y3ce3wz4o5" size={20} />
+			<a href="https://blacksky.community/profile/did:plc:mqplt3ok3pc5h4y3ce3wz4o5"
+				>@tre.blacksky.app</a
+			>
+		</span>
 		for demonstrating some community-driven ways of doing this (see
 		<a href="https://blacksky.community/profile/did:plc:w3vda6vzfsi6xa5acotbavzx/feed/aaalsseq2jigy"
 			>@jeniusj.blacksky.app's feed</a
