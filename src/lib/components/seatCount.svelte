@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { createQuery } from '@tanstack/svelte-query';
+
 	interface SeatCount {
 		seatsTaken: number;
 		maxSeats: number | null;
@@ -10,29 +12,15 @@
 
 	let { projectKey }: Props = $props();
 
-	let seatData = $state<SeatCount>({ seatsTaken: 0, maxSeats: null });
+	const seatCountsQuery = createQuery(() => ({
+		queryKey: ['seat-counts'],
+		queryFn: () => fetch('/api/seat-counts').then((r) => r.json()),
+		refetchInterval: 30000
+	}));
 
-	$effect(() => {
-		let interval: ReturnType<typeof setInterval>;
-
-		async function fetchSeatCounts() {
-			try {
-				const res = await fetch('/api/seat-counts');
-				if (res.ok) {
-					const data: Record<string, SeatCount> = await res.json();
-					seatData = data[projectKey] ?? { seatsTaken: 0, maxSeats: null };
-				}
-			} catch {
-				// silently fail, keep default values
-			}
-		}
-
-		fetchSeatCounts();
-		interval = setInterval(fetchSeatCounts, 30000);
-
-		return () => clearInterval(interval);
-	});
-
+	let seatData = $derived<SeatCount>(
+		seatCountsQuery.data?.[projectKey] ?? { seatsTaken: 0, maxSeats: null }
+	);
 	let displayText = $derived(
 		seatData.maxSeats !== null
 			? `${seatData.seatsTaken}/${seatData.maxSeats} seats claimed`

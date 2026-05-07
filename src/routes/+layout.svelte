@@ -2,21 +2,12 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
+	import { QueryClientProvider } from '@tanstack/svelte-query';
 	import { trackClick, trackCommit, enableOutboundTracking } from '$lib/analytics';
 	import '../app.css';
 	import '@awesome.me/webawesome/dist/styles/webawesome.css';
 
 	let { data, children } = $props();
-
-	const queryClient = new QueryClient({
-		defaultOptions: {
-			queries: {
-				staleTime: 1000 * 60,
-				refetchOnWindowFocus: false
-			}
-		}
-	});
 
 	onMount(() => {
 		trackCommit(data.commit);
@@ -43,7 +34,7 @@
 	/>
 </svelte:head>
 
-<QueryClientProvider client={queryClient}>
+<QueryClientProvider client={data.queryClient}>
 	<header>
 		<a class="logotype" href={resolve('/')}>
 			<img src="/favicon.png" alt="Olamaelcu" />
