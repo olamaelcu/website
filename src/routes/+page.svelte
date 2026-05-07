@@ -36,7 +36,7 @@
 		width: 100%;
 		max-width: var(--content-3);
 		margin: var(--wa-space-2xs) auto;
-		padding: var(--wa-space-l);
+		padding: var(--wa-space-m);
 
 		h1 {
 			font-family: var(--font-display);

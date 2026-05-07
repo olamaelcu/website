@@ -24,6 +24,7 @@
 
 	--content-2: 45ch;
 	--content-3: 60ch;
+	--content-4: 75ch;
 
 	--text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
 	--text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
@@ -145,6 +146,10 @@ footer {
 }
 
 section.lead {
+	max-width: var(--content-4);
+	width: 100%;
+	margin: 0 auto;
+
 	p:first-of-type {
 		font-size: var(--text-lg);
 		line-height: var(--leading-relaxed);
