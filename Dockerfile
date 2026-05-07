@@ -8,11 +8,13 @@ COPY package.json yarn.lock ./
 RUN corepack enable && yarn install --frozen-lockfile
 
 COPY . .
+COPY .yarn/releases ./docker-yarn-releases
 
 ARG GIT_REV
 RUN node -e "require('fs').writeFileSync('src/lib/commit.ts', 'export const COMMIT: string | undefined = \''+(process.env.GIT_REV||'')+'\';')"
 
-RUN yarn svelte-kit sync
+RUN mkdir -p .yarn/releases && cp -r docker-yarn-releases/. .yarn/releases/
+RUN yarn install && yarn svelte-kit sync
 RUN yarn build
 
 FROM node:22-bookworm-slim
@@ -22,8 +24,11 @@ WORKDIR /app
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/yarn.lock ./
+COPY --from=builder /app/.yarnrc.yml ./
+COPY --from=builder /app/Procfile ./
+COPY --from=builder /app/.yarn/releases ./.yarn/releases
 
-RUN corepack enable && yarn workspaces focus --production
+RUN corepack enable && yarn workspaces focus --production && yarn add @sentry/sveltekit
 
 ENV NODE_ENV=production
 ENV PORT=3000

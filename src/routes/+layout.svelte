@@ -37,6 +37,7 @@
 </svelte:head>
 
 <QueryClientProvider client={data.queryClient}>
+	<SvelteQueryDevtools client={data.queryClient} />
 	<header>
 		<a class="logotype" href={resolve('/')}>
 			<img src="/favicon.png" alt="Olamaelcu" />
@@ -61,7 +62,3 @@
 		<code>{data.commit ? data.commit : ''}</code>
 	</footer>
 </QueryClientProvider>
-
-{#if dev}
-	<SvelteQueryDevtools client={data.queryClient} />
-{/if}

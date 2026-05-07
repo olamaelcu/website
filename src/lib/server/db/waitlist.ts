@@ -1,4 +1,4 @@
-import { WAITLIST_DATABASE_AUTH_TOKEN, WAITLIST_DATABASE_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { createClient } from '@libsql/client';
 import { drizzle } from 'drizzle-orm/libsql';
 import { integer, sqliteTable, text, uniqueIndex } from 'drizzle-orm/sqlite-core';
@@ -32,8 +32,8 @@ async function getClient(): Promise<ReturnType<typeof drizzle<typeof schema>>> {
 	if (_db) return _db;
 	if (!_initPromise) {
 		_initPromise = (async () => {
-			const url = WAITLIST_DATABASE_URL ?? 'file:./data.db';
-			const authToken = WAITLIST_DATABASE_AUTH_TOKEN;
+			const url = env.WAITLIST_DATABASE_URL ?? 'file:./data.db';
+			const authToken = env.WAITLIST_DATABASE_AUTH_TOKEN;
 			const client = createClient({ url, authToken });
 			const instance = drizzle(client, { schema });
 			_db = instance;
