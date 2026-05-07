@@ -1,5 +1,8 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	interface SeatCount {
+		seatsTaken: number;
+		maxSeats: number | null;
+	}
 
 	interface Props {
 		projectKey: string;
@@ -7,9 +10,29 @@
 
 	let { projectKey }: Props = $props();
 
-	// @ts-ignore - $page.data lacks type info
-	let seatCounts = $derived($page.data.seatCounts as Record<string, { seatsTaken: number; maxSeats: number | null } | undefined>);
-	let seatData = $derived(seatCounts?.[projectKey] ?? { seatsTaken: 0, maxSeats: null });
+	let seatData = $state<SeatCount>({ seatsTaken: 0, maxSeats: null });
+
+	$effect(() => {
+		let interval: ReturnType<typeof setInterval>;
+
+		async function fetchSeatCounts() {
+			try {
+				const res = await fetch('/api/seat-counts');
+				if (res.ok) {
+					const data: Record<string, SeatCount> = await res.json();
+					seatData = data[projectKey] ?? { seatsTaken: 0, maxSeats: null };
+				}
+			} catch {
+				// silently fail, keep default values
+			}
+		}
+
+		fetchSeatCounts();
+		interval = setInterval(fetchSeatCounts, 30000);
+
+		return () => clearInterval(interval);
+	});
+
 	let displayText = $derived(
 		seatData.maxSeats !== null
 			? `${seatData.seatsTaken}/${seatData.maxSeats} seats claimed`

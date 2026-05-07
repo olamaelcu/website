@@ -1,6 +1,7 @@
 import { getSeatCounts } from '$lib/server/waitlist';
+import { json } from '@sveltejs/kit';
 
-export const load = async () => {
+export const GET = async () => {
 	const seatCounts = await getSeatCounts();
-	return { seatCounts };
+	return json(seatCounts);
 };

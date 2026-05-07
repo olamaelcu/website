@@ -2,11 +2,21 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 	import { trackClick, trackCommit, enableOutboundTracking } from '$lib/analytics';
 	import '../app.css';
 	import '@awesome.me/webawesome/dist/styles/webawesome.css';
 
 	let { data, children } = $props();
+
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				staleTime: 1000 * 60,
+				refetchOnWindowFocus: false
+			}
+		}
+	});
 
 	onMount(() => {
 		trackCommit(data.commit);
@@ -33,26 +43,28 @@
 	/>
 </svelte:head>
 
-<header>
-	<a class="logotype" href={resolve('/')}>
-		<img src="/favicon.png" alt="Olamaelcu" />
-		<span>Olamaelcu</span>
-	</a>
-	<nav class="places">
-		<a href={resolve('/about')}>About</a>
-		<a href={resolve('/blog')}>Blog</a>
-		<a href={resolve('/projects')}>Projects</a>
-		<a href="https://waitlist.olamaelcu.net">Waitlist</a>
-	</nav>
-</header>
-<main>
-	{@render children()}
-</main>
-<footer>
-	Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a><br />
-	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-	<a href={plausibleUrl}>Analytics</a>&nbsp;&mdash;
-	<a href={resolve('/terms')}>Terms</a>&nbsp;&mdash;
-	<a href={resolve('/privacy')}>Privacy</a>&nbsp;&mdash;
-	<code>{data.commit ? data.commit : ''}</code>
-</footer>
+<QueryClientProvider client={queryClient}>
+	<header>
+		<a class="logotype" href={resolve('/')}>
+			<img src="/favicon.png" alt="Olamaelcu" />
+			<span>Olamaelcu</span>
+		</a>
+		<nav class="places">
+			<a href={resolve('/about')}>About</a>
+			<a href={resolve('/blog')}>Blog</a>
+			<a href={resolve('/projects')}>Projects</a>
+			<a href="https://waitlist.olamaelcu.net">Waitlist</a>
+		</nav>
+	</header>
+	<main>
+		{@render children()}
+	</main>
+	<footer>
+		Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a><br />
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+		<a href={plausibleUrl}>Analytics</a>&nbsp;&mdash;
+		<a href={resolve('/terms')}>Terms</a>&nbsp;&mdash;
+		<a href={resolve('/privacy')}>Privacy</a>&nbsp;&mdash;
+		<code>{data.commit ? data.commit : ''}</code>
+	</footer>
+</QueryClientProvider>

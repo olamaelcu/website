@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/sveltekit';
 
 Sentry.init({
-	dsn: 'https://6e264aa61624cd0a755f5597490ac0f5@o428404.ingest.us.sentry.io/4511333848645632',
+	dsn: 'https://3154c37a9dc2b19b6f4e7ae18457593a@o428404.ingest.us.sentry.io/4511345977327616',
 
 	tracesSampleRate: 1.0,
 
