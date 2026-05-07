@@ -24,21 +24,41 @@ export const waitlistEntries = sqliteTable(
 );
 
 let _db: ReturnType<typeof drizzle<typeof schema>> | undefined;
+let _initPromise: Promise<ReturnType<typeof drizzle<typeof schema>>> | undefined;
 
 const schema = { waitlistItems, waitlistEntries };
 
-const getClient = () => {
-	if (!_db) {
-		const url = WAITLIST_DATABASE_URL ?? 'file:./data.db';
-		const authToken = WAITLIST_DATABASE_AUTH_TOKEN;
-		const client = createClient({ url, authToken });
-		_db = drizzle(client, { schema });
+async function getClient(): Promise<ReturnType<typeof drizzle<typeof schema>>> {
+	if (_db) return _db;
+	if (!_initPromise) {
+		_initPromise = (async () => {
+			const url = WAITLIST_DATABASE_URL ?? 'file:./data.db';
+			const authToken = WAITLIST_DATABASE_AUTH_TOKEN;
+			const client = createClient({ url, authToken });
+			const instance = drizzle(client, { schema });
+			_db = instance;
+			return instance;
+		})();
 	}
-	return _db;
-};
+	return _initPromise;
+}
 
 export const db = new Proxy({} as ReturnType<typeof drizzle<typeof schema>>, {
 	get(_target, prop) {
-		return getClient()[prop as keyof ReturnType<typeof drizzle<typeof schema>>];
+		// Synchronous access — must already be initialized
+		if (!_db) {
+			throw new Error('Database not initialized. Call ensureDb() first.');
+		}
+		return _db[prop as keyof ReturnType<typeof drizzle<typeof schema>>];
 	}
 });
+
+/** Ensure the database is initialized. Call in server load functions before using `db`. */
+export async function ensureDb(): Promise<void> {
+	await getClient();
+}
+
+/** Check if the database has been initialized. */
+export function isDbReady(): boolean {
+	return _db !== undefined;
+}

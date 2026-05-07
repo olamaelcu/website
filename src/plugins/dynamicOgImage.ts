@@ -226,8 +226,8 @@ export function ogImagePlugin(): Plugin {
 			mkdirSync(outDir, { recursive: true });
 			for (const post of posts) {
 				const png = await generateOgImage(post, root);
-				writeFileSync(join(outDir, `${post.slug}.png`), png);
-				console.log(`Generated OG image: ${post.slug}.png`);
+				writeFileSync(join(outDir, `${post.year}-${post.slug}.png`), png);
+				console.log(`Generated OG image: ${post.year}-${post.slug}.png`);
 			}
 		}
 	};

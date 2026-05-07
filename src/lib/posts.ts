@@ -1,5 +1,6 @@
 import matter from 'gray-matter';
 import { marked } from 'marked';
+import createDOMPurify from 'isomorphic-dompurify';
 
 // Function to add UTM parameters to external links in HTML
 function addUtmToLinks(html: string, slug: string): string {
@@ -51,7 +52,7 @@ function parsePost(filePath: string, raw: string): Post {
 		date: dateStr,
 		description: String(data.description ?? ''),
 		tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-		content: addUtmToLinks(marked(content) as string, slug),
+		content: addUtmToLinks(createDOMPurify.sanitize(marked(content) as string), slug),
 		draft
 	};
 }

@@ -66,7 +66,9 @@
 		/>
 		<span
 			class="avatar avatar-fallback"
-			style="width: {size}px; height: {size}px; display: none; background-color: {getColorFromDid(did)};"
+			style="width: {size}px; height: {size}px; display: none; background-color: {getColorFromDid(
+				did
+			)};"
 		>
 			{getInitials(query.data.handle)}
 		</span>

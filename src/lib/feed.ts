@@ -39,10 +39,10 @@ export async function generateAtomFeed(origin: string): Promise<string> {
 	return `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Olamaelcu Blog</title>
-  <id>${origin}/blog</id>
+  <id>${escapeXml(`${origin}/blog`)}</id>
   <updated>${updated}</updated>
-  <link rel="alternate" type="text/html" href="${origin}/blog"/>
-  <link rel="self" type="application/atom+xml" href="${origin}/feed/atom"/>
+  <link rel="alternate" type="text/html" href="${escapeXml(`${origin}/blog`)}"/>
+  <link rel="self" type="application/atom+xml" href="${escapeXml(`${origin}/feed/atom`)}"/>
   <author>
     <name>Jacky</name>
     <uri>https://www.jacky.wtf</uri>
@@ -52,10 +52,10 @@ export async function generateAtomFeed(origin: string): Promise<string> {
 			(item) => `
   <entry>
     <title type="text">${escapeXml(item.title)}</title>
-    <id>${item.url}</id>
+    <id>${escapeXml(item.url)}</id>
     <published>${item.published}</published>
     <updated>${item.updated}</updated>
-    <link rel="alternate" type="text/html" href="${item.url}"/>
+    <link rel="alternate" type="text/html" href="${escapeXml(item.url)}"/>
     <content type="html">${escapeXml(item.content)}</content>
     <summary type="text">${escapeXml(item.description)}</summary>
     <author>

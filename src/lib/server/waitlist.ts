@@ -24,7 +24,8 @@ export async function getSeatCounts(): Promise<Record<string, SeatCount>> {
 			};
 		}
 		return counts;
-	} catch {
+	} catch (error) {
+		console.error('[waitlist] Failed to fetch seat counts:', error);
 		return {};
 	}
 }

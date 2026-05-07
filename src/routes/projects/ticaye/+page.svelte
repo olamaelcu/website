@@ -8,8 +8,9 @@
 
 <div class="title-row">
 	<h1>Ticaye</h1>
-		<ProjectStatus status={STATUSES.INCUBATING} /></div>
-	<SeatCount projectKey="ticaye" />
+	<ProjectStatus status={STATUSES.INCUBATING} />
+</div>
+<SeatCount projectKey="ticaye" />
 <p>Coming soon.</p>
 
 <style>

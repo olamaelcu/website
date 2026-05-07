@@ -6,11 +6,18 @@ type RateLimitEntry = { count: number; resetTime: number };
 const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
 const RATE_LIMIT_MAX_REQUESTS = 100;
 const RATE_LIMIT_CLEANUP_INTERVAL_MS = 5 * 60_000; // every 5 minutes
+const MAX_RATE_LIMIT_STORE_SIZE = 50_000;
 
 const rateLimitStore = new Map<string, RateLimitEntry>();
 
 /** Determine the client IP from the request. */
 function getClientIp(event: import('@sveltejs/kit').RequestEvent): string {
+	const forwarded = event.request.headers.get('x-forwarded-for');
+	if (forwarded) {
+		// X-Forwarded-For: client, proxy1, proxy2 — take the first (leftmost) value
+		const firstIp = forwarded.split(',')[0]?.trim();
+		if (firstIp) return firstIp;
+	}
 	return event.getClientAddress();
 }
 
@@ -26,6 +33,18 @@ function checkRateLimit(ip: string): {
 
 	// No entry or window expired — start fresh
 	if (!entry || now >= entry.resetTime) {
+		// Evict oldest entries if store is too large
+		if (rateLimitStore.size >= MAX_RATE_LIMIT_STORE_SIZE) {
+			let oldest: string | null = null;
+			let oldestTime = Infinity;
+			for (const [ip, e] of rateLimitStore) {
+				if (e.resetTime < oldestTime) {
+					oldest = ip;
+					oldestTime = e.resetTime;
+				}
+			}
+			if (oldest) rateLimitStore.delete(oldest);
+		}
 		const resetTime = now + RATE_LIMIT_WINDOW_MS;
 		rateLimitStore.set(ip, { count: 1, resetTime });
 		return {
@@ -111,7 +130,18 @@ export const handle: Handle = sequence(
 			'X-XSS-Protection': '1; mode=block',
 			'Referrer-Policy': 'strict-origin-when-cross-origin',
 			'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-			'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload'
+			'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+			'Content-Security-Policy': [
+				"default-src 'self'",
+				"script-src 'self' https://plausible.io",
+				"style-src 'self' 'unsafe-inline'",
+				"img-src 'self' data: https://cdn.bsky.app https://avatar-cdn.bsky.app",
+				"font-src 'self'",
+				"connect-src 'self' https://plausible.io https://o428404.ingest.us.sentry.io https://public.api.bsky.app",
+				"frame-ancestors 'none'",
+				"base-uri 'self'",
+				"form-action 'self'"
+			].join('; ')
 		});
 		return resolve(event);
 	}
