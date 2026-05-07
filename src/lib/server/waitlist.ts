@@ -1,5 +1,5 @@
-import { db, waitlistItems, waitlistEntries } from './db/waitlist';
-import { eq, sql } from 'drizzle-orm';
+import { db } from './db/waitlist';
+import { sql } from 'drizzle-orm';
 
 export interface SeatCount {
 	seatsTaken: number;
@@ -8,23 +8,21 @@ export interface SeatCount {
 
 export async function getSeatCounts(): Promise<Record<string, SeatCount>> {
 	try {
-		const items = await db.select().from(waitlistItems).where(eq(waitlistItems.isActive, true));
+		const rows = await db.all<{
+			feature: string;
+			seats_taken: number;
+			max_seats: number | null;
+		}>(
+			sql`SELECT feature, CAST(seats_taken AS INTEGER) AS seats_taken, max_seats FROM feature_seat_counts`
+		);
 
 		const counts: Record<string, SeatCount> = {};
-
-		for (const item of items) {
-			const result = await db
-				.select({ count: sql<number>`count(*)` })
-				.from(waitlistEntries)
-				.where(eq(waitlistEntries.feature, item.id))
-				.limit(1);
-
-			counts[item.id] = {
-				seatsTaken: result[0]?.count ?? 0,
-				maxSeats: item.maxSeats ?? null
+		for (const row of rows) {
+			counts[row.feature] = {
+				seatsTaken: row.seats_taken,
+				maxSeats: row.max_seats
 			};
 		}
-
 		return counts;
 	} catch {
 		return {};
