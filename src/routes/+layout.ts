@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
-import { QueryClient } from '@tanstack/svelte-query';
 import { COMMIT } from '$lib/commit';
+import { QueryClient } from '@tanstack/svelte-query';
 
 export const prerender = false;
 
@@ -17,6 +17,6 @@ export async function load() {
 
 	return {
 		queryClient,
-		commit: COMMIT ?? process.env.COMMIT
+		commit: COMMIT
 	};
 }

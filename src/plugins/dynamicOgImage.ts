@@ -11,6 +11,7 @@ interface Post {
 	year: string;
 	title: string;
 	date: string;
+	draft: boolean;
 	description: string;
 	tags: string[];
 }
@@ -55,7 +56,8 @@ function parsePost(filePath: string, raw: string): Post {
 		title: String(data.title ?? slug),
 		date: dateStr,
 		description: String(data.description ?? ''),
-		tags: Array.isArray(data.tags) ? data.tags.map(String) : []
+		tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+		draft: Boolean(data.draft)
 	};
 }
 
@@ -217,7 +219,9 @@ export function ogImagePlugin(): Plugin {
 		async buildStart() {
 			const pluginRoot = dirname(fileURLToPath(import.meta.url));
 			const root = join(pluginRoot, '..', '..');
-			const posts = readPostsDir(root).map(({ path, raw }) => parsePost(path, raw));
+			const posts = readPostsDir(root)
+				.map(({ path, raw }) => parsePost(path, raw))
+				.filter((post) => !post.draft);
 			const outDir = join(root, 'static', 'blog-og');
 			mkdirSync(outDir, { recursive: true });
 			for (const post of posts) {
