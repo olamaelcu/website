@@ -14,9 +14,7 @@
 		"format": "prettier --write .",
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run && npm run test:e2e",
-		"test:e2e": "playwright test",
-		"deploy:preview": "surge build",
-		"deploy": "surge build"
+		"test:e2e": "playwright test"
 	},
 	"devDependencies": {
 		"@awesome.me/webawesome": "^3.5.0",
@@ -24,7 +22,6 @@
 		"@eslint/js": "^10.0.1",
 		"@playwright/test": "^1.59.1",
 		"@sveltejs/adapter-node": "^5.5.4",
-		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.57.0",
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@types/node": "^24",
@@ -40,7 +37,6 @@
 		"postcss-nested": "^7.0.2",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.5.1",
-		"surge": "^0.27.3",
 		"svelte": "^5.55.2",
 		"svelte-check": "^4.4.6",
 		"tsx": "^4.21.0",
@@ -56,7 +52,11 @@
 		"@fontsource/kalnia": "^5.2.9",
 		"@fontsource/space-grotesk": "^5.2.10",
 		"@fontsource/tourney": "^5.2.8",
+		"@libsql/client": "^0.14.0",
 		"@resvg/resvg-js": "^2.6.2",
+		"@sentry/sveltekit": "^10",
+		"@tanstack/svelte-query": "^6.1.28",
+		"drizzle-orm": "^0.43.0",
 		"gray-matter": "^4.0.3",
 		"marked": "^18.0.3",
 		"plausible-tracker": "^0.3.9",

@@ -5,7 +5,17 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
 	preprocess: [vitePreprocess({ style: true, script: true })],
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+
+		experimental: {
+			tracing: {
+				server: true
+			},
+
+			instrumentation: {
+				server: true
+			}
+		}
 	}
 };
 

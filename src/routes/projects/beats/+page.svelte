@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { MetaTags } from 'svelte-meta-tags';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
+	import SeatCount from '$lib/components/seatCount.svelte';
 </script>
 
 <MetaTags
@@ -13,6 +14,7 @@
 		<h1>Beats</h1>
 		<ProjectStatus status={STATUSES.INCUBATING} />
 	</div>
+	<SeatCount projectKey="beats" />
 	<p>
 		An experiment in music curation from those who you follow in the Atmosphere, <strong
 			>exclusively for <a href="https://www.blackskyweb.xyz/?ref=olamaelcu">Blacksky</a></strong

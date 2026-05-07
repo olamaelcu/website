@@ -4,7 +4,9 @@ declare global {
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
-		// interface PageData {}
+		interface PageData {
+			seatCounts?: Record<string, { seatsTaken: number; maxSeats: number | null }>;
+		}
 		// interface PageState {}
 		// interface Platform {}
 	}

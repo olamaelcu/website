@@ -1,20 +1,34 @@
-FROM node:20-bookworm AS builder
+FROM node:22-bookworm-slim AS builder
 
 WORKDIR /app
+
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
 COPY package.json yarn.lock ./
-RUN npm install --frozen-lockfile
+RUN corepack enable && yarn install --frozen-lockfile
 
 COPY . .
-ARG GIT_REV
-RUN node -e "require('fs').writeFileSync('src/lib/commit.ts', 'export const COMMIT: string | undefined = \\x27'+(process.env.GIT_REV||'')+'\\x27;')"
-RUN npm run build
 
-FROM node:20-bookworm
+ARG GIT_REV
+RUN node -e "require('fs').writeFileSync('src/lib/commit.ts', 'export const COMMIT: string | undefined = \''+(process.env.GIT_REV||'')+'\';')"
+
+RUN yarn svelte-kit sync
+RUN yarn build
+
+FROM node:22-bookworm-slim
 
 WORKDIR /app
+
 COPY --from=builder /app/build ./build
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/yarn.lock ./
+
+RUN corepack enable && yarn install --frozen-lockfile
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOST=0.0.0.0
 
 EXPOSE 3000
-ENV PORT=3000
+
 CMD ["node", "build"]

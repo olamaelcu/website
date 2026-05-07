@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { MetaTags } from 'svelte-meta-tags';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
+	import SeatCount from '$lib/components/seatCount.svelte';
 </script>
 
 <MetaTags title="Ticaye | Olamaelcu" />
 
 <div class="title-row">
 	<h1>Ticaye</h1>
-	<ProjectStatus status={STATUSES.INCUBATING} />
-</div>
+		<ProjectStatus status={STATUSES.INCUBATING} /></div>
+	<SeatCount projectKey="ticaye" />
 <p>Coming soon.</p>
 
 <style>
