@@ -13,11 +13,10 @@ if [[ "${1:-}" == "--clean" ]]; then
 fi
 
 echo "Building ${IMAGE}..."
-docker build "${BUILD_ARGS[@]}" -t "${IMAGE}" .
+docker build "${BUILD_ARGS[@]}" -t "${IMAGE}" \
+	--build-arg GIT_REV="$(git rev-parse HEAD)"
 
 echo "Deploying to lescayes..."
-docker save "${IMAGE}" | ssh dokku.olamaelcu.net "dokku git:from-image ${APP} ${IMAGE}"
-
-ssh dokku.olamaelcu.net "dokku ps:deploy ${APP}"
+docker save "${IMAGE}" | ssh dokku.olamaelcu.net "git:load-image ${APP} ${IMAGE}" 2>&1
 
 echo "Done."

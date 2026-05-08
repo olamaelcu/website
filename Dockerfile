@@ -26,6 +26,7 @@ COPY --from=builder /app/package.json ./
 COPY --from=builder /app/yarn.lock ./
 COPY --from=builder /app/.yarnrc.yml ./
 COPY --from=builder /app/Procfile ./
+COPY --from=builder /app/app.json ./
 COPY --from=builder /app/.yarn/releases ./.yarn/releases
 
 RUN corepack enable && yarn workspaces focus --production && yarn add @sentry/sveltekit
@@ -39,4 +40,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
 
 EXPOSE 3000
 
-CMD ["node", "build"]
+CMD ["node", "build/index.js"]
