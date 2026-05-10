@@ -5,9 +5,9 @@ WORKDIR /app
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
-        python3=3.12.7-1 \
-        make=4.3-1.1 \
-        g++=13.3.0-1 && \
+        python3 \
+        make \
+        g++ && \
     rm -rf /var/lib/apt/lists/*
 
 RUN corepack enable
