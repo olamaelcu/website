@@ -1,16 +1,11 @@
 {
-	"healthchecks": {
-		"web": [
-			{
-				"type": "startup",
-				"name": "web-healthcheck",
-				"description": "Checks that the app is responding",
-				"path": "/health",
-				"attempts": 6,
-				"timeout": 10,
-				"wait": 5,
-				"initialDelay": 10
-			}
-		]
+	"healthChecks": {
+		"web": {
+			"healthCheckPath": "/health",
+			"healthyWaitingPeriod": 10,
+			"intervalSeconds": 5,
+			"maxCheckRetries": 6,
+			"timeoutSeconds": 10
+		}
 	}
 }

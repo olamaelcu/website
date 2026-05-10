@@ -8,4 +8,7 @@ build
 tests
 *.md
 .opencode
-.yarn/install-state.gz
+.yarn
+.cache
+.DS_Store
+*.log

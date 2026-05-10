@@ -1,30 +1,39 @@
+# === BUILDER ===
 FROM node:22-bookworm AS builder
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install --no-install-recommends -y python3 make g++ && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y \
+        python3=3.12.7-1 \
+        make=4.3-1.1 \
+        g++=13.3.0-1 && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN corepack enable
 
 COPY package.json yarn.lock ./
-RUN corepack enable && yarn install --frozen-lockfile
+
+RUN --mount=type=cache,target=/root/.yarn \
+    yarn install --frozen-lockfile
 
 COPY . .
 
-ARG GIT_REV
-RUN node -e "require('fs').writeFileSync('src/lib/commit.ts', 'export const COMMIT: string | undefined = \''+(process.env.GIT_REV||'')+'\';')"
 RUN yarn build
 
+# === PRODUCTION ===
 FROM node:22-bookworm-slim
 
 WORKDIR /app
 
-COPY --from=builder /app/ ./
+RUN corepack enable && \
+    yarn install --frozen-lockfile --omit=dev
+
+COPY --from=builder /app/build ./build
 
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOST=0.0.0.0
-
-HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
-  CMD curl -f http://localhost:3000/health || exit 1
 
 EXPOSE 3000
 
