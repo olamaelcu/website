@@ -1,5 +1,4 @@
 import { browser } from '$app/environment';
-import { COMMIT } from '$lib/commit';
 import { QueryClient } from '@tanstack/svelte-query';
 
 export const prerender = false;
@@ -16,7 +15,6 @@ export async function load() {
 	});
 
 	return {
-		queryClient,
-		commit: COMMIT
+		queryClient
 	};
 }

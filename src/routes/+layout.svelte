@@ -58,7 +58,6 @@
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 		<a href={plausibleUrl}>Analytics</a>&nbsp;&mdash;
 		<a href={resolve('/terms')}>Terms</a>&nbsp;&mdash;
-		<a href={resolve('/privacy')}>Privacy</a>&nbsp;&mdash;
-		<code>{data.commit ? data.commit : ''}</code>
+		<a href={resolve('/privacy')}>Privacy</a>&nbsp;
 	</footer>
 </QueryClientProvider>
