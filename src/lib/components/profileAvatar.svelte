@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { createQuery } from '@tanstack/svelte-query';
-	import { fetchProfile, type Profile } from '$lib/atproto';
+	import { fetchProfile } from '$lib/atproto';
 
 	interface Props {
 		did: string;
 		size?: number;
+		onFail?: () => void;
 	}
 
-	let { did, size = 24 }: Props = $props();
+	let { did, size = 24, onFail }: Props = $props();
 
 	const query = createQuery(() => ({
 		queryKey: ['profile', did],
@@ -15,6 +16,12 @@
 		staleTime: Infinity,
 		retry: 2
 	}));
+
+	$effect(() => {
+		if (query.isError && onFail) {
+			onFail();
+		}
+	});
 
 	function getInitials(handle: string): string {
 		const parts = handle.split('.');

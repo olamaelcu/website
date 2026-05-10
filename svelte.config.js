@@ -18,7 +18,7 @@ const config = {
 		},
 
 		csp: {
-			mode: 'nonce',
+			mode: 'auto',
 			directives: {
 				'default-src': ["'self'"],
 				'script-src': ["'self'", 'https://plausible.io'],
