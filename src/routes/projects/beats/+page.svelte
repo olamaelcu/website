@@ -34,29 +34,50 @@
 		<li>
 			In honor of <a
 				href="https://www.refinery29.com/en-us/2020/12/10208481/jewel-ham-artist-spotify-wrapped-internship?ref=olamaelcu"
-				>the Black woman who invented <strong>Spotify Wrapped</strong></a
+				>the Black woman who invented the concept of <strong>Spotify Wrapped</strong></a
 			>
-			concept, one can share and create a <strong>Jeweled List</strong> post once a month, season or
-			year. Thank you
+			one can share and create a <strong>Jeweled List</strong> post once a month, season or year.
+			Thank you
 			<a href="https://www.whateverjewel.world/?ref=olamaelcu">Jewel Ham</a>.
 		</li>
 	</ul>
 	<h2>Credit</h2>
 	<p>
 		Thanks to
-		<span class="user-link" class:user-link-failed={failedDids.has('did:plc:w3vda6vzfsi6xa5acotbavzx')}>
-			<ProfileAvatar did="did:plc:w3vda6vzfsi6xa5acotbavzx" size={20} onFail={() => handleFail('did:plc:w3vda6vzfsi6xa5acotbavzx')} />
+		<span
+			class="user-link"
+			class:user-link-failed={failedDids.has('did:plc:w3vda6vzfsi6xa5acotbavzx')}
+		>
+			<ProfileAvatar
+				did="did:plc:w3vda6vzfsi6xa5acotbavzx"
+				size={20}
+				onFail={() => handleFail('did:plc:w3vda6vzfsi6xa5acotbavzx')}
+			/>
 			<a href="https://blacksky.community/profile/did:plc:w3vda6vzfsi6xa5acotbavzx/"
 				>@jeniusj.blacksky.app</a
 			>
 		</span>,
-		<span class="user-link" class:user-link-failed={failedDids.has('did:plc:usheh7mu2uypezyl4disq2ql')}>
-			<ProfileAvatar did="did:plc:usheh7mu2uypezyl4disq2ql" size={20} onFail={() => handleFail('did:plc:usheh7mu2uypezyl4disq2ql')} />
+		<span
+			class="user-link"
+			class:user-link-failed={failedDids.has('did:plc:usheh7mu2uypezyl4disq2ql')}
+		>
+			<ProfileAvatar
+				did="did:plc:usheh7mu2uypezyl4disq2ql"
+				size={20}
+				onFail={() => handleFail('did:plc:usheh7mu2uypezyl4disq2ql')}
+			/>
 			<a href="https://blacksky.community/profile/chillarybanks.com">@chillarybanks.com</a>
 		</span>
 		and
-		<span class="user-link" class:user-link-failed={failedDids.has('did:plc:mqplt3ok3pc5h4y3ce3wz4o5')}>
-			<ProfileAvatar did="did:plc:mqplt3ok3pc5h4y3ce3wz4o5" size={20} onFail={() => handleFail('did:plc:mqplt3ok3pc5h4y3ce3wz4o5')} />
+		<span
+			class="user-link"
+			class:user-link-failed={failedDids.has('did:plc:mqplt3ok3pc5h4y3ce3wz4o5')}
+		>
+			<ProfileAvatar
+				did="did:plc:mqplt3ok3pc5h4y3ce3wz4o5"
+				size={20}
+				onFail={() => handleFail('did:plc:mqplt3ok3pc5h4y3ce3wz4o5')}
+			/>
 			<a href="https://blacksky.community/profile/did:plc:mqplt3ok3pc5h4y3ce3wz4o5"
 				>@tre.blacksky.app</a
 			>

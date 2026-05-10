@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
-#MISE description="Build and deploy landing to Dokku"
+#MISE description="Build and deploy landing to Dokku via Zot registry"
 
 APP="landing"
+REGISTRY="cr.olamaelcu.net"
+NAMESPACE="olamaelcu"
 TAG="${1:-$(git rev-parse --short HEAD)}"
-IMAGE="app/${APP}:${TAG}"
+IMAGE="${REGISTRY}/${NAMESPACE}/${APP}:${TAG}"
 
 BUILD_ARGS=()
 if [[ "${1:-}" == "--clean" ]]; then
-	echo "Clean build (--no-cache)..."
-	BUILD_ARGS=(--no-cache)
+    echo "Clean build (--no-cache)..."
+    BUILD_ARGS=(--no-cache)
 fi
 
 echo "Building ${IMAGE}..."
 docker build "${BUILD_ARGS[@]}" -t "${IMAGE}" --build-arg "GIT_REV=$(git rev-parse HEAD)" .
 
-echo "Deploying to lescayes..."
-docker save "${IMAGE}" | ssh dokku.olamaelcu.net "git:load-image ${APP} ${IMAGE}" 2>&1
-
+echo "Pushing to Zot registry (auto-deploy triggered)..."
+docker push "${IMAGE}"
 echo "Done."
