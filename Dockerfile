@@ -9,7 +9,7 @@ RUN apt-get update && \
         build-essential=12.9 && \
     rm -rf /var/lib/apt/lists/*
 
-RUN corepack enable
+RUN corepack enable && corepack prepare yarn@4.14.1 --activate
 
 COPY package.json yarn.lock ./
 
