@@ -24,8 +24,7 @@ FROM node:22-bookworm-slim
 
 WORKDIR /app
 
-RUN corepack enable && corepack prepare yarn@4.14.1 --activate && \
-    corepack yarn install --frozen-lockfile --production
+COPY --from=builder /app/node_modules ./node_modules
 
 COPY --from=builder /app/build ./build
 
