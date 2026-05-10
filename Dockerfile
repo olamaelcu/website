@@ -13,9 +13,7 @@ RUN corepack enable && corepack prepare yarn@4.14.1 --activate
 
 COPY package.json yarn.lock ./
 
-COPY .yarnrc.yml ./
-
-RUN YARN_YARN_PATH="" yarn install --frozen-lockfile
+RUN corepack yarn install --frozen-lockfile
 
 COPY . .
 
@@ -27,7 +25,7 @@ FROM node:22-bookworm-slim
 WORKDIR /app
 
 RUN corepack enable && corepack prepare yarn@4.14.1 --activate && \
-    yarn install --frozen-lockfile --omit=dev
+    corepack yarn install --frozen-lockfile --omit=dev
 
 COPY --from=builder /app/build ./build
 
