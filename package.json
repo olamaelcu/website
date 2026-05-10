@@ -55,6 +55,7 @@
 		"@fontsource/space-grotesk": "^5.2.10",
 		"@fontsource/tourney": "^5.2.8",
 		"@libsql/client": "^0.14.0",
+		"@opentelemetry/api": "^1.9.1",
 		"@resvg/resvg-js": "^2.6.2",
 		"@sentry/sveltekit": "^10",
 		"@tanstack/svelte-query": "^6.1.28",

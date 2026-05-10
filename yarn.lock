@@ -4663,6 +4663,7 @@ __metadata:
     "@fontsource/space-grotesk": "npm:^5.2.10"
     "@fontsource/tourney": "npm:^5.2.8"
     "@libsql/client": "npm:^0.14.0"
+    "@opentelemetry/api": "npm:^1.9.1"
     "@playwright/test": "npm:^1.59.1"
     "@resvg/resvg-js": "npm:^2.6.2"
     "@sentry/sveltekit": "npm:^10"
