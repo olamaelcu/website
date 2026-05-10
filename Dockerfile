@@ -5,7 +5,7 @@ WORKDIR /app
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
-        python3 \
+        python3=3.11.2-6+deb12u3 \
         build-essential=12.9 && \
     rm -rf /var/lib/apt/lists/*
 
