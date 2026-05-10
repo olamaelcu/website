@@ -6,8 +6,7 @@ WORKDIR /app
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
         python3 \
-        make \
-        g++ && \
+        build-essential && \
     rm -rf /var/lib/apt/lists/*
 
 RUN corepack enable
