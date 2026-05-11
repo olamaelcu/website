@@ -18,7 +18,11 @@ function getClientIp(event: import('@sveltejs/kit').RequestEvent): string {
 		const firstIp = forwarded.split(',')[0]?.trim();
 		if (firstIp) return firstIp;
 	}
-	return event.getClientAddress();
+	try {
+		return event.getClientAddress();
+	} catch {
+		return '127.0.0.1';
+	}
 }
 
 /** Check (and increment) the rate limit for a given key. */

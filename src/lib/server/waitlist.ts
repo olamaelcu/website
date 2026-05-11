@@ -35,11 +35,12 @@ export async function getProjectData(): Promise<Record<string, ProjectData>> {
 		}>(sql`
 			SELECT 
 				wi.id,
-				COALESCE(wi.max_seats, (
-					SELECT CAST(COUNT(*) AS INTEGER) 
-					FROM waitlist_entries we 
-					WHERE we.feature = wi.id
-				)) as seats_taken,
+				COALESCE(
+					(SELECT CAST(COUNT(*) AS INTEGER) 
+					 FROM waitlist_entries we 
+					 WHERE we.feature = wi.id),
+					0
+				) as seats_taken,
 				wi.max_seats,
 				wi.status,
 				wi.is_active
