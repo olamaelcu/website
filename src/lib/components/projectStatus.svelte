@@ -69,7 +69,7 @@
 
 	@media (prefers-color-scheme: dark) {
 		.incubating {
-			background-color: var(--wa-color-neutral-60);
+			background-color: var(--wa-color-neutral-40);
 			color: var(--wa-color-neutral-95);
 		}
 

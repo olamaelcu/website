@@ -27,7 +27,7 @@
 		Sign up for <strong>alpha access</strong> at
 		<a href="https://waitlist.olamaelcu.net?utm_source=landing" target="_blank"
 			>waitlist.olamaelcu.net</a
-		>.
+		>
 	</p>
 </section>
 
@@ -53,9 +53,13 @@
 	}
 
 	p.cta {
-		background-color: var(--wa-color-brand-on-normal);
+		background-color: var(--wa-color-brand);
+		color: var(--wa-color-brand-on);
 		padding: var(--wa-space-s);
 		text-align: center;
 		border-radius: var(--wa-border-radius-m);
+		a {
+			color: inherit;
+		}
 	}
 </style>

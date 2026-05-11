@@ -1,12 +1,11 @@
 import { dev } from '$app/environment';
 
-async function initPlausible() {
+export const plausibleReady = (async () => {
 	if (dev) return;
 	const { init } = await import('@plausible-analytics/tracker');
 	init({
-		domain: import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN,
-		outboundLinks: true,
-		logging: true
+		domain: import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN
 	});
-}
-initPlausible();
+})();
+
+plausibleReady;

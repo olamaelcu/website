@@ -7,8 +7,7 @@
 <style>
 	:global(main) {
 		margin: 0 auto;
-		width: 80vw;
-		flex-direction: column;
+		max-width: 80vw;
 	}
 	:global(.title-row) {
 		display: flex;

@@ -1,3 +1,5 @@
+import { plausibleReady } from '../hooks.client';
+
 export interface ClickEventProps {
 	text: string;
 	href: string | null;
@@ -16,6 +18,7 @@ function isOutbound(href: string | null): boolean {
 
 async function getTracker() {
 	if (typeof document === 'undefined') return null;
+	await plausibleReady;
 	const { track } = await import('@plausible-analytics/tracker');
 	return track;
 }

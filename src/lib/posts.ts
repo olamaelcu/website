@@ -45,6 +45,8 @@ function parsePost(filePath: string, raw: string): Post {
 	}
 	const year = dateStr.slice(0, 4);
 
+	console.log(slug, 'is draft', draft);
+
 	return {
 		slug,
 		year,
@@ -65,7 +67,7 @@ export async function getAllPostsAsync(): Promise<Post[]> {
 	}) as Record<string, string>;
 	return Object.entries(files)
 		.map(([path, raw]) => parsePost(path, raw))
-		.filter((post) => post.draft === import.meta.env.DEV)
+		.filter((post) => (import.meta.env.DEV !== true ? post.draft === true : true))
 		.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 

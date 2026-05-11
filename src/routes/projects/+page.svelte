@@ -50,6 +50,7 @@
 	h1 {
 		font-family: var(--font-display);
 		margin-top: var(--wa-space-xs);
+		text-align: center;
 	}
 	.projects {
 		list-style: none;
@@ -58,18 +59,19 @@
 		flex-direction: column;
 		gap: var(--wa-space-m);
 	}
+	.projects li {
+		margin: 0;
+		padding: 0;
+	}
 	.projects a {
 		display: grid;
 		grid-template-columns: 1fr auto;
 		grid-template-rows: auto auto;
 		gap: 0 var(--wa-space-xs);
 		padding: var(--wa-space-m);
-		border: 1px solid var(--surface-2);
+		border: 1px solid var(--link);
 		border-radius: var(--wa-border-radius-m);
 		text-decoration: none;
-	}
-	.projects a:hover {
-		border-color: var(--surface-3);
 	}
 	.projects strong {
 		grid-column: 1;

@@ -1,7 +1,7 @@
 ---
 title: 'sysinit'
 date: 2026-05-11
-draft: true
+draft: false
 description: 'Getting things ready to show'
 tags: [meta]
 ---
