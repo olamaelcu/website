@@ -33,7 +33,9 @@
 	cookies through your browser at any time.
 </p>
 <p>
-	<strong>Analytics:</strong> This site does not use analytics trackers.
+	<strong>Analytics:</strong> This site uses Plausible Analytics, a privacy-first analytics service
+	that does not use cookies and does not collect personal data. For more details, visit
+	<a href="https://plausible.io/privacy-friendly-web-analytics">Plausible's Privacy Policy</a>.
 </p>
 
 <h2>Third-Party Services</h2>

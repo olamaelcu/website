@@ -1,11 +1,17 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 	import { QueryClientProvider } from '@tanstack/svelte-query';
 	import { SvelteQueryDevtools } from '@tanstack/svelte-query-devtools';
+	import { initPlausible } from '$lib/analytics';
 	import '../app.css';
 	import '@awesome.me/webawesome/dist/styles/webawesome.css';
 
 	let { data, children } = $props();
+
+	onMount(() => {
+		initPlausible();
+	});
 </script>
 
 <svelte:head>
