@@ -1,12 +1,14 @@
 import { dev } from '$app/environment';
+import { PUBLIC_PLAUSIBLE_DOMAIN } from '$env/static/public';
 
 let initialized = false;
 
-export async function initPlausible() {
+export function initPlausible() {
 	if (dev || initialized) return;
 	initialized = true;
-	const { init } = await import('@plausible-analytics/tracker');
-	init({
-		domain: import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN
+	import('@plausible-analytics/tracker').then(({ init }) => {
+		init({
+			domain: PUBLIC_PLAUSIBLE_DOMAIN
+		});
 	});
 }
