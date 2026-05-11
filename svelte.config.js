@@ -6,6 +6,12 @@ const config = {
 	preprocess: [vitePreprocess({ style: true, script: true })],
 	kit: {
 		adapter: adapter(),
+		prerender: {
+			handleHttpError: ({ path, referrer, message }) => {
+				if (path === '/access/') return;
+				throw new Error(message);
+			}
+		},
 
 		experimental: {
 			tracing: {
