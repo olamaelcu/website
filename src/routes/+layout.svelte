@@ -52,6 +52,8 @@
 		Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a><br />
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 		<a href={resolve('/terms')}>Terms</a>&nbsp;&mdash;
-		<a href={resolve('/privacy')}>Privacy</a>&nbsp;
+		<a href={resolve('/privacy')}>Privacy</a>&nbsp;&mdash;
+		<a rel="me" href="https://www.linkedin.com/company/104865492">LinkedIn</a>&nbsp;&mdash;
+		<a rel="me" href="https://blacksky.app/profile/olamaelcu.net">Atmosphere (Blacksky)</a>
 	</footer>
 </QueryClientProvider>
