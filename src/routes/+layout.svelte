@@ -4,6 +4,7 @@
 	import { QueryClientProvider } from '@tanstack/svelte-query';
 	import { SvelteQueryDevtools } from '@tanstack/svelte-query-devtools';
 	import { initPlausible } from '$lib/analytics';
+	import PageLoader from '$lib/components/PageLoader.svelte';
 	import '../app.css';
 	import '@awesome.me/webawesome/dist/styles/webawesome.css';
 
@@ -31,6 +32,7 @@
 
 <QueryClientProvider client={data.queryClient}>
 	<SvelteQueryDevtools client={data.queryClient} />
+	<PageLoader />
 	<header>
 		<a class="logotype" href={resolve('/')}>
 			<img src="/favicon.png" alt="Olamaelcu" />
