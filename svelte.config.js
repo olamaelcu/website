@@ -21,13 +21,12 @@ const config = {
 			mode: 'auto',
 			directives: {
 				'default-src': ["'self'"],
-				'script-src': ["'self'", 'https://plausible.io'],
+				'script-src': ["'self'"],
 				'style-src': ["'self'", "'unsafe-inline'"],
 				'img-src': ['self', 'data:', 'https://cdn.bsky.app', 'https://avatar-cdn.bsky.app'],
 				'font-src': ["'self'"],
 				'connect-src': [
 					'self',
-					'https://plausible.io',
 					'https://o428404.ingest.us.sentry.io',
 					'https://public.api.bsky.app'
 				],

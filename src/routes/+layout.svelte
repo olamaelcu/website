@@ -1,23 +1,11 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 	import { QueryClientProvider } from '@tanstack/svelte-query';
 	import { SvelteQueryDevtools } from '@tanstack/svelte-query-devtools';
-	import { trackClick, trackCommit, enableOutboundTracking } from '$lib/analytics';
 	import '../app.css';
 	import '@awesome.me/webawesome/dist/styles/webawesome.css';
 
 	let { data, children } = $props();
-
-	onMount(() => {
-		trackCommit(undefined);
-		enableOutboundTracking();
-		document.addEventListener('click', trackClick);
-		return () => document.removeEventListener('click', trackClick);
-	});
-
-	let plausibleUrl = $derived(`https://plausible.io/olamaelcu.net?f=is,page,${$page.url.pathname}`);
 </script>
 
 <svelte:head>
@@ -55,7 +43,6 @@
 	<footer>
 		Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a><br />
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-		<a href={plausibleUrl}>Analytics</a>&nbsp;&mdash;
 		<a href={resolve('/terms')}>Terms</a>&nbsp;&mdash;
 		<a href={resolve('/privacy')}>Privacy</a>&nbsp;
 	</footer>

@@ -33,9 +33,7 @@
 	cookies through your browser at any time.
 </p>
 <p>
-	<strong>Analytics:</strong> We use Plausible Analytics to understand how visitors use our site. Plausible
-	does not use cookies and does not collect any personal data. We collect only aggregate statistics such
-	as referral sources, top pages, and visit duration to improve the services.
+	<strong>Analytics:</strong> This site does not use analytics trackers.
 </p>
 
 <h2>Third-Party Services</h2>
