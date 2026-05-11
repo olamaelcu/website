@@ -28,16 +28,18 @@
 	);
 </script>
 
-<small class="seat-count">{displayText}</small>
-&nbsp;&mdash;&nbsp;
-<a
-	class="seat-count-link"
-	href="https://waitlist.olamaelcu.net?utm_source={projectKey}&utm_medium=seat-count-widget"
-	target="_blank"
-	rel="noopener noreferrer"
->
-	Sign up
-</a>
+<div>
+	<small class="seat-count">{displayText}</small>
+	&nbsp;&mdash;&nbsp;
+	<a
+		class="seat-count-link"
+		href="https://waitlist.olamaelcu.net?utm_source={projectKey}&utm_medium=seat-count-widget"
+		target="_blank"
+		rel="noopener noreferrer"
+	>
+		Sign up
+	</a>
+</div>
 
 <style>
 	.seat-count {

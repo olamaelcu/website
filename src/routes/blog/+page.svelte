@@ -97,7 +97,7 @@
 	}
 
 	section {
-		max-width: var(--content-3);
+		max-width: var(--content-4);
 		margin: 0 auto;
 		width: 100%;
 	}
