@@ -1,11 +1,12 @@
 {
-	"healthChecks": {
-		"web": {
+	"healthChecks": [
+		{
+			"name": "web",
 			"healthCheckPath": "/health",
 			"healthyWaitingPeriod": 10,
 			"intervalSeconds": 5,
 			"maxCheckRetries": 6,
 			"timeoutSeconds": 10
 		}
-	}
+	]
 }
