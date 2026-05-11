@@ -1,12 +1,15 @@
 <script lang="ts">
-	import { MetaTags } from 'svelte-meta-tags';
+	import SEO from '$lib/components/SEO.svelte';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 	import SeatCount from '$lib/components/seatCount.svelte';
 </script>
 
-<MetaTags
+<SEO
 	title="Livtet | Olamaelcu"
 	description="A local-first, ATProto-friendly book management system"
+	canonical="https://www.olamaelcu.net/projects/livtet"
+	openGraphType="article"
+	twitterCard="summary"
 />
 
 <section class="lead">

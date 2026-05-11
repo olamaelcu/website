@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { MetaTags } from 'svelte-meta-tags';
+	import SEO from '$lib/components/SEO.svelte';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 	import SeatCount from '$lib/components/seatCount.svelte';
 	import ProfileAvatar from '$lib/components/profileAvatar.svelte';
@@ -11,9 +11,12 @@
 	}
 </script>
 
-<MetaTags
-	title="Beats | Olamaelcu"
+<SEO
+	title="Beats"
 	description="An experiment in music curation from those who you follow in the Atmosphere, exclusively for Blacksky."
+	canonical="https://www.olamaelcu.net/projects/beats"
+	openGraphType="article"
+	twitterCard="summary_large_image"
 />
 
 <section class="lead">

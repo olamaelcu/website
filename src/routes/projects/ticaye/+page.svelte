@@ -1,10 +1,16 @@
 <script lang="ts">
-	import { MetaTags } from 'svelte-meta-tags';
+	import SEO from '$lib/components/SEO.svelte';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 	import SeatCount from '$lib/components/seatCount.svelte';
 </script>
 
-<MetaTags title="Ticaye | Olamaelcu" />
+<SEO
+	title="Ticaye | Olamaelcu"
+	description="Ticaye — coming soon."
+	canonical="https://www.olamaelcu.net/projects/ticaye"
+	openGraphType="article"
+	twitterCard="summary"
+/>
 
 <div class="title-row">
 	<h1>Ticaye</h1>

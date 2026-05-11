@@ -1,10 +1,13 @@
-<script>
-	import { MetaTags } from 'svelte-meta-tags';
+<script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
 </script>
 
-<MetaTags
+<SEO
 	title="Projects | Olamaelcu"
 	description="Olamaelcu's all about making things — complete or not — that people can experiment with and understand."
+	canonical="https://www.olamaelcu.net/"
+	openGraphType="website"
+	twitterCard="summary"
 />
 
 <section class="lead">

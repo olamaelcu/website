@@ -1,12 +1,15 @@
-<script>
-	import { MetaTags } from 'svelte-meta-tags';
+<script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 	import SeatCount from '$lib/components/seatCount.svelte';
 </script>
 
-<MetaTags
+<SEO
 	title="Scratchback | Olamaelcu"
 	description="Live services, game state synchronization and achievements for independent game developers and studios alike leveraging ATProto."
+	canonical="https://www.olamaelcu.net/projects/scratchback"
+	openGraphType="article"
+	twitterCard="summary"
 />
 
 <section class="lead">
