@@ -1,5 +1,6 @@
 import { db } from './db/waitlist';
 import { sql } from 'drizzle-orm';
+import * as Sentry from '@sentry/sveltekit';
 
 export enum STATUSES {
 	INCUBATING = 'incubate',
@@ -17,12 +18,6 @@ export interface ProjectData extends SeatCount {
 	status: string;
 	isActive: boolean;
 }
-
-const DEFAULT_PROJECTS: Record<string, ProjectData> = {
-	beats: { seatsTaken: 0, maxSeats: null, status: STATUSES.ALPHA, isActive: true },
-	livtet: { seatsTaken: 0, maxSeats: null, status: STATUSES.INCUBATING, isActive: true },
-	scratchback: { seatsTaken: 0, maxSeats: null, status: STATUSES.INCUBATING, isActive: true }
-};
 
 export async function getProjectData(): Promise<Record<string, ProjectData>> {
 	try {
@@ -47,23 +42,22 @@ export async function getProjectData(): Promise<Record<string, ProjectData>> {
 			FROM waitlist_items wi
 		`);
 
-		const result: Record<string, ProjectData> = { ...DEFAULT_PROJECTS };
+		const result: Record<string, ProjectData> = {};
 
 		for (const row of rows) {
-			if (Object.hasOwn(DEFAULT_PROJECTS, row.id)) {
-				result[row.id] = {
-					seatsTaken: row.seats_taken ?? 0,
-					maxSeats: row.max_seats ?? null,
-					status: row.status ?? DEFAULT_PROJECTS[row.id]?.status ?? STATUSES.INCUBATING,
-					isActive: Boolean(row.is_active)
-				};
-			}
+			result[row.id] = {
+				seatsTaken: row.seats_taken ?? 0,
+				maxSeats: row.max_seats ?? null,
+				status: row.status ?? STATUSES.INCUBATING,
+				isActive: Boolean(row.is_active)
+			};
 		}
 
 		return result;
 	} catch (error) {
 		console.error('[waitlist] Failed to fetch project data:', error);
-		return { ...DEFAULT_PROJECTS };
+		Sentry.captureMessage('[waitlist] Failed to fetch project data, returning empty', 'warning');
+		return {};
 	}
 }
 

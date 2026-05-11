@@ -92,6 +92,9 @@ describe('GET /api/seat-counts', () => {
 
 		const { GET } = await import('../../../src/routes/api/seat-counts/+server');
 
-		await expect(GET()).rejects.toThrow('Database connection failed');
+		const response = await GET();
+		expect(response.status).toBe(200);
+		const body = await response.json();
+		expect(body).toEqual({});
 	});
 });

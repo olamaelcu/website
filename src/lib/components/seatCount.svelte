@@ -26,20 +26,25 @@
 			? `${seatData.seatsTaken}/${seatData.maxSeats} seats claimed`
 			: `${seatData.seatsTaken} seats claimed`
 	);
+	let projectExists = $derived(
+		seatCountsQuery.isSuccess && projectKey in (seatCountsQuery.data ?? {})
+	);
 </script>
 
-<div>
-	<small class="seat-count">{displayText}</small>
-	&nbsp;&mdash;&nbsp;
-	<a
-		class="seat-count-link"
-		href="https://waitlist.olamaelcu.net?utm_source={projectKey}&utm_medium=seat-count-widget"
-		target="_blank"
-		rel="noopener noreferrer"
-	>
-		Sign up
-	</a>
-</div>
+{#if projectExists && !seatCountsQuery.isLoading}
+	<div>
+		<small class="seat-count">{displayText}</small>
+		&nbsp;&mdash;&nbsp;
+		<a
+			class="seat-count-link"
+			href="https://waitlist.olamaelcu.net?utm_source={projectKey}&utm_medium=seat-count-widget"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			Sign up
+		</a>
+	</div>
+{/if}
 
 <style>
 	.seat-count {
