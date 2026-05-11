@@ -78,6 +78,7 @@
 		align-items: baseline;
 		padding: 0.5rem 0;
 		border-bottom: 1px solid var(--border-1);
+		margin: 0;
 	}
 	.post-list li:first-child {
 		border-top: 1px solid var(--border-1);
