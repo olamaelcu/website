@@ -1,10 +1,11 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
+	import ProjectPage from '../ProjectPage.svelte';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
-	import SeatCount from '$lib/components/seatCount.svelte';
 	import { createQuery } from '@tanstack/svelte-query';
 
 	const projectKey = 'scratchback';
+	const title = 'Scratchback';
 
 	const projectsQuery = createQuery(() => ({
 		queryKey: ['projects'],
@@ -22,12 +23,7 @@
 	twitterCard="summary"
 />
 
-<section class="lead">
-	<div class="title-row">
-		<h1>Scratchback</h1>
-		<ProjectStatus {status} />
-	</div>
-	<SeatCount {projectKey} />
+<ProjectPage {title} {status} {projectKey}>
 	<p>
 		Live services, game state synchronization and achievements for indepenent game developers and
 		studios alike leveraging <a href="https://atproto.com/?ref=olamaelcu" target="_blank">ATProto</a
@@ -47,4 +43,4 @@
 		</li>
 		<li>Save information can be done incrementally and in a conflict-resistant way</li>
 	</ul>
-</section>
+</ProjectPage>

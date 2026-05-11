@@ -1,0 +1,57 @@
+<script lang="ts">
+	import ProjectStatus from '$lib/components/projectStatus.svelte';
+	import SeatCount from '$lib/components/seatCount.svelte';
+
+	let { title, status, projectKey, children } = $props<{
+		title: string;
+		status: string;
+		projectKey: string;
+		children: any;
+	}>();
+</script>
+
+<section class="lead">
+	<div class="title-row">
+		<h1>{title}</h1>
+		<ProjectStatus {status} />
+		<SeatCount {projectKey} />
+	</div>
+	{@render children()}
+</section>
+
+<style>
+	.title-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		gap: var(--wa-space-s);
+		flex-wrap: wrap;
+		flex-direction: column;
+		margin-bottom: var(--wa-space-m);
+
+		h1 {
+			margin-bottom: 0;
+		}
+
+		@media (width >= 40rem) {
+			& {
+				flex-direction: row;
+			}
+		}
+	}
+
+	h1 {
+		font-family: var(--font-display);
+		margin-top: var(--wa-space-xs);
+		text-align: center;
+	}
+	section.lead {
+		padding: var(--wa-space-m);
+	}
+	h2 {
+		margin: var(--wa-space-l) 0 var(--wa-space-m);
+		font-size: var(--text-base);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+</style>

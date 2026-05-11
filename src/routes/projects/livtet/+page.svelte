@@ -1,10 +1,11 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
+	import ProjectPage from '../ProjectPage.svelte';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
-	import SeatCount from '$lib/components/seatCount.svelte';
 	import { createQuery } from '@tanstack/svelte-query';
 
 	const projectKey = 'livtet';
+	const title = 'Livtet';
 
 	const projectsQuery = createQuery(() => ({
 		queryKey: ['projects'],
@@ -22,12 +23,7 @@
 	twitterCard="summary"
 />
 
-<section class="lead">
-	<div class="title-row">
-		<h1>Livtet</h1>
-		<ProjectStatus {status} />
-	</div>
-	<SeatCount {projectKey} />
+<ProjectPage {title} {status} {projectKey}>
 	<p>A book management system for desktop and mobile that works with ATProto and the Fediverse.</p>
 	<h2>Planned Features</h2>
 	<ul>
@@ -35,4 +31,4 @@
 		<li>Synchronize your reading history and collection with popular services</li>
 		<li>Capture annotations about what you've read</li>
 	</ul>
-</section>
+</ProjectPage>

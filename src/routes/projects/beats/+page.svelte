@@ -1,7 +1,7 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
-	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
-	import SeatCount from '$lib/components/seatCount.svelte';
+	import ProjectPage from '../ProjectPage.svelte';
+	import { STATUSES } from '$lib/components/projectStatus.svelte';
 	import ProfileAvatar from '$lib/components/profileAvatar.svelte';
 	import { createQuery } from '@tanstack/svelte-query';
 
@@ -12,6 +12,7 @@
 	}
 
 	const projectKey = 'beats';
+	const title = 'Beats';
 
 	const projectsQuery = createQuery(() => ({
 		queryKey: ['projects'],
@@ -29,12 +30,7 @@
 	twitterCard="summary_large_image"
 />
 
-<section class="lead">
-	<div class="title-row">
-		<h1>Beats</h1>
-		<ProjectStatus {status} />
-	</div>
-	<SeatCount {projectKey} />
+<ProjectPage {title} {status} {projectKey}>
 	<p>
 		An experiment in music curation of one's own music taste and of from those who you follow in the
 		Atmosphere, <strong
@@ -56,6 +52,7 @@
 			<a href="https://www.whateverjewel.world/?ref=olamaelcu">Jewel Ham</a>.
 		</li>
 	</ul>
+
 	<h2>Credit</h2>
 	<p>
 		Thanks to
@@ -102,4 +99,4 @@
 			>@jeniusj.blacksky.app's feed</a
 		>).
 	</p>
-</section>
+</ProjectPage>
