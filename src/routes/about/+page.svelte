@@ -26,6 +26,7 @@
 	<a href="https://www.inkandswitch.com/?ref=olamaelcu">Ink&Switch</a> and others whose public experimentation
 	has encouraged this forward move.
 </p>
+<p>It's pronounced <i>/oʊˈmɛl iː kuːl/</i>, by the way.</p>
 
 <style>
 	:global(main) {
