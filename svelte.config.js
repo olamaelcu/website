@@ -31,6 +31,7 @@ const config = {
 					'https://o428404.ingest.us.sentry.io',
 					'https://public.api.bsky.app'
 				],
+				'worker-src': ["'self'", 'blob:'],
 				'frame-ancestors': ["'none'"],
 				'base-uri': ["'self'"],
 				'form-action': ["'self'"]
