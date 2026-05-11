@@ -70,7 +70,6 @@
 		gap: 0 var(--wa-space-xs);
 		padding: var(--wa-space-m);
 		border: 1px solid var(--link);
-		border-radius: var(--wa-border-radius-m);
 		text-decoration: none;
 	}
 	.projects strong {

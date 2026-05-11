@@ -8,8 +8,8 @@
 @custom-media --widescreen (width >= 80rem);
 
 :root {
-	--accent: #2f1b25;
-	--link: #4f46e5;
+	--link: var(--wa-color-purple-40);
+	--wa-color-brand: var(--wa-color-purple-30);
 
 	--font-sans: 'Space Grotesk', system-ui, sans-serif;
 	--font-display: 'Tourney', system-ui, sans-serif;
@@ -36,7 +36,6 @@
 	--text-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 4rem);
 
 	--leading-tight: 1.2;
-	--leading-snug: 1.375;
 	--leading-normal: 1.6;
 	--leading-relaxed: 1.75;
 }
@@ -48,7 +47,7 @@
 		--surface-2: var(--wa-color-neutral-20);
 		--surface-3: var(--wa-color-neutral-30);
 		--border-1: var(--wa-color-neutral-40);
-		--link: #818cf8;
+		--link: var(--wa-color-purple-80);
 	}
 }
 
@@ -76,11 +75,6 @@ h6,
 blockquote,
 cite {
 	font-family: var(--font-serif);
-}
-
-::selection {
-	background-color: var(--accent);
-	color: var(--wa-color-neutral-95);
 }
 
 body {
@@ -128,6 +122,7 @@ main {
 	flex-direction: column;
 	color: var(--text-1);
 	justify-content: center;
+	min-width: 40rem;
 }
 
 footer {
