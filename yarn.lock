@@ -1364,6 +1364,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@plausible-analytics/tracker@npm:^0.4.5":
+  version: 0.4.5
+  resolution: "@plausible-analytics/tracker@npm:0.4.5"
+  checksum: 10c0/75c0f098b5e1b6c8fc2e07dd1ee3721f1d5e978e40d94f35fb95da9272646422b4832b028d013df041033c5e91c28038c5ef38b38eae867c6f85fc5338abee63
+  languageName: node
+  linkType: hard
+
 "@playwright/test@npm:^1.59.1":
   version: 1.59.1
   resolution: "@playwright/test@npm:1.59.1"
@@ -4664,6 +4671,7 @@ __metadata:
     "@fontsource/tourney": "npm:^5.2.8"
     "@libsql/client": "npm:^0.14.0"
     "@opentelemetry/api": "npm:^1.9.1"
+    "@plausible-analytics/tracker": "npm:^0.4.5"
     "@playwright/test": "npm:^1.59.1"
     "@resvg/resvg-js": "npm:^2.6.2"
     "@sentry/sveltekit": "npm:^10"
@@ -4684,7 +4692,6 @@ __metadata:
     gray-matter: "npm:^4.0.3"
     isomorphic-dompurify: "npm:^3.12.0"
     marked: "npm:^18.0.3"
-    plausible-tracker: "npm:^0.3.9"
     playwright: "npm:^1.59.1"
     postcss: "npm:^8.5.12"
     postcss-custom-media: "npm:^12.0.1"
@@ -4838,13 +4845,6 @@ __metadata:
   version: 4.0.4
   resolution: "picomatch@npm:4.0.4"
   checksum: 10c0/e2c6023372cc7b5764719a5ffb9da0f8e781212fa7ca4bd0562db929df8e117460f00dff3cb7509dacfc06b86de924b247f504d0ce1806a37fac4633081466b0
-  languageName: node
-  linkType: hard
-
-"plausible-tracker@npm:^0.3.9":
-  version: 0.3.9
-  resolution: "plausible-tracker@npm:0.3.9"
-  checksum: 10c0/750018ad255119f7a5e6d108b35c1c7e4dd04ad9b0e950951812658b02b464865fdcb22a72f8a29881bcf3e5a4da7653ff881d333362ee6c319e63fae03153fb
   languageName: node
   linkType: hard
 

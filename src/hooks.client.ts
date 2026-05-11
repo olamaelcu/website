@@ -1,18 +1,10 @@
-import { handleErrorWithSentry, replayIntegration } from '@sentry/sveltekit';
-import * as Sentry from '@sentry/sveltekit';
 import { dev } from '$app/environment';
 
-if (!dev) {
-	Sentry.init({
-		dsn: 'https://3154c37a9dc2b19b6f4e7ae18457593a@o428404.ingest.us.sentry.io/4511345977327616',
-		environment: import.meta.env.MODE ?? 'development',
-		tracesSampleRate: 1.0,
-		enableLogs: true,
-		replaysSessionSampleRate: 0.1,
-		replaysOnErrorSampleRate: 1.0,
-		integrations: [replayIntegration()],
-		sendDefaultPii: true
+async function initPlausible() {
+	if (dev) return;
+	const { init } = await import('@plausible-analytics/tracker');
+	init({
+		domain: import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN
 	});
 }
-
-export const handleError = handleErrorWithSentry();
+initPlausible();

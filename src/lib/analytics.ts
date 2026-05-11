@@ -1,12 +1,3 @@
-declare global {
-	interface Window {
-		plausible: (
-			event: string,
-			opts?: { props?: Record<string, string | number | boolean> }
-		) => void;
-	}
-}
-
 export interface ClickEventProps {
 	text: string;
 	href: string | null;
@@ -23,7 +14,13 @@ function isOutbound(href: string | null): boolean {
 	}
 }
 
-export function trackClick(event: MouseEvent): void {
+async function getTracker() {
+	if (typeof document === 'undefined') return null;
+	const { track } = await import('@plausible-analytics/tracker');
+	return track;
+}
+
+export async function trackClick(event: MouseEvent): Promise<void> {
 	if (typeof document === 'undefined') return;
 
 	const target = event.target as HTMLElement | null;
@@ -33,14 +30,16 @@ export function trackClick(event: MouseEvent): void {
 	const href = anchor?.getAttribute('href') ?? undefined;
 	const text = target.textContent?.trim() ?? '';
 
-	window.plausible?.('click', {
-		props: { text, href: href ?? '', outbound: isOutbound(href ?? null) }
+	const track = await getTracker();
+	track?.('click', {
+		props: { text, href: href ?? '', outbound: isOutbound(href ?? null) ? 'true' : 'false' }
 	});
 }
 
-export function trackCommit(commit: string | undefined): void {
+export async function trackCommit(commit: string | undefined): Promise<void> {
 	if (typeof window === 'undefined') return;
-	window.plausible?.('commit', {
+	const track = await getTracker();
+	track?.('commit', {
 		props: commit !== undefined ? { commit } : {}
 	});
 }
@@ -51,7 +50,7 @@ export function enableOutboundTracking(): void {
 	if (typeof document === 'undefined' || outboundTrackingEnabled) return;
 	outboundTrackingEnabled = true;
 
-	document.addEventListener('click', (e: MouseEvent) => {
+	document.addEventListener('click', async (e: MouseEvent) => {
 		const target = e.target as HTMLElement | null;
 		if (!target) return;
 		const anchor = target.closest('a');
@@ -59,7 +58,8 @@ export function enableOutboundTracking(): void {
 		const href = anchor.getAttribute('href');
 		if (!href) return;
 		if (isOutbound(href)) {
-			window.plausible('outbound', { props: { href } });
+			const track = await getTracker();
+			track?.('outbound', { props: { href } });
 		}
 	});
 }
