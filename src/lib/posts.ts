@@ -45,8 +45,6 @@ function parsePost(filePath: string, raw: string): Post {
 	}
 	const year = dateStr.slice(0, 4);
 
-	console.log(slug, 'is draft', draft);
-
 	return {
 		slug,
 		year,
@@ -59,6 +57,14 @@ function parsePost(filePath: string, raw: string): Post {
 	};
 }
 
+function includeDraftsOnDev(post: { draft?: boolean }): boolean {
+	if (import.meta.env.DEV === true) {
+		return true;
+	} else {
+		return post.draft !== true;
+	}
+}
+
 export async function getAllPostsAsync(): Promise<Post[]> {
 	const files = import.meta.glob('/content/posts/**/*.md', {
 		eager: true,
@@ -67,7 +73,7 @@ export async function getAllPostsAsync(): Promise<Post[]> {
 	}) as Record<string, string>;
 	return Object.entries(files)
 		.map(([path, raw]) => parsePost(path, raw))
-		.filter((post) => (import.meta.env.DEV !== true ? post.draft === true : true))
+		.filter(includeDraftsOnDev)
 		.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
