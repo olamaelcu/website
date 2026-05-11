@@ -2,6 +2,16 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 	import SeatCount from '$lib/components/seatCount.svelte';
+	import { createQuery } from '@tanstack/svelte-query';
+
+	const projectKey = 'scratchback';
+
+	const projectsQuery = createQuery(() => ({
+		queryKey: ['projects'],
+		queryFn: () => fetch('/api/projects').then((r) => r.json())
+	}));
+
+	let status = $derived(projectsQuery.data?.[projectKey]?.status ?? STATUSES.INCUBATING);
 </script>
 
 <SEO
@@ -15,9 +25,9 @@
 <section class="lead">
 	<div class="title-row">
 		<h1>Scratchback</h1>
-		<ProjectStatus status={STATUSES.INCUBATING} />
+		<ProjectStatus {status} />
 	</div>
-	<SeatCount projectKey="scratchback" />
+	<SeatCount {projectKey} />
 	<p>
 		Live services, game state synchronization and achievements for indepenent game developers and
 		studios alike leveraging <a href="https://atproto.com/?ref=olamaelcu" target="_blank">ATProto</a

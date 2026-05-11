@@ -150,12 +150,6 @@ section.lead {
 	width: 100%;
 	margin: 0 auto;
 
-	p:first-of-type {
-		font-size: var(--text-lg);
-		line-height: var(--leading-relaxed);
-		margin-bottom: var(--wa-space-m);
-	}
-
 	h1 {
 		font-size: var(--text-4xl);
 		line-height: var(--leading-tight);
@@ -166,6 +160,7 @@ ul {
 	list-style-type: square;
 }
 
+p,
 li {
 	font-size: var(--text-base);
 	line-height: var(--leading-relaxed);
@@ -177,7 +172,7 @@ li {
 	align-items: center;
 	gap: 0.375rem;
 	position: relative;
-	top: 0.275rem;
+	top: 0.175rem;
 
 	a {
 		text-decoration: none;

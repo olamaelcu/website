@@ -25,7 +25,9 @@
 	</p>
 	<p class="cta">
 		Sign up for <strong>alpha access</strong> at
-		<a href="https://waitlist.olamaelcu.net?utm_source=landing" target="_blank">waitlist.olamaelcu.net</a>.
+		<a href="https://waitlist.olamaelcu.net?utm_source=landing" target="_blank"
+			>waitlist.olamaelcu.net</a
+		>.
 	</p>
 </section>
 

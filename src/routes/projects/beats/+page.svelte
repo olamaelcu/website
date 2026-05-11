@@ -3,12 +3,22 @@
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 	import SeatCount from '$lib/components/seatCount.svelte';
 	import ProfileAvatar from '$lib/components/profileAvatar.svelte';
+	import { createQuery } from '@tanstack/svelte-query';
 
 	const failedDids = $state(new Set<string>());
 
 	function handleFail(did: string) {
 		failedDids.add(did);
 	}
+
+	const projectKey = 'beats';
+
+	const projectsQuery = createQuery(() => ({
+		queryKey: ['projects'],
+		queryFn: () => fetch('/api/projects').then((r) => r.json())
+	}));
+
+	let status = $derived(projectsQuery.data?.[projectKey]?.status ?? STATUSES.ALPHA);
 </script>
 
 <SEO
@@ -22,18 +32,20 @@
 <section class="lead">
 	<div class="title-row">
 		<h1>Beats</h1>
-		<ProjectStatus status={STATUSES.INCUBATING} />
+		<ProjectStatus {status} />
 	</div>
-	<SeatCount projectKey="beats" />
+	<SeatCount {projectKey} />
 	<p>
-		An experiment in music curation from those who you follow in the Atmosphere, <strong
-			>exclusively for <a href="https://www.blackskyweb.xyz/?ref=olamaelcu">Blacksky</a></strong
+		An experiment in music curation of one's own music taste and of from those who you follow in the
+		Atmosphere, <strong
+			>exclusively for <a href="https://www.blackskyweb.xyz/?utm_source=olamaelcu">Blacksky</a
+			></strong
 		>.
 	</p>
 	<h2>Planned Features</h2>
 	<ul>
+		<li>Build up a feed of your music-related posts to share on Blacksky.</li>
 		<li>Curate a list of people you follow to see their music updates.</li>
-		<li>Connect with existing media services to help syndicate your listening history.</li>
 		<li>
 			In honor of <a
 				href="https://www.refinery29.com/en-us/2020/12/10208481/jewel-ham-artist-spotify-wrapped-internship?ref=olamaelcu"

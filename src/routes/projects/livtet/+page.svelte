@@ -2,6 +2,16 @@
 	import SEO from '$lib/components/SEO.svelte';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 	import SeatCount from '$lib/components/seatCount.svelte';
+	import { createQuery } from '@tanstack/svelte-query';
+
+	const projectKey = 'livtet';
+
+	const projectsQuery = createQuery(() => ({
+		queryKey: ['projects'],
+		queryFn: () => fetch('/api/projects').then((r) => r.json())
+	}));
+
+	let status = $derived(projectsQuery.data?.[projectKey]?.status ?? STATUSES.INCUBATING);
 </script>
 
 <SEO
@@ -15,10 +25,14 @@
 <section class="lead">
 	<div class="title-row">
 		<h1>Livtet</h1>
-		<ProjectStatus status={STATUSES.INCUBATING} />
+		<ProjectStatus {status} />
 	</div>
-	<SeatCount projectKey="livtet" />
-	<p>A book management system for desktop and mobile.</p>
+	<SeatCount {projectKey} />
+	<p>A book management system for desktop and mobile that works with ATProto and the Fediverse.</p>
 	<h2>Planned Features</h2>
-	<p>Coming soon!</p>
+	<ul>
+		<li>Manage a book collection using a familiar interface</li>
+		<li>Synchronize your reading history and collection with popular services</li>
+		<li>Capture annotations about what you've read</li>
+	</ul>
 </section>

@@ -48,7 +48,7 @@
 	}
 
 	.incubating {
-		background-color: var(--wa-color-neutral-80);
+		background-color: var(--wa-color-purple-80);
 		color: var(--wa-color-neutral-05);
 	}
 

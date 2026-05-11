@@ -96,6 +96,7 @@
 		object-fit: cover;
 		vertical-align: middle;
 		flex-shrink: 0;
+		margin-left: 0.25rem;
 	}
 
 	.avatar-loading {

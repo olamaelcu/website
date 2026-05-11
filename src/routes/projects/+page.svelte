@@ -1,6 +1,13 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
+
+	const { data } = $props();
+
+	const projectStatus = (name: string): string => {
+		const project = data.projects.find((p: { name: string }) => p.name === name);
+		return project?.status ?? STATUSES.INCUBATING;
+	};
 </script>
 
 <svelte:head>
@@ -14,29 +21,22 @@
 		<li>
 			<a href={resolve('/projects/scratchback')}>
 				<strong>Scratchback</strong>
-				<span>Game state sync and achievements via ATProto</span>
-				<ProjectStatus status={STATUSES.INCUBATING} />
+				<span>Game state sync and achievements via ATProto for developers</span>
+				<ProjectStatus status={projectStatus('scratchback')} />
 			</a>
 		</li>
 		<li>
 			<a href={resolve('/projects/beats')}>
 				<strong>Beats</strong>
 				<span>Music curation from your social graph</span>
-				<ProjectStatus status={STATUSES.INCUBATING} />
+				<ProjectStatus status={projectStatus('beats')} />
 			</a>
 		</li>
 		<li>
 			<a href={resolve('/projects/livtet')}>
 				<strong>Livtet</strong>
 				<span>Local-first, ATProto-friendly book management</span>
-				<ProjectStatus status={STATUSES.INCUBATING} />
-			</a>
-		</li>
-		<li>
-			<a href={resolve('/projects/ticaye')}>
-				<strong>Ticaye</strong>
-				<span>Coming soon</span>
-				<ProjectStatus status={STATUSES.INCUBATING} />
+				<ProjectStatus status={projectStatus('livtet')} />
 			</a>
 		</li>
 	</ul>

@@ -48,11 +48,12 @@
 
 <style>
 	article {
-		max-width: var(--content-3);
 		margin: 0 auto;
 
 		> main {
 			line-height: var(--leading-normal);
+			padding: var(--wa-space-m);
+			max-width: 44rem;
 		}
 	}
 
@@ -60,25 +61,29 @@
 		margin-bottom: var(--wa-space-m);
 		display: flex;
 		align-items: center;
-		flex-direction: row;
+		flex-direction: column;
 	}
+
 	h1 {
 		font-family: var(--font-display);
 		font-size: var(--text-3xl);
 		flex: 1 1;
 		text-align: center;
 	}
+
 	time {
 		font-size: var(--text-base);
 	}
+
 	.tags {
 		list-style: none;
 		padding: 0;
 		display: inline-flex;
 		gap: 0.5rem;
 		flex-wrap: wrap;
-		flex-direction: column;
+		flex-direction: row;
 	}
+
 	.tags li {
 		background: var(--surface-2);
 		padding: 0.125rem 0.5rem;

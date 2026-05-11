@@ -2,7 +2,6 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
-	import { browser, dev } from '$app/environment';
 	import { QueryClientProvider } from '@tanstack/svelte-query';
 	import { SvelteQueryDevtools } from '@tanstack/svelte-query-devtools';
 	import { trackClick, trackCommit, enableOutboundTracking } from '$lib/analytics';
@@ -12,7 +11,7 @@
 	let { data, children } = $props();
 
 	onMount(() => {
-		trackCommit(data.commit);
+		trackCommit(undefined);
 		enableOutboundTracking();
 		document.addEventListener('click', trackClick);
 		return () => document.removeEventListener('click', trackClick);

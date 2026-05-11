@@ -6,7 +6,8 @@ import { integer, sqliteTable, text, uniqueIndex } from 'drizzle-orm/sqlite-core
 export const waitlistItems = sqliteTable('waitlist_items', {
 	id: text('id').primaryKey(),
 	maxSeats: integer('max_seats'),
-	isActive: integer('is_active', { mode: 'boolean' }).notNull().default(true)
+	isActive: integer('is_active', { mode: 'boolean' }).notNull().default(true),
+	status: text('status').notNull().default('incubate')
 });
 
 export const waitlistEntries = sqliteTable(
