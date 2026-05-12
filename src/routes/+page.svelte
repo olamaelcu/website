@@ -1,13 +1,16 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
+	import { SITE_URL } from '$lib/constants';
 </script>
 
 <SEO
 	title="Olamaelcu - A little software lab."
 	description="Olamaelcu's all about making things — complete or not — that people can experiment with and understand."
-	canonical="https://www.olamaelcu.net/"
+	canonical={`${SITE_URL}/`}
 	openGraphType="website"
 	twitterCard="summary"
+	ogImage={`${SITE_URL}/og-default.png`}
+	twitterImage={`${SITE_URL}/og-default.png`}
 />
 
 <section class="lead">
