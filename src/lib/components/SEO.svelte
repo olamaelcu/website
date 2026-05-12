@@ -9,6 +9,9 @@
 		twitterCard?: 'summary' | 'summary_large_image';
 		ogImage?: string;
 		twitterImage?: string;
+		siteName?: string;
+		twitterSite?: string;
+		twitterCreator?: string;
 	}
 
 	let {
@@ -18,7 +21,10 @@
 		openGraphType = 'website',
 		twitterCard = 'summary',
 		ogImage,
-		twitterImage
+		twitterImage,
+		siteName = 'Olamaelcu',
+		twitterSite = '@olamaelcu',
+		twitterCreator = '@jacky'
 	}: Props = $props();
 
 	let ogImages = $derived(ogImage ? [{ url: ogImage, alt: 'OG Image' }] : []);
@@ -33,12 +39,15 @@
 		title,
 		description,
 		url: canonical,
-		images: ogImages
+		images: ogImages,
+		siteName
 	}}
 	twitter={{
 		cardType: twitterCard,
 		image: twitterImage,
 		title,
-		description
+		description,
+		site: twitterSite,
+		creator: twitterCreator
 	}}
 />
