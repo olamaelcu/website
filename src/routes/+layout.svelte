@@ -56,6 +56,6 @@
 		<a rel="nofollow noindex" href="/access/">Traffic</a>&nbsp;&mdash;
 		<a rel="me" href="https://forge.blacksky.community/olamaelcu.net">Open Source</a>&nbsp;&mdash;
 		<a rel="me" href="https://www.linkedin.com/company/104865492">LinkedIn</a>&nbsp;&mdash;
-		<a rel="me" href="https://blacksky.app/profile/olamaelcu.net">Atmosphere (Blacksky)</a>
+		<a rel="me" href="https://blacksky.community/profile/olamaelcu.net">Atmosphere (Blacksky)</a>
 	</footer>
 </QueryClientProvider>
