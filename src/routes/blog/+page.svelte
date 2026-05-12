@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { resolve } from '$app/paths';
+	import SEO from '$lib/components/SEO.svelte';
+	import { SITE_URL } from '$lib/constants';
 
 	let { data }: { data: PageData } = $props();
 	let { posts, atomFeed, jsonFeed } = $derived(data);
@@ -13,22 +15,14 @@
 	);
 </script>
 
-<svelte:head>
-	<title>Blog — Olamaelcu</title>
-	<meta name="description" content="Thoughts, tutorials, and updates from Olamaelcu." />
-	<link
-		rel="alternate"
-		type="application/atom+xml"
-		href={atomFeed}
-		title="Olamaelcu Blog - ATOM Feed"
-	/>
-	<link
-		rel="alternate"
-		type="application/feed+json"
-		href={jsonFeed}
-		title="Olamaelcu Blog - JSON Feed"
-	/>
-</svelte:head>
+<SEO
+	title="Blog | Olamaelcu"
+	description="Thoughts, tutorials, and updates from Olamaelcu."
+	canonical={`${SITE_URL}/blog`}
+	openGraphType="website"
+	ogImage={`${SITE_URL}/og-default.png`}
+	twitterImage={`${SITE_URL}/og-default.png`}
+/>
 
 <section>
 	<h1>Blog</h1>
