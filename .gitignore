@@ -13,4 +13,4 @@ Thumbs.db
 .opencode/node_modules/
 .opencode/package-lock.json
 src/lib/commit.ts
-data.db
+data.dbtest-results/
