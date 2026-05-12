@@ -1,10 +1,15 @@
 <script lang="ts">
-	import { MetaTags } from 'svelte-meta-tags';
+	import SEO from '$lib/components/SEO.svelte';
+	import { SITE_URL } from '$lib/constants';
 </script>
 
-<MetaTags
+<SEO
 	title="Terms of Service | Olamaelcu"
 	description="Terms of Service for Olamaelcu, a software lab providing web experiments and services."
+	canonical={`${SITE_URL}/terms`}
+	openGraphType="website"
+	ogImage={`${SITE_URL}/og-default.png`}
+	twitterImage={`${SITE_URL}/og-default.png`}
 />
 
 <h1>Terms of Service</h1>
