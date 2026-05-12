@@ -1,5 +1,11 @@
 <script lang="ts">
-	let { children } = $props();
+	let { data, children } = $props();
+
+	$effect(() => {
+		if (data.seatCounts) {
+			data.queryClient.setQueryData(['seat-counts'], data.seatCounts);
+		}
+	});
 </script>
 
 {@render children()}
