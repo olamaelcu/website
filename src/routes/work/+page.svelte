@@ -1,8 +1,16 @@
 <script lang="ts">
-	import { MetaTags } from 'svelte-meta-tags';
+	import SEO from '$lib/components/SEO.svelte';
+	import { SITE_URL } from '$lib/constants';
 </script>
 
-<MetaTags title="Work | Olamaelcu" />
+<SEO
+	title="Work | Olamaelcu"
+	description="Projects and work by Olamaelcu, a software lab."
+	canonical={`${SITE_URL}/work`}
+	openGraphType="website"
+	ogImage={`${SITE_URL}/og-default.png`}
+	twitterImage={`${SITE_URL}/og-default.png`}
+/>
 
 <h1>Work</h1>
 <p>Coming soon.</p>
