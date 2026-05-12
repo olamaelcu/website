@@ -1,10 +1,15 @@
 <script lang="ts">
-	import { MetaTags } from 'svelte-meta-tags';
+	import SEO from '$lib/components/SEO.svelte';
+	import { SITE_URL } from '$lib/constants';
 </script>
 
-<MetaTags
+<SEO
 	title="About | Olamaelcu"
 	description="Olamaelcu is a portmaneau of the names of two characters from literature — Lauren Olamina from Octavia Butler's Parable of the Sower and Maelcum, the pilot of the Marcus Garvey in William Gibson's Neuromancer."
+	canonical={`${SITE_URL}/about`}
+	openGraphType="website"
+	ogImage={`${SITE_URL}/og-default.png`}
+	twitterImage={`${SITE_URL}/og-default.png`}
 />
 
 <h1>About</h1>
