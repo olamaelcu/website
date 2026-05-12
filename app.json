@@ -1,14 +1,7 @@
 {
-	"healthChecks": {
-		"web": [
-			{
-				"name": "web",
-				"healthCheckPath": "/health",
-				"healthyWaitingPeriod": 10,
-				"intervalSeconds": 5,
-				"maxCheckRetries": 6,
-				"timeoutSeconds": 10
-			}
-		]
-	}
+  "scripts": {
+    "dokku": {
+      "postdeploy": "yarn migrate:roadmap"
+    }
+  }
 }

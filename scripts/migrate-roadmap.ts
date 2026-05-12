@@ -1,6 +1,4 @@
 import { createClient } from '@libsql/client';
-import { readFileSync } from 'fs';
-import { join } from 'path';
 
 const migrations = [
 	`CREATE TABLE IF NOT EXISTS roadmap_entries (
@@ -17,23 +15,9 @@ const migrations = [
 	`CREATE INDEX IF NOT EXISTS idx_entry_date ON roadmap_entries(entry_date)`
 ];
 
-function getEnv() {
-	const envPath = join(process.cwd(), '.env');
-	const envContent = readFileSync(envPath, 'utf-8');
-	const env: Record<string, string> = {};
-	for (const line of envContent.split('\n')) {
-		const [key, ...valueParts] = line.split('=');
-		if (key && valueParts.length) {
-			env[key.trim()] = valueParts.join('=').trim();
-		}
-	}
-	return env;
-}
-
 async function runMigrations() {
-	const env = getEnv();
-	const url = env.DATABASE_URL;
-	const authToken = env.DATABASE_AUTH_TOKEN;
+	const url = process.env.DATABASE_URL;
+	const authToken = process.env.DATABASE_AUTH_TOKEN;
 
 	if (!url || !authToken) {
 		console.error('DATABASE_URL and DATABASE_AUTH_TOKEN must be set');

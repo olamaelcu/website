@@ -1,7 +1,0 @@
-#!/bin/bash
-set -e
-
-echo "-----> Running database migrations"
-cd /app
-DATABASE_URL="$DATABASE_URL" DATABASE_AUTH_TOKEN="$DATABASE_AUTH_TOKEN" npx tsx scripts/migrate-roadmap.ts
-echo "------> Migrations complete"
