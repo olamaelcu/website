@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, mkdirSync, writeFileSync } from 'fs';
+import { readdirSync, readFileSync, mkdirSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import type { Plugin } from 'vite';
@@ -59,6 +59,151 @@ function parsePost(filePath: string, raw: string): Post {
 		tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
 		draft: Boolean(data.draft)
 	};
+}
+
+async function generateDefaultOgImage(
+	root: string,
+	pageTitle: string,
+	pageDescription: string
+): Promise<Buffer> {
+	const fontPath = join(root, 'node_modules/@fontsource/kalnia/files/kalnia-latin-400-normal.woff');
+	const fontData = readFileSync(fontPath);
+
+	const logoPath = join(root, 'static', 'favicon.png');
+	const logoData = readFileSync(logoPath);
+	const logoBase64 = logoData.toString('base64');
+
+	const year = new Date().getFullYear().toString();
+
+	const svg = await satori(
+		{
+			type: 'div',
+			key: null,
+			props: {
+				style: {
+					width: '1200px',
+					height: '630px',
+					background: '#faf9f7',
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'space-between',
+					padding: '80px',
+					fontFamily: 'Kalnia'
+				},
+				children: [
+					{
+						type: 'div',
+						props: {
+							style: {
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'space-between',
+								width: '100%'
+							},
+							children: [
+								{
+									type: 'div',
+									props: {
+										style: {
+											display: 'flex',
+											alignItems: 'center',
+											gap: '12px'
+										},
+										children: [
+											{
+												type: 'img',
+												props: {
+													src: `data:image/png;base64,${logoBase64}`,
+													style: { width: '40px', height: '40px' }
+												}
+											},
+											{
+												type: 'div',
+												props: {
+													style: {
+														fontSize: '18px',
+														color: '#78716c',
+														letterSpacing: '0.05em',
+														textTransform: 'uppercase'
+													},
+													children: 'Olamaelcu'
+												}
+											}
+										]
+									}
+								},
+								{
+									type: 'div',
+									props: {
+										style: { fontSize: '14px', color: '#a8a29e' },
+										children: year
+									}
+								}
+							]
+						}
+					},
+					{
+						type: 'div',
+						props: {
+							style: {
+								display: 'flex',
+								flexDirection: 'column',
+								gap: '24px',
+								maxWidth: '900px'
+							},
+							children: [
+								{
+									type: 'h1',
+									props: {
+										style: {
+											fontSize: '64px',
+											fontWeight: 400,
+											color: '#1c1917',
+											lineHeight: 1.1,
+											margin: 0
+										},
+										children: pageTitle
+									}
+								},
+								pageDescription
+									? {
+											type: 'p',
+											props: {
+												style: {
+													fontSize: '24px',
+													color: '#78716c',
+													lineHeight: 1.4,
+													margin: 0
+												},
+												children: pageDescription
+											}
+										}
+									: { type: 'span', props: { children: '' } }
+							]
+						}
+					},
+					{
+						type: 'div',
+						props: {
+							style: {
+								width: '100%',
+								height: '2px',
+								background: '#e7e5e4'
+							}
+						}
+					}
+				]
+			}
+		},
+		{
+			width: 1200,
+			height: 630,
+			fonts: [{ name: 'Kalnia', data: fontData, weight: 400, style: 'normal' }]
+		}
+	);
+
+	const resvg = new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } });
+	return resvg.render().asPng();
 }
 
 async function generateOgImage(post: Post, root: string): Promise<Buffer> {
@@ -228,6 +373,16 @@ export function ogImagePlugin(): Plugin {
 				const png = await generateOgImage(post, root);
 				writeFileSync(join(outDir, `${post.year}-${post.slug}.png`), png);
 				console.log(`Generated OG image: ${post.year}-${post.slug}.png`);
+			}
+			const defaultOgImagePath = join(root, 'static', 'og-default.png');
+			if (!existsSync(defaultOgImagePath)) {
+				const defaultPng = await generateDefaultOgImage(
+					root,
+					'Olamaelcu',
+					'A little software lab.'
+				);
+				writeFileSync(defaultOgImagePath, defaultPng);
+				console.log('Generated default OG image: og-default.png');
 			}
 		}
 	};
