@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import SEO from '$lib/components/SEO.svelte';
+	import { SITE_URL } from '$lib/constants';
 	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
 
 	const { data } = $props();
@@ -10,10 +12,14 @@
 	};
 </script>
 
-<svelte:head>
-	<title>Projects | Olamaelcu</title>
-	<meta name="description" content="Things I've built." />
-</svelte:head>
+<SEO
+	title="Projects | Olamaelcu"
+	description="Things I've built."
+	canonical={`${SITE_URL}/projects`}
+	openGraphType="website"
+	ogImage={`${SITE_URL}/og-default.png`}
+	twitterImage={`${SITE_URL}/og-default.png`}
+/>
 
 <section>
 	<h1>Projects</h1>
