@@ -47,13 +47,16 @@
 </article>
 
 <style>
+	:global(main) {
+		padding: 0;
+	}
 	article {
 		margin: 0 auto;
 
 		> main {
 			line-height: var(--leading-normal);
+			max-width: var(--content-4);
 			padding: var(--wa-space-m);
-			max-width: 44rem;
 		}
 	}
 
