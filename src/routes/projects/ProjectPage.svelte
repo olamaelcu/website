@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ProjectStatus from '$lib/components/projectStatus.svelte';
 	import SeatCount from '$lib/components/seatCount.svelte';
+	import Changelog from './Changelog.svelte';
 
 	let { title, status, projectKey, children } = $props<{
 		title: string;
@@ -17,6 +18,7 @@
 		<SeatCount {projectKey} />
 	</div>
 	{@render children()}
+	<Changelog {projectKey} />
 </section>
 
 <style>
@@ -31,6 +33,7 @@
 
 		h1 {
 			margin-bottom: 0;
+			flex: 1 1;
 		}
 
 		@media (width >= 40rem) {

@@ -82,18 +82,3 @@
 	For questions or concerns about this Privacy Policy or your data, please contact us at
 	<a href="mailto:privacy@olamaelcu.net">privacy@olamaelcu.net</a>.
 </p>
-
-<style>
-	:global(main) {
-		margin: 0 auto;
-		width: 80vw;
-		max-width: var(--content-3);
-		flex-direction: column;
-	}
-	p {
-		margin: var(--wa-space-m) 0;
-	}
-	h2 {
-		margin-top: var(--wa-space-l);
-	}
-</style>

@@ -17,7 +17,13 @@
 
 	const entriesQuery = createQuery(() => ({
 		queryKey: ['roadmap', projectKey],
-		queryFn: () => fetch(`/api/roadmap/${projectKey}`).then((r) => r.json() as Promise<Entry[]>)
+		queryFn: async () => {
+			const r = await fetch(`/api/roadmap/${projectKey}`);
+			if (!r.ok) throw new Error(`HTTP ${r.status}`);
+			return r.json() as Promise<Entry[]>;
+		},
+		retry: false,
+		refetchInterval: 1000 * 15
 	}));
 
 	let entries = $derived(entriesQuery.data ?? []);
@@ -40,7 +46,17 @@
 	}
 </script>
 
-{#if entries.length > 0}
+{#if entriesQuery.isLoading}
+	<div class="changelog-loading">
+		<wa-spinner></wa-spinner>
+		<span>Loading roadmap...</span>
+	</div>
+{:else if entriesQuery.isError}
+	<div class="changelog-error">
+		<p>Failed to load roadmap.</p>
+		<wa-button role="button" onclick={() => entriesQuery.refetch()}>Retry</wa-button>
+	</div>
+{:else if entries.length > 0}
 	<section class="changelog">
 		<h2>Roadmap</h2>
 		<ol class="timeline">
@@ -151,6 +167,9 @@
 
 	.content {
 		padding-bottom: var(--wa-space-s);
+		position: relative;
+		top: calc(-1 * var(--wa-space-m));
+		left: var(--wa-space-s);
 	}
 
 	.meta {
@@ -246,5 +265,25 @@
 		display: inline-block;
 		margin-top: var(--wa-space-2xs);
 		font-size: var(--text-xs);
+	}
+
+	.changelog-loading,
+	.changelog-error {
+		display: flex;
+		align-items: center;
+		gap: var(--wa-space-s);
+		padding: var(--wa-space-m) 0;
+		font-size: var(--text-sm);
+	}
+
+	.changelog-error p {
+		margin: 0;
+		color: var(--wa-color-danger-80);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.changelog-error p {
+			color: var(--wa-color-danger-60);
+		}
 	}
 </style>

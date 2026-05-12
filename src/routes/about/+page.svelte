@@ -32,15 +32,3 @@
 	has encouraged this forward move.
 </p>
 <p>It's pronounced <i>/oʊˈmɛl iː kuːl/</i> (oh-mel-lee-cool), by the way.</p>
-
-<style>
-	:global(main) {
-		margin: 0 auto;
-		width: 80vw;
-		max-width: var(--content-3);
-		flex-direction: column;
-	}
-	p {
-		margin: var(--wa-space-m) 0;
-	}
-</style>
