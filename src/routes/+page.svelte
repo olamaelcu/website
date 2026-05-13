@@ -17,7 +17,7 @@
 	<h1>Welcome</h1>
 	<p>
 		Olamaelcu's all about making things &mdash; complete or not &mdash; that people can experiment
-		with and understand. Each project comes with its own of story of genesis, its goal and what
+		with and understand. Each project comes with its own story of genesis, its goal and what
 		would make it be marked as <em>strong</em>.
 	</p>
 	<h2>The Mission</h2>
@@ -61,6 +61,7 @@
 		padding: var(--wa-space-s);
 		text-align: center;
 		border-radius: var(--wa-border-radius-m);
+		box-shadow: var(--wa-shadow-m);
 		a {
 			color: inherit;
 		}

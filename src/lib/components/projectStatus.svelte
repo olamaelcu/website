@@ -45,6 +45,7 @@
 		font-size: var(--text-xs);
 		border-radius: var(--wa-border-radius-m);
 		align-self: center;
+		box-shadow: var(--wa-shadow-s);
 	}
 
 	.incubating {

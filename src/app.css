@@ -124,7 +124,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	color: var(--text-1);
-	justify-content: center;
+	justify-content: top;
 	max-width: 50rem;
 	margin: 0 auto;
 	padding: var(--wa-space-m);

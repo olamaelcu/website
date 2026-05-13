@@ -68,6 +68,7 @@
 	.projects li {
 		margin: 0;
 		padding: 0;
+		box-shadow: var(--wa-shadow-s);
 	}
 	.projects a {
 		display: grid;

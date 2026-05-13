@@ -1,7 +1,7 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import ProjectPage from '../ProjectPage.svelte';
-	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
+	import { STATUSES } from '$lib/components/projectStatus.svelte';
 	import { createQuery } from '@tanstack/svelte-query';
 
 	const projectKey = 'scratchback';
@@ -25,9 +25,14 @@
 
 <ProjectPage {title} {status} {projectKey}>
 	<p>
-		Live services, game state synchronization and achievements for indepenent game developers and
-		studios alike leveraging <a href="https://atproto.com/?ref=olamaelcu" target="_blank">ATProto</a
-		>.
+		A service that provides live services, game state synchronization and achievements for
+		independent game developers and studios alike leveraging
+		<a href="https://atproto.com/?ref=olamaelcu" target="_blank">ATProto</a>.
+	</p>
+	<p>
+		Note: this service is currently optimized for games hosted on <a
+			href="https://itch.io/?ref=olamaelcu">itch.io</a
+		>
 	</p>
 	<h2>Planned Features</h2>
 	<ul>

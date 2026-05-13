@@ -32,7 +32,7 @@
 
 <ProjectPage {title} {status} {projectKey}>
 	<p>
-		An experiment in music curation of one's own music taste and of from those who you follow in the
+		An experiment in music curation of one's own music taste and from those who you follow in the
 		Atmosphere, <strong
 			>exclusively for <a href="https://www.blackskyweb.xyz/?utm_source=olamaelcu">Blacksky</a
 			></strong

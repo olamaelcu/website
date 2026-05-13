@@ -5,7 +5,7 @@
 
 <SEO
 	title="About | Olamaelcu"
-	description="Olamaelcu is a portmaneau of the names of two characters from literature — Lauren Olamina from Octavia Butler's Parable of the Sower and Maelcum, the pilot of the Marcus Garvey in William Gibson's Neuromancer."
+	description="Olamaelcu is a portmanteau of the names of two characters from literature — Lauren Olamina from Octavia Butler's Parable of the Sower and Maelcum, the pilot of the Marcus Garvey in William Gibson's Neuromancer."
 	canonical={`${SITE_URL}/about`}
 	openGraphType="website"
 	ogImage={`${SITE_URL}/og-default.png`}
@@ -14,8 +14,8 @@
 
 <h1>About</h1>
 <p>
-	<strong>Olamaelcu</strong> is a portmaneau of the names of two characters from literature that has
-	heavily influened <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a>. The first being Lauren
+	<strong>Olamaelcu</strong> is a portmanteau of the names of two characters from literature that has
+	heavily influenced <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a>. The first being Lauren
 	Olamina, from Octavia Butler's <em>Parable of the Sower</em> and the latter being Maelcum, the
 	pilot of the
 	<em>Marcus Garvey</em>
