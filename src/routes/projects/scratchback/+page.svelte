@@ -32,7 +32,8 @@
 	<p>
 		Note: this service is currently optimized for games hosted on <a
 			href="https://itch.io/?ref=olamaelcu">itch.io</a
-		>
+		>. If you'd like to talk about integrating your platform, please
+		<a href="mailto:hey@olamaelcu.net">reach out</a>.
 	</p>
 	<h2>Planned Features</h2>
 	<ul>
