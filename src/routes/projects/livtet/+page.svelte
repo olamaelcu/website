@@ -1,7 +1,8 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import ProjectPage from '../ProjectPage.svelte';
-	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
+	import ProjectStatus from '$lib/components/projectStatus.svelte';
+	import { STATUSES } from '$lib/statuses';
 	import { createQuery } from '@tanstack/svelte-query';
 
 	const projectKey = 'livtet';

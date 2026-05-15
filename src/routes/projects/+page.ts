@@ -1,4 +1,4 @@
-import { STATUSES } from '$lib/components/projectStatus.svelte';
+import { STATUSES } from '$lib/statuses';
 
 interface Project {
 	name: string;

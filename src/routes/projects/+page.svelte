@@ -2,7 +2,8 @@
 	import { resolve } from '$app/paths';
 	import SEO from '$lib/components/SEO.svelte';
 	import { SITE_URL } from '$lib/constants';
-	import ProjectStatus, { STATUSES } from '$lib/components/projectStatus.svelte';
+	import ProjectStatus from '$lib/components/projectStatus.svelte';
+	import { STATUSES } from '$lib/statuses';
 
 	const { data } = $props();
 

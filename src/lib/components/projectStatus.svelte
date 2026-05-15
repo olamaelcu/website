@@ -1,10 +1,6 @@
 <script lang="ts" module>
-	export enum STATUSES {
-		INCUBATING = 'incubate',
-		ALPHA = 'alpha',
-		BETA = 'beta',
-		RELEASE = 'rc'
-	}
+	import { STATUSES } from '$lib/statuses';
+	export { STATUSES };
 </script>
 
 <script lang="ts">
