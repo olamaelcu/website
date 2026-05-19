@@ -43,13 +43,13 @@
 	</ul>
 
 	<h2>Our Open Source Projects</h2>
-	{#if $query.isPending}
+	{#if query.isPending}
 		<p>Loading repositories...</p>
-	{:else if $query.isError}
+	{:else if query.isError}
 		<p>Failed to load repositories. Please try again later.</p>
-	{:else if $query.data}
+	{:else if query.data}
 		<ul class="repos">
-			{#each $query.data as repo (repo.name)}
+			{#each query.data as repo (repo.name)}
 				<li>
 					<a href={repo.forgeUrl}>
 						<strong>{repo.name}</strong>
