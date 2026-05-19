@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { createQuery } from '@tanstack/svelte-query';
-	import { fetchProfile } from '$lib/atproto';
+	import { createProfileQuery } from '@olamaelcu/atproto-svelte/client';
 
 	interface Props {
 		did: string;
@@ -10,12 +9,7 @@
 
 	let { did, size = 24, onFail }: Props = $props();
 
-	const query = createQuery(() => ({
-		queryKey: ['profile', did],
-		queryFn: () => fetchProfile(did),
-		staleTime: Infinity,
-		retry: 2
-	}));
+	const query = createProfileQuery(did);
 
 	$effect(() => {
 		if (query.isError && onFail) {
@@ -56,9 +50,9 @@
 		{/if}
 	</span>
 {:else if query.data}
-	{#if query.data.avatarUrl}
+	{#if query.data.avatar}
 		<img
-			src={query.data.avatarUrl}
+			src={query.data.avatar}
 			alt={query.data.displayName || query.data.handle}
 			class="avatar"
 			style="width: {size}px; height: {size}px;"
