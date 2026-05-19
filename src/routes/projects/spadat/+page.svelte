@@ -38,7 +38,7 @@
 	<h2>How to Play</h2>
 	<p>
 		Join a lobby with 3 friends. Partners sit across from each other — North/South versus East/West.
-		Bid how many tricks you'll take, then play cards trying to win tricks. Your partnership's
+		Bid how many books you'll take, then play cards trying to win books. Your partnership's
 		combined bid determines your target. First to 500 points (or whatever the host sets) wins.
 	</p>
 	<h2>Rule Options</h2>
