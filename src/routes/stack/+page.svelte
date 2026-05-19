@@ -77,7 +77,6 @@
 	}
 	.subtitle {
 		text-align: center;
-		opacity: 0.7;
 		margin-bottom: var(--wa-space-xl);
 	}
 	h2 {
@@ -117,6 +116,8 @@
 		width: 100%;
 		flex: 1 1;
 		font-size: var(--text-sm);
+		background-color: var(--wa-color-neutral-80);
+		color: var(--wa-color-neutral-05);
 
 		& {
 			span {
@@ -125,18 +126,9 @@
 		}
 	}
 
-	@media (prefers-color-scheme: dark) {
-		.item-header {
-			background-color: var(--wa-color-neutral-80);
-			color: var(--wa-color-neutral-05);
-			border-radius: var(--wa-radius-s);
-		}
-	}
-
 	.description {
 		font-size: var(--text-sm);
-		opacity: 0.7;
-		padding: var(--wa-space-s) var(--wa-space-m);
+		padding: var(--wa-space-xs) 0;
 	}
 	.repos {
 		list-style: none;
@@ -167,7 +159,6 @@
 		grid-column: 1 / -1;
 		grid-row: 2;
 		font-size: var(--text-sm);
-		opacity: 0.7;
 	}
 	.topics {
 		grid-column: 1 / -1;
@@ -189,12 +180,10 @@
 		grid-column: 2;
 		grid-row: 1;
 		font-size: var(--text-sm);
-		opacity: 0.7;
 	}
 	.attribution {
 		margin-top: var(--wa-space-xl);
 		text-align: center;
 		font-size: var(--text-sm);
-		opacity: 0.6;
 	}
 </style>
