@@ -51,10 +51,4 @@
 	section.lead {
 		padding: var(--wa-space-m);
 	}
-	h2 {
-		margin: var(--wa-space-l) 0 var(--wa-space-m);
-		font-size: var(--text-base);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
 </style>
