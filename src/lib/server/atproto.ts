@@ -1,6 +1,3 @@
-import { json } from '@sveltejs/kit';
-import type { RequestHandler } from './$types';
-
 interface RepoRecord {
 	uri: string;
 	cid: string;
@@ -13,7 +10,7 @@ interface RepoRecord {
 	};
 }
 
-interface Repo {
+export interface Repo {
 	name: string;
 	description: string;
 	topics: string[];
@@ -32,9 +29,15 @@ const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
 const PDS_URL = 'https://blacksky.app/xrpc/com.atproto.repo.listRecords';
 const CONSTELLATION_URL = 'https://constellation.microcosm.blue/links/count';
-const USER_AGENT = 'olamaelcu.net/1.0 (open-source-page; olamaelcu@olamaelcu.net)';
+const USER_AGENT = 'olamaelcu.net/1.0 (stack-page; olamaelcu@olamaelcu.net)';
 
-async function fetchRepos(): Promise<Repo[]> {
+export async function getRepositories(): Promise<Repo[]> {
+	// Check cache first
+	const now = Date.now();
+	if (cache.data && now - cache.timestamp < CACHE_TTL) {
+		return cache.data;
+	}
+
 	// Fetch repo list from PDS
 	const pdsResponse = await fetch(
 		`${PDS_URL}?repo=did:plc:ejggqolmgpylroktvaktibik&collection=sh.tangled.repo`,
@@ -46,6 +49,10 @@ async function fetchRepos(): Promise<Repo[]> {
 	);
 
 	if (!pdsResponse.ok) {
+		// If fetch fails but we have stale cache, return it
+		if (cache.data) {
+			return cache.data;
+		}
 		throw new Error(`Failed to fetch repos: ${pdsResponse.status}`);
 	}
 
@@ -91,30 +98,11 @@ async function fetchRepos(): Promise<Repo[]> {
 		})
 	);
 
+	// Update cache
+	cache = {
+		data: reposWithStars,
+		timestamp: now
+	};
+
 	return reposWithStars;
 }
-
-export const GET: RequestHandler = async () => {
-	const now = Date.now();
-
-	// Check cache
-	if (cache.data && now - cache.timestamp < CACHE_TTL) {
-		return json(cache.data);
-	}
-
-	// Cache miss or expired, fetch fresh data
-	try {
-		const repos = await fetchRepos();
-		cache = {
-			data: repos,
-			timestamp: now
-		};
-		return json(repos);
-	} catch (error) {
-		// If fetch fails but we have stale cache, return it
-		if (cache.data) {
-			return json(cache.data);
-		}
-		throw error;
-	}
-};
