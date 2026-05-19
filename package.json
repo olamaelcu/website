@@ -16,9 +16,7 @@
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright test",
-		"migrate:roadmap": "tsx scripts/migrate-roadmap.ts",
-		"migrate:stack": "tsx scripts/migrate-stack.ts",
-		"seed:stack": "tsx scripts/seed-stack.ts"
+		"migrate:roadmap": "tsx scripts/migrate-roadmap.ts"
 	},
 	"devDependencies": {
 		"@awesome.me/webawesome": "^3.5.0",
