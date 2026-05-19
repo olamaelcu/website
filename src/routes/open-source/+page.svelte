@@ -3,7 +3,7 @@
 	import { SITE_URL } from '$lib/constants';
 	import { createQuery } from '@tanstack/svelte-query';
 
-	const query = createQuery({
+	const query = createQuery(() => ({
 		queryKey: ['repositories'],
 		queryFn: async () => {
 			const response = await fetch('/api/repositories');
@@ -13,7 +13,7 @@
 			return response.json();
 		},
 		staleTime: 5 * 60 * 1000
-	});
+	}));
 </script>
 
 <SEO
