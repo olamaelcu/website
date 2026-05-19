@@ -25,17 +25,54 @@
 
 <ProjectPage {title} {status} {projectKey}>
 	<p>
-		A multiplayer Spades card game where match data lives on the AT Protocol. Built with <a
+		A 4-player online Spades card game. Find a partner, pick your rules, and play matches where
+		everyone can verify the results were fair. Built with <a
 			href="https://godot-rust.github.io/">Godot and Rust</a
-		>, featuring a fair shuffle protocol with multi-party entropy and post-hoc verification so any
-		observer can independently confirm a match was played fairly.
+		>.
 	</p>
-	<h2>Planned Features</h2>
+	<p>
+		What makes it different: every hand uses a shuffle that all 4 players help create — no one can
+		rig the deal. After each hand, the full record becomes public so anyone can double-check the
+		game was on the up-and-up.
+	</p>
+	<h2>How to Play</h2>
+	<p>
+		Join a lobby with 3 friends. Partners sit across from each other — North/South versus East/West.
+		Bid how many tricks you'll take, then play cards trying to win tricks. Your partnership's
+		combined bid determines your target. First to 500 points (or whatever the host sets) wins.
+	</p>
+	<h2>Rule Options</h2>
+	<p>
+		Pick from several rule presets or customize nearly every detail:
+	</p>
 	<ul>
-		<li>4-player partnership Spades with configurable rule variations</li>
-		<li>Verifiable fair shuffle using commit-reveal with multi-party entropy</li>
-		<li>Match history stored as AT Protocol records on each player's PDS</li>
-		<li>Cross-platform mobile and desktop client built with Godot</li>
-		<li>Real-time multiplayer with spectator mode and WebSocket events</li>
+		<li>
+			<strong>Standard</strong> — The classic version most people know. Nil bids allowed, 500 points
+			to win.
+		</li>
+		<li>
+			<strong>Tournament</strong> — Stricter timing and bidding. Great for competitive matches.
+		</li>
+		<li>
+			<strong>NYC Rules</strong> — Street-style with jokers, faster games (first to 350), and
+			no nil bids allowed.
+		</li>
+		<li>
+			<strong>Casual</strong> — Relaxed rules for fun games with friends. No bag penalties, longer
+			turn timers.
+		</li>
+		<li>
+			<strong>Custom</strong> — Fine-tune everything from deck type to scoring rules.
+		</li>
 	</ul>
+	<h2>Platforms</h2>
+	<p>Built for mobile first — coming to Android and iOS. Desktop support planned for Windows, macOS, and Linux.</p>
+	<h2>Fair Play</h2>
+	<p>
+		The deck gets shuffled using randomness from all 4 players plus the server. Each player contributes
+		a secret random number, and only after everyone commits their hash do the numbers get revealed.
+		This means no single player can control the deal. After the hand finishes, the complete game
+		record becomes public — seeds, deck order, every play — so anyone can independently verify the
+		game was fair.
+	</p>
 </ProjectPage>
