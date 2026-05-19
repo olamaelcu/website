@@ -26,8 +26,10 @@
 				{#each items as item}
 					<li>
 						<a href={item.url} class="stack-item">
-							<Favicon domain={item.domain} alt={item.name} size={24} />
-							<span class="name">{item.name}</span>
+							<span class="item-header">
+								<Favicon domain={item.domain} alt={item.name} size={24} />
+								<span class="name">{item.name}</span>
+							</span>
 							<span class="description">{item.description}</span>
 						</a>
 					</li>
@@ -62,8 +64,10 @@
 </section>
 
 <style>
+	:global(main) {
+		max-width: 70rem;
+	}
 	section {
-		max-width: 65ch;
 		margin: 0 auto;
 	}
 	h1 {
@@ -87,15 +91,14 @@
 	.stack-grid {
 		list-style: none;
 		padding: 0;
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-		gap: var(--wa-space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--wa-space-xs);
 	}
 	.stack-item {
 		display: flex;
 		flex-direction: column;
-		gap: var(--wa-space-xs);
-		padding: var(--wa-space-m);
+		align-items: center;
 		border: 1px solid var(--link);
 		text-decoration: none;
 		transition: border-color 0.2s ease;
@@ -106,31 +109,54 @@
 	.name {
 		font-weight: 600;
 	}
+
+	.item-header {
+		display: flex;
+		align-items: center;
+		padding: var(--wa-space-xs);
+		width: 100%;
+		flex: 1 1;
+		font-size: var(--text-sm);
+
+		& {
+			span {
+				margin-left: var(--wa-space-xs);
+			}
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.item-header {
+			background-color: var(--wa-color-neutral-80);
+			color: var(--wa-color-neutral-05);
+			border-radius: var(--wa-radius-s);
+		}
+	}
+
 	.description {
 		font-size: var(--text-sm);
 		opacity: 0.7;
+		padding: var(--wa-space-s) var(--wa-space-m);
 	}
 	.repos {
 		list-style: none;
 		padding: 0;
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-		gap: var(--wa-space-m);
+		display: flex;
+		flex-direction: column;
+		gap: var(--wa-space-xs);
 	}
 	.repos li {
 		margin: 0;
 		padding: 0;
-		box-shadow: var(--wa-shadow-s);
 	}
 	.repos a {
 		display: grid;
 		grid-template-columns: 1fr auto;
 		grid-template-rows: auto auto auto;
-		gap: 0 var(--wa-space-xs);
-		padding: var(--wa-space-m);
+		gap: var(--wa-space-xs) var(--wa-space-m);
+		padding: var(--wa-space-s) var(--wa-space-m);
 		border: 1px solid var(--link);
 		text-decoration: none;
-		height: 100%;
 		box-sizing: border-box;
 	}
 	.repos strong {
