@@ -9,7 +9,7 @@
 
 	let { did, size = 24, onFail }: Props = $props();
 
-	const query = createProfileQuery(did);
+	const query = $derived(createProfileQuery(did));
 
 	$effect(() => {
 		if (query.isError && onFail) {

@@ -29,7 +29,7 @@ const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
 const PDS_URL = 'https://blacksky.app/xrpc/com.atproto.repo.listRecords';
 const CONSTELLATION_URL = 'https://constellation.microcosm.blue/links/count';
-const USER_AGENT = 'olamaelcu.net/1.0 (stack-page; olamaelcu@olamaelcu.net)';
+const USER_AGENT = 'olamaelcu.net/1.0 (Used for showing stats on /stack; ua@olamaelcu.net)';
 
 export async function getRepositories(): Promise<Repo[]> {
 	// Check cache first
