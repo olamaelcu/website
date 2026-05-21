@@ -25,11 +25,19 @@
 />
 
 <ProjectPage {title} {status} {projectKey}>
-	<p>A book management system for desktop and mobile that works with ATProto and the Fediverse.</p>
-	<h2>Planned Features</h2>
+	<p>
+		A local-first book collection manager for desktop and mobile. Keep your library on your own
+		terms — your data lives on your device, with optional sync to services you already use. Works
+		with the Fediverse and ATProto so you can share reading activity on your own terms.
+	</p>
+	<h2>Features</h2>
 	<ul>
-		<li>Manage a book collection using a familiar interface</li>
-		<li>Synchronize your reading history and collection with popular services</li>
-		<li>Capture annotations about what you've read</li>
+		<li>
+			Manage your full book collection — physical, digital, and audiobooks — in one place
+		</li>
+		<li>Sync reading progress and collections with e-readers like Kobo and Kindle</li>
+		<li>Capture annotations, create reading lists, and search across your entire library</li>
+		<li>Share what you're reading through ATProto and the Fediverse</li>
+		<li>Look up books from Open Library, WorldCat, and other catalog sources</li>
 	</ul>
 </ProjectPage>

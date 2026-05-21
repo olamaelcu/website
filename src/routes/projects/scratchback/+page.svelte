@@ -35,18 +35,21 @@
 		>. If you'd like to talk about integrating your platform, please
 		<a href="mailto:hey@olamaelcu.net">reach out</a>.
 	</p>
-	<h2>Planned Features</h2>
+	<p>
+		All save data is encrypted so the server never sees your players' information. Games work
+		offline and sync seamlessly when connected — no lost saves, no conflicts.
+	</p>
+	<h2>Features</h2>
 	<ul>
 		<li>
-			Players provided with a means of reviewing their game history and a means of <strong
-				>sharing gameplay experiences</strong
-			>
+			Players get a unified game history and a way to <strong>share gameplay experiences</strong>
 		</li>
 		<li>
-			Games can leverage information from other titles in their warehouse to <strong
-				>enrich gameplay experience</strong
-			>
+			Games can reference information from other titles to <strong>enrich gameplay</strong>
 		</li>
-		<li>Save information can be done incrementally and in a conflict-resistant way</li>
+		<li>Save data syncs incrementally and handles conflicts gracefully</li>
+		<li>Achievements with customizable visibility — public, hidden, or private</li>
+		<li>Server-validated leaderboards to keep rankings fair</li>
+		<li>SDKs available for Bevy and Godot game engines</li>
 	</ul>
 </ProjectPage>

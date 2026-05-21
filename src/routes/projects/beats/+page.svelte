@@ -38,10 +38,17 @@
 			></strong
 		>.
 	</p>
-	<h2>Planned Features</h2>
+	<p>
+		Three custom feeds bring music discovery to your timeline: your own posts with music links,
+		music from a hand-picked group of people you follow, and music posts from everyone you follow.
+	</p>
+	<h2>Features</h2>
 	<ul>
 		<li>Build up a feed of your music-related posts to share on Blacksky.</li>
 		<li>Curate a list of people you follow to see their music updates.</li>
+		<li>
+			Connect Spotify, Apple Music, or Plex to automatically share what you're listening to.
+		</li>
 		<li>
 			In honor of <a
 				href="https://www.refinery29.com/en-us/2020/12/10208481/jewel-ham-artist-spotify-wrapped-internship?ref=olamaelcu"
