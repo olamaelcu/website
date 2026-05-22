@@ -29,7 +29,14 @@ if (!pdsHost || !authToken) {
 	);
 }
 
-const agent = new Agent(pdsHost ? `https://${pdsHost}` : '');
+// Handle PDS host - may or may not include protocol
+const agentUrl = pdsHost
+	? pdsHost.startsWith('http://') || pdsHost.startsWith('https://')
+		? pdsHost
+		: `https://${pdsHost}`
+	: '';
+console.log(`[Standard.site] Agent URL: ${agentUrl || 'NOT CONFIGURED'}`);
+const agent = new Agent(agentUrl);
 
 /**
  * Sets up authentication for the agent
