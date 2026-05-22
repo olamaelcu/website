@@ -52,6 +52,7 @@
 	},
 	"packageManager": "yarn@4.14.1",
 	"dependencies": {
+		"@atproto/api": "^0.15.0",
 		"@fontsource/inconsolata": "^5.2.8",
 		"@fontsource/kalnia": "^5.2.9",
 		"@fontsource/space-grotesk": "^5.2.10",

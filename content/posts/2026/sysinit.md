@@ -4,6 +4,11 @@ date: 2026-05-11
 draft: false
 description: 'Getting things ready to show'
 tags: [meta]
+authors:
+  - did: 'did:plc:e2ctbutx6kya6si4if5ngjmm'
+    name: 'Jacky'
+    url: 'https://www.jacky.wtf'
+bskyPostUri: 'at://did:plc:ejggqolmgpylroktvaktibik/app.bsky.feed.post/3mllxzzngx22x'
 ---
 
 This is going to be short and sweet.

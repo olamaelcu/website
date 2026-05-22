@@ -179,7 +179,8 @@ describe('feed.ts module', () => {
 				date: '2024-01-15',
 				slug: 'test-post',
 				year: '2024',
-				tags: ['test', 'demo']
+				tags: ['test', 'demo'],
+				authors: []
 			}
 		]);
 

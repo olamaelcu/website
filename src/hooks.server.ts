@@ -90,6 +90,42 @@ if (cleanupTimer.unref) cleanupTimer.unref();
 import { sequence } from '@sveltejs/kit/hooks';
 import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
+import { syncAll } from '$lib/standard-site/emitter';
+
+// Standard.site sync on server startup
+console.log('');
+console.log('[hooks.server.ts] ========================================');
+console.log('[hooks.server.ts] Checking Standard.site sync configuration...');
+console.log('[hooks.server.ts] ========================================');
+
+const atpToken = process.env.ATP_AUTH_TOKEN;
+const pdsHost = process.env.ATP_PDS_HOST;
+
+console.log(`[hooks.server.ts] ATP_PDS_HOST: ${pdsHost || 'NOT SET'}`);
+console.log(
+	`[hooks.server.ts] ATP_AUTH_TOKEN: ${atpToken ? 'SET (length: ' + atpToken.length + ')' : 'NOT SET'}`
+);
+
+if (atpToken && pdsHost) {
+	console.log('[hooks.server.ts] Both env vars present. Calling syncAll()...');
+	console.log('[hooks.server.ts] This may take a moment...');
+	syncAll()
+		.then(() => {
+			console.log('[hooks.server.ts] Standard.site records synced successfully');
+			console.log('[hooks.server.ts] Server startup continuing...');
+			console.log('');
+		})
+		.catch((err) => {
+			console.error('[hooks.server.ts] Standard.site sync FAILED:', err);
+			console.error('[hooks.server.ts] Exiting process due to sync failure');
+			process.exit(1);
+		});
+} else {
+	console.warn('[hooks.server.ts] Missing required environment variables');
+	console.warn('[hooks.server.ts] Standard.site sync SKIPPED');
+	console.log('[hooks.server.ts] Server startup continuing without Standard.site sync');
+	console.log('');
+}
 
 const rateLimiter: Handle = async ({ event, resolve }) => {
 	const { pathname } = event.url;

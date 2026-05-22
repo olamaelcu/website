@@ -15,6 +15,12 @@ function addUtmToLinks(html: string, slug: string): string {
 	});
 }
 
+export interface Author {
+	did: string;
+	name: string;
+	url: string;
+}
+
 export interface PostMeta {
 	slug: string;
 	year: string;
@@ -23,6 +29,8 @@ export interface PostMeta {
 	draft?: boolean;
 	description: string;
 	tags: string[];
+	authors: Author[];
+	bskyPostUri?: string;
 }
 
 export interface Post extends PostMeta {
@@ -45,6 +53,18 @@ function parsePost(filePath: string, raw: string): Post {
 	}
 	const year = dateStr.slice(0, 4);
 
+	// Parse authors from frontmatter
+	const authors: Author[] = Array.isArray(data.authors)
+		? data.authors.map((a: { did?: string; name?: string; url?: string }) => ({
+				did: String(a.did ?? ''),
+				name: String(a.name ?? ''),
+				url: String(a.url ?? '')
+			}))
+		: [];
+
+	// Parse bskyPostUri from frontmatter
+	const bskyPostUri = data.bskyPostUri ? String(data.bskyPostUri) : undefined;
+
 	return {
 		slug,
 		year,
@@ -52,6 +72,8 @@ function parsePost(filePath: string, raw: string): Post {
 		date: dateStr,
 		description: String(data.description ?? ''),
 		tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+		authors,
+		bskyPostUri,
 		content: addUtmToLinks(createDOMPurify.sanitize(marked(content) as string), slug),
 		draft
 	};

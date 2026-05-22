@@ -28,6 +28,10 @@
 		href="https://olamaelcu.net/feed/json"
 		title="Olamaelcu Blog - JSON Feed"
 	/>
+	<link
+		rel="alternate external"
+		href="at://did:plc:ejggqolmgpylroktvaktibik/site.standard.publication/olamaelcu-publication"
+	/>
 </svelte:head>
 
 <QueryClientProvider client={data.queryClient}>

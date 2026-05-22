@@ -10,6 +10,13 @@
 	);
 </script>
 
+<svelte:head>
+	<link
+		rel="alternate external"
+		href="at://did:plc:ejggqolmgpylroktvaktibik/site.standard.document/{post.year}-{post.slug}"
+	/>
+</svelte:head>
+
 <MetaTags
 	title={metaTags.title}
 	description={metaTags.description}
