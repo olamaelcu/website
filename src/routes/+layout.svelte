@@ -29,7 +29,7 @@
 		title="Olamaelcu Blog - JSON Feed"
 	/>
 	<link
-		rel="site.standard.publication"
+		rel="site.standard.publication external"
 		href="at://did:plc:ejggqolmgpylroktvaktibik/site.standard.publication/olamaelcu-publication"
 	/>
 </svelte:head>
