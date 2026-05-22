@@ -16,16 +16,20 @@ import {
 // Initialize AT Protocol agent
 const pdsHost = process.env.ATP_PDS_HOST;
 const authToken = process.env.ATP_AUTH_TOKEN;
+const identifier = process.env.ATP_AUTH_IDENTIFIER;
 
 console.log('[Standard.site] Initializing emitter module...');
 console.log(`[Standard.site] ATP_PDS_HOST: ${pdsHost ? 'set (' + pdsHost + ')' : 'NOT SET'}`);
 console.log(
 	`[Standard.site] ATP_AUTH_TOKEN: ${authToken ? 'set (length: ' + authToken.length + ')' : 'NOT SET'}`
 );
+console.log(
+	`[Standard.site] ATP_AUTH_IDENTIFIER: ${identifier ? 'set (' + identifier + ')' : 'NOT SET'}`
+);
 
-if (!pdsHost || !authToken) {
+if (!pdsHost || !authToken || !identifier) {
 	console.warn(
-		'[Standard.site] ATP_PDS_HOST or ATP_AUTH_TOKEN not set, Standard.site sync will not function'
+		'[Standard.site] ATP_PDS_HOST, ATP_AUTH_TOKEN, or ATP_AUTH_IDENTIFIER not set, Standard.site sync will not function'
 	);
 }
 
@@ -39,15 +43,16 @@ console.log(`[Standard.site] Agent URL: ${agentUrl || 'NOT CONFIGURED'}`);
 const agent = new Agent(agentUrl);
 
 /**
- * Sets up authentication for the agent
+ * Logs in to the PDS and establishes a session.
+ * Must be called before any authenticated operations.
  */
-function setupAuth(): void {
-	if (!authToken) {
-		throw new Error('ATP_AUTH_TOKEN environment variable is required');
+async function login(): Promise<void> {
+	if (!authToken || !identifier) {
+		throw new Error('ATP_AUTH_TOKEN and ATP_AUTH_IDENTIFIER environment variables are required');
 	}
-	// The agent uses the auth token for authenticated requests
-	agent.api.setHeader('Authorization', `Bearer ${authToken}`);
-	console.log('[Standard.site] Authentication set up successfully');
+	console.log(`[Standard.site] Logging in as ${identifier}...`);
+	await agent.login({ identifier, password: authToken });
+	console.log('[Standard.site] Logged in successfully');
 }
 
 /**
@@ -59,8 +64,6 @@ function setupAuth(): void {
 export async function uploadBlob(data: Buffer, mimeType: string): Promise<BlobRef> {
 	console.log(`[Standard.site] Uploading blob (${data.length} bytes, ${mimeType})...`);
 	console.log(`[Standard.site] Agent URL: ${agentUrl}`);
-	console.log(`[Standard.site] Auth token prefix: ${authToken?.slice(0, 10)}...`);
-	setupAuth();
 	try {
 		const response = await agent.uploadBlob(data, { encoding: mimeType });
 		console.log(`[Standard.site] Upload response received`);
@@ -96,7 +99,6 @@ export async function uploadBlob(data: Buffer, mimeType: string): Promise<BlobRe
  */
 export async function resolveCid(uri: string): Promise<StrongRef> {
 	console.log(`[Standard.site] Resolving CID for URI: ${uri}`);
-	setupAuth();
 	const parts = uri.replace('at://', '').split('/');
 	const repo = parts[0];
 	const collection = parts[1];
@@ -150,7 +152,6 @@ export async function syncPublication(): Promise<void> {
 	console.log('[Standard.site] Starting publication sync...');
 	console.log(`[Standard.site] Publication rkey: ${PUBLICATION_RKEY}`);
 	console.log(`[Standard.site] Publication DID: ${DID}`);
-	setupAuth();
 
 	// Read and upload favicon
 	const faviconPath = join(process.cwd(), 'static', 'favicon.png');
@@ -194,8 +195,6 @@ export async function syncDocument(post: Post): Promise<void> {
 	console.log(`[Standard.site] Post has ${post.authors?.length || 0} author(s)`);
 	console.log(`[Standard.site] Post has ${post.tags?.length || 0} tag(s)`);
 	console.log(`[Standard.site] bskyPostUri: ${post.bskyPostUri || 'none'}`);
-
-	setupAuth();
 
 	// Read and upload OG image
 	const ogImagePath = join(process.cwd(), 'static', 'blog-og', `${rkey}.png`);
@@ -279,6 +278,11 @@ export async function syncAll(): Promise<void> {
 	console.log(`[Standard.site] PDS Host: ${pdsHost}`);
 	console.log(`[Standard.site] Publication DID: ${DID}`);
 	console.log(`[Standard.site] Publication rkey: ${PUBLICATION_RKEY}`);
+
+	// Login first
+	console.log('');
+	console.log('[Standard.site] Step 0: Authenticating...');
+	await login();
 
 	// Sync publication first
 	console.log('');
