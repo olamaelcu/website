@@ -12,7 +12,7 @@
 
 <svelte:head>
 	<link
-		rel="alternate external"
+		rel="site.standard.document"
 		href="at://did:plc:ejggqolmgpylroktvaktibik/site.standard.document/{post.year}-{post.slug}"
 	/>
 </svelte:head>
