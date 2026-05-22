@@ -1,4 +1,4 @@
-import { Agent } from '@atproto/api';
+import { AtpAgent } from '@atproto/api';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { getAllPostsAsync } from '$lib/posts';
@@ -40,7 +40,7 @@ const agentUrl = pdsHost
 		: `https://${pdsHost}`
 	: '';
 console.log(`[Standard.site] Agent URL: ${agentUrl || 'NOT CONFIGURED'}`);
-const agent = new Agent(agentUrl);
+const agent = new AtpAgent({ service: agentUrl });
 
 /**
  * Logs in to the PDS and establishes a session.
