@@ -58,18 +58,35 @@ function setupAuth(): void {
  */
 export async function uploadBlob(data: Buffer, mimeType: string): Promise<BlobRef> {
 	console.log(`[Standard.site] Uploading blob (${data.length} bytes, ${mimeType})...`);
+	console.log(`[Standard.site] Agent URL: ${agentUrl}`);
+	console.log(`[Standard.site] Auth token prefix: ${authToken?.slice(0, 10)}...`);
 	setupAuth();
-	const response = await agent.uploadBlob(data, { encoding: mimeType });
-	const blobRef = {
-		$type: 'blob' as const,
-		ref: {
-			$link: response.data.blob.ref.toString()
-		},
-		mimeType,
-		size: data.length
-	};
-	console.log(`[Standard.site] Blob uploaded successfully: ${blobRef.ref.$link}`);
-	return blobRef;
+	try {
+		const response = await agent.uploadBlob(data, { encoding: mimeType });
+		console.log(`[Standard.site] Upload response received`);
+		console.log(`[Standard.site] Response data:`, JSON.stringify(response.data, null, 2));
+		const blobRef = {
+			$type: 'blob' as const,
+			ref: {
+				$link: response.data.blob.ref.toString()
+			},
+			mimeType,
+			size: data.length
+		};
+		console.log(`[Standard.site] Blob uploaded successfully: ${blobRef.ref.$link}`);
+		return blobRef;
+	} catch (err) {
+		console.error('[Standard.site] Blob upload failed:', err);
+		if (err && typeof err === 'object') {
+			console.error('[Standard.site] Error details:', JSON.stringify(err, null, 2));
+			// Log specific XRPCError properties
+			const xrpcErr = err as { status?: number; error?: string; headers?: Record<string, string> };
+			if (xrpcErr.status) console.error(`[Standard.site] HTTP Status: ${xrpcErr.status}`);
+			if (xrpcErr.error) console.error(`[Standard.site] Error code: ${xrpcErr.error}`);
+			if (xrpcErr.headers) console.error(`[Standard.site] Response headers:`, xrpcErr.headers);
+		}
+		throw err;
+	}
 }
 
 /**
