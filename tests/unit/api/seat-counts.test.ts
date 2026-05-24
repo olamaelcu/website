@@ -1,3 +1,4 @@
+import type { SeatCount } from '$lib/server/waitlist';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { getSeatCounts } from '$lib/server/waitlist';
 import { ensureDb } from '$lib/server/db/waitlist';
@@ -59,7 +60,7 @@ describe('GET /api/seat-counts', () => {
 		const response = await GET();
 		const body = await response.json();
 
-		for (const counts of Object.values(body)) {
+		for (const counts of Object.values(body) as SeatCount[]) {
 			expect(counts).toHaveProperty('seatsTaken');
 			expect(typeof counts.seatsTaken).toBe('number');
 			expect(counts.seatsTaken).toBeGreaterThanOrEqual(0);
@@ -81,7 +82,7 @@ describe('GET /api/seat-counts', () => {
 
 		expect(body).toBeDefined();
 		expect(typeof body).toBe('object');
-		for (const counts of Object.values(body)) {
+		for (const counts of Object.values(body) as SeatCount[]) {
 			expect(counts.seatsTaken).toBe(0);
 		}
 	});

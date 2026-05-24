@@ -13,40 +13,49 @@ import {
 	publicationAtUri
 } from './constants';
 
-// Initialize AT Protocol agent
-const pdsHost = process.env.ATP_PDS_HOST;
-const authToken = process.env.ATP_AUTH_TOKEN;
-const identifier = process.env.ATP_AUTH_IDENTIFIER;
+let _agent: AtpAgent | null = null;
+let _agentUrl = '';
 
-console.log('[Standard.site] Initializing emitter module...');
-console.log(`[Standard.site] ATP_PDS_HOST: ${pdsHost ? 'set (' + pdsHost + ')' : 'NOT SET'}`);
-console.log(
-	`[Standard.site] ATP_AUTH_TOKEN: ${authToken ? 'set (length: ' + authToken.length + ')' : 'NOT SET'}`
-);
-console.log(
-	`[Standard.site] ATP_AUTH_IDENTIFIER: ${identifier ? 'set (' + identifier + ')' : 'NOT SET'}`
-);
+function getAgent(): AtpAgent {
+	if (_agent) return _agent;
 
-if (!pdsHost || !authToken || !identifier) {
-	console.warn(
-		'[Standard.site] ATP_PDS_HOST, ATP_AUTH_TOKEN, or ATP_AUTH_IDENTIFIER not set, Standard.site sync will not function'
+	const pdsHost = process.env.ATP_PDS_HOST;
+	const authToken = process.env.ATP_AUTH_TOKEN;
+	const identifier = process.env.ATP_AUTH_IDENTIFIER;
+
+	console.log('[Standard.site] Initializing emitter module...');
+	console.log(`[Standard.site] ATP_PDS_HOST: ${pdsHost ? 'set (' + pdsHost + ')' : 'NOT SET'}`);
+	console.log(
+		`[Standard.site] ATP_AUTH_TOKEN: ${authToken ? 'set (length: ' + authToken.length + ')' : 'NOT SET'}`
 	);
-}
+	console.log(
+		`[Standard.site] ATP_AUTH_IDENTIFIER: ${identifier ? 'set (' + identifier + ')' : 'NOT SET'}`
+	);
 
-// Handle PDS host - may or may not include protocol
-const agentUrl = pdsHost
-	? pdsHost.startsWith('http://') || pdsHost.startsWith('https://')
-		? pdsHost
-		: `https://${pdsHost}`
-	: '';
-console.log(`[Standard.site] Agent URL: ${agentUrl || 'NOT CONFIGURED'}`);
-const agent = new AtpAgent({ service: agentUrl });
+	if (!pdsHost || !authToken || !identifier) {
+		throw new Error(
+			'ATP_PDS_HOST, ATP_AUTH_TOKEN, and ATP_AUTH_IDENTIFIER environment variables are required for Standard.site sync'
+		);
+	}
+
+	_agentUrl =
+		pdsHost.startsWith('http://') || pdsHost.startsWith('https://')
+			? pdsHost
+			: `https://${pdsHost}`;
+	console.log(`[Standard.site] Agent URL: ${_agentUrl}`);
+
+	_agent = new AtpAgent({ service: _agentUrl });
+	return _agent;
+}
 
 /**
  * Logs in to the PDS and establishes a session.
  * Must be called before any authenticated operations.
  */
 async function login(): Promise<void> {
+	const agent = getAgent();
+	const identifier = process.env.ATP_AUTH_IDENTIFIER;
+	const authToken = process.env.ATP_AUTH_TOKEN;
 	if (!authToken || !identifier) {
 		throw new Error('ATP_AUTH_TOKEN and ATP_AUTH_IDENTIFIER environment variables are required');
 	}
@@ -62,8 +71,9 @@ async function login(): Promise<void> {
  * @returns The BlobRef for the uploaded blob
  */
 export async function uploadBlob(data: Buffer, mimeType: string): Promise<BlobRef> {
+	const agent = getAgent();
 	console.log(`[Standard.site] Uploading blob (${data.length} bytes, ${mimeType})...`);
-	console.log(`[Standard.site] Agent URL: ${agentUrl}`);
+	console.log(`[Standard.site] Agent URL: ${_agentUrl}`);
 	try {
 		const response = await agent.uploadBlob(data, { encoding: mimeType });
 		console.log(`[Standard.site] Upload response received`);
@@ -98,6 +108,7 @@ export async function uploadBlob(data: Buffer, mimeType: string): Promise<BlobRe
  * @returns The StrongRef with URI and CID
  */
 export async function resolveCid(uri: string): Promise<StrongRef> {
+	const agent = getAgent();
 	console.log(`[Standard.site] Resolving CID for URI: ${uri}`);
 	const parts = uri.replace('at://', '').split('/');
 	const repo = parts[0];
@@ -173,7 +184,7 @@ export async function syncPublication(): Promise<void> {
 	console.log(`[Standard.site] Publication URL: ${publication.url}`);
 	console.log(`[Standard.site] Publication name: ${publication.name}`);
 
-	await agent.com.atproto.repo.putRecord({
+	await getAgent().com.atproto.repo.putRecord({
 		repo: DID,
 		collection: COLLECTION_PUB,
 		rkey: PUBLICATION_RKEY,
@@ -255,7 +266,7 @@ export async function syncDocument(post: Post): Promise<void> {
 	};
 
 	console.log(`[Standard.site] Sending document record to PDS (rkey: ${rkey})...`);
-	await agent.com.atproto.repo.putRecord({
+	await getAgent().com.atproto.repo.putRecord({
 		repo: DID,
 		collection: COLLECTION_DOC,
 		rkey,
@@ -275,7 +286,7 @@ export async function syncAll(): Promise<void> {
 	console.log('[Standard.site] STARTING SYNC PROCESS');
 	console.log('========================================');
 	console.log(`[Standard.site] Timestamp: ${new Date().toISOString()}`);
-	console.log(`[Standard.site] PDS Host: ${pdsHost}`);
+	console.log(`[Standard.site] PDS Host: ${process.env.ATP_PDS_HOST || 'NOT SET'}`);
 	console.log(`[Standard.site] Publication DID: ${DID}`);
 	console.log(`[Standard.site] Publication rkey: ${PUBLICATION_RKEY}`);
 

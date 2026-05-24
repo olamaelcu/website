@@ -19,7 +19,7 @@ export async function GET({ params }) {
 	const cached = faviconCache.get(cacheKey);
 
 	if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
-		return new Response(cached.data, {
+		return new Response(Buffer.from(cached.data), {
 			headers: {
 				'Content-Type': cached.contentType,
 				'Cache-Control': 'public, max-age=86400'
@@ -40,7 +40,7 @@ export async function GET({ params }) {
 				0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82
 			]);
 
-			return new Response(fallback, {
+			return new Response(Buffer.from(fallback), {
 				headers: {
 					'Content-Type': 'image/png',
 					'Cache-Control': 'public, max-age=3600'
@@ -61,7 +61,7 @@ export async function GET({ params }) {
 			oldest.forEach(([key]) => faviconCache.delete(key));
 		}
 
-		return new Response(data, {
+		return new Response(Buffer.from(data), {
 			headers: {
 				'Content-Type': contentType,
 				'Cache-Control': 'public, max-age=86400'
