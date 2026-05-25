@@ -11,15 +11,13 @@
 	}>();
 </script>
 
-<section class="lead">
-	<div class="title-row">
-		<h1>{title}</h1>
-		<ProjectStatus {status} />
-		<SeatCount {projectKey} />
-	</div>
-	{@render children()}
-	<Changelog {projectKey} />
-</section>
+<div class="title-row">
+	<h1>{title}</h1>
+	<ProjectStatus {status} />
+	<SeatCount {projectKey} />
+</div>
+{@render children()}
+<Changelog {projectKey} />
 
 <style>
 	.title-row {
@@ -47,8 +45,5 @@
 		font-family: var(--font-display);
 		margin-top: var(--wa-space-xs);
 		text-align: center;
-	}
-	section.lead {
-		padding: var(--wa-space-m);
 	}
 </style>

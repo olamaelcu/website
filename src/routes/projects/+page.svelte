@@ -58,7 +58,6 @@
 
 <style>
 	section {
-		max-width: 65ch;
 		margin: 0 auto;
 	}
 	h1 {

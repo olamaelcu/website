@@ -125,13 +125,14 @@ main {
 	flex-direction: column;
 	color: var(--text-1);
 	justify-content: top;
+	width: 100%;
 	max-width: 50rem;
 	margin: 0 auto;
-	padding: var(--wa-space-m);
+	padding: 0;
 
-	@media (width >= 40rem) {
+	@media (width <= 40rem) {
 		& {
-			width: 80vw;
+			padding: var(--wa-space-s);
 		}
 	}
 }

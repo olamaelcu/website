@@ -13,12 +13,17 @@
 	twitterImage={`${SITE_URL}/og-default.png`}
 />
 
+<img
+	src="/banner.jpg"
+	class="banner"
+	alt="A pair of glasses, pen and two open notebooks in black and white"
+/>
 <section class="lead">
 	<h1>Welcome</h1>
 	<p>
 		Olamaelcu's all about making things &mdash; complete or not &mdash; that people can experiment
-		with and understand. Each project comes with its own story of genesis, its goal and what
-		would make it be marked as <em>strong</em>.
+		with and understand. Each project comes with its own story of genesis, its goal and what would
+		make it be marked as <em>strong</em>.
 	</p>
 	<h2>The Mission</h2>
 	<p>
@@ -64,6 +69,18 @@
 		box-shadow: var(--wa-shadow-m);
 		a {
 			color: inherit;
+		}
+	}
+
+	img.banner {
+		height: 20rem;
+		object-position: center center;
+		object-fit: cover;
+
+		@media (width >= 40rem) {
+			& {
+				height: 30rem;
+			}
 		}
 	}
 </style>
