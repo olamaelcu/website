@@ -129,6 +129,7 @@
 	.description {
 		font-size: var(--text-sm);
 		padding: var(--wa-space-xs) 0;
+		margin: 0 var(--wa-space-s);
 	}
 	.repos {
 		list-style: none;
