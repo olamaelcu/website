@@ -11,10 +11,10 @@
 	--link: var(--wa-color-purple-40);
 	--wa-color-brand: var(--wa-color-purple-30);
 
-	--font-sans: 'Space Grotesk', system-ui, sans-serif;
-	--font-display: 'Tourney', system-ui, sans-serif;
-	--font-serif: 'Kalnia', Georgia, serif;
-	--font-mono: 'Inconsolata', ui-monospace, monospace;
+	--font-sans: 'Space Grotesk', var(--wa-font-family-body);
+	--font-display: 'Tourney', var(--wa-font-family-body);
+	--font-serif: 'Kalnia', var(--wa-font-family-body);
+	--font-mono: 'Inconsolata', var(--wa-font-family-code);
 
 	--text-1: var(--wa-color-neutral-05);
 	--surface-1: var(--wa-color-neutral-95);
@@ -57,9 +57,15 @@
 
 html {
 	font-size: 100%;
-	font-family: var(--font-sans);
 	background-color: var(--surface-1);
 	color: var(--text-1);
+}
+
+body {
+	font-family: var(--font-sans);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 a {
@@ -75,12 +81,6 @@ h6,
 blockquote,
 cite {
 	font-family: var(--font-serif);
-}
-
-body {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
 }
 
 header {
