@@ -2,23 +2,16 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 import createDOMPurify from 'isomorphic-dompurify';
 
-// Function to add UTM parameters to external links in HTML
-function addUtmToLinks(html: string, slug: string): string {
-	const utmParams = `utm_source=olamaelcu.net&utm_medium=blog&utm_campaign=${slug}_post`;
-
-	return html.replace(/href=(["'])(https?:\/\/[^"']+)\1/gi, (match, quote, url) => {
-		if (url.includes('utm_')) {
-			return match;
-		}
-		const separator = url.includes('?') ? '&' : '?';
-		return `href=${quote}${url}${separator}${utmParams}${quote}`;
-	});
-}
-
 export interface Author {
 	did: string;
 	name: string;
 	url: string;
+}
+
+export interface TocItem {
+	level: 2 | 3;
+	text: string;
+	id: string;
 }
 
 export interface PostMeta {
@@ -31,10 +24,47 @@ export interface PostMeta {
 	tags: string[];
 	authors: Author[];
 	bskyPostUri?: string;
+	audience?: string;
 }
 
 export interface Post extends PostMeta {
 	content: string;
+	toc: TocItem[];
+}
+
+function slugify(text: string): string {
+	return text
+		.toLowerCase()
+		.replace(/[^\w\s-]/g, '')
+		.replace(/\s+/g, '-')
+		.replace(/-+/g, '-')
+		.trim();
+}
+
+function extractToc(html: string): { content: string; toc: TocItem[] } {
+	const toc: TocItem[] = [];
+	let headingIndex = 0;
+
+	const content = html.replace(/<h([23])[^>]*>([\s\S]*?)<\/h[23]>/gi, (match, level, inner) => {
+		const text = inner.replace(/<[^>]+>/g, '').trim();
+		const id = slugify(text) + '-' + headingIndex++;
+		toc.push({ level: Number(level) as 2 | 3, text, id });
+		return match.replace(/<h([23])([^>]*)>/, `<h$1$2 id="${id}">`);
+	});
+
+	return { content, toc };
+}
+
+function addUtmToLinks(html: string, slug: string): string {
+	const utmParams = `utm_source=olamaelcu.net&utm_medium=blog&utm_campaign=${slug}_post`;
+
+	return html.replace(/href=(["'])(https?:\/\/[^"']+)\1/gi, (match, quote, url) => {
+		if (url.includes('utm_')) {
+			return match;
+		}
+		const separator = url.includes('?') ? '&' : '?';
+		return `href=${quote}${url}${separator}${utmParams}${quote}`;
+	});
 }
 
 function parsePost(filePath: string, raw: string): Post {
@@ -65,6 +95,14 @@ function parsePost(filePath: string, raw: string): Post {
 	// Parse bskyPostUri from frontmatter
 	const bskyPostUri = data.bskyPostUri ? String(data.bskyPostUri) : undefined;
 
+	// Parse audience from frontmatter
+	const audience = data.audience ? String(data.audience) : undefined;
+
+	// Parse and sanitize content, extract TOC, add UTM params
+	const rawHtml = createDOMPurify.sanitize(marked(content) as string);
+	const { content: tocContent, toc } = extractToc(rawHtml);
+	const processedContent = addUtmToLinks(tocContent, slug);
+
 	return {
 		slug,
 		year,
@@ -74,7 +112,9 @@ function parsePost(filePath: string, raw: string): Post {
 		tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
 		authors,
 		bskyPostUri,
-		content: addUtmToLinks(createDOMPurify.sanitize(marked(content) as string), slug),
+		audience,
+		content: processedContent,
+		toc,
 		draft
 	};
 }

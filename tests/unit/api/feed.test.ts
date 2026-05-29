@@ -180,7 +180,8 @@ describe('feed.ts module', () => {
 				slug: 'test-post',
 				year: '2024',
 				tags: ['test', 'demo'],
-				authors: []
+				authors: [],
+				toc: []
 			}
 		]);
 

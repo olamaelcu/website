@@ -9,6 +9,7 @@ authors:
     name: 'Jacky'
     url: 'https://www.jacky.wtf'
 bskyPostUri: 'at://did:plc:ejggqolmgpylroktvaktibik/app.bsky.feed.post/3mllxzzngx22x'
+audience: 'Anyone interested in what Olamaelcu is building.'
 ---
 
 This is going to be short and sweet.
