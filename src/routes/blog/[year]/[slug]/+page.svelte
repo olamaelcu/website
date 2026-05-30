@@ -247,6 +247,7 @@
 		font: inherit;
 		cursor: pointer;
 		padding: 0;
+		color: var(--text-1);
 	}
 
 	.toc nav ol,
