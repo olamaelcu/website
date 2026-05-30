@@ -78,6 +78,7 @@
 	{/if}
 
 	{#if post.audience}
+		<p class="audience-label">Intended Audience</p>
 		<p class="audience">{post.audience}</p>
 	{/if}
 
@@ -199,6 +200,16 @@
 		border-radius: 0.25rem;
 		font-size: var(--text-xs);
 		max-width: fit-content;
+	}
+
+	.audience-label {
+		font-size: var(--text-xs);
+		color: var(--text-1);
+		opacity: 0.6;
+		text-align: center;
+		margin-bottom: 0.25rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
 	}
 
 	.audience {
