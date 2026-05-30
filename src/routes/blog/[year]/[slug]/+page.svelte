@@ -121,11 +121,7 @@
 			<h2>Comments</h2>
 			<bsky-comments post={post.bskyPostUri}></bsky-comments>
 			<p class="bsky-empty-notice">
-				Comments are hosted on the Atmosphere (Bluesky). <a
-					href={bskyPostUrl(post.bskyPostUri)}
-					target="_blank"
-					rel="noopener noreferrer">View the post on blacksky.community</a
-				> to join the conversation.
+				Comments are hosted on the Atmosphere (Bluesky). <a href={bskyPostUrl(post.bskyPostUri)} target="_blank" rel="noopener noreferrer">View the post on blacksky.community</a> to join the conversation.
 			</p>
 		</section>
 	{/if}
@@ -168,6 +164,18 @@
 		line-height: var(--leading-normal);
 		max-width: var(--content-4);
 		padding: var(--wa-space-m);
+	}
+
+	.content-wrapper > main :global(a[href^="http"]):not(:global(.btn)),
+	.content-wrapper > main :global(a[href^="http"]:not([href*="olamaelcu.net"]))::after {
+		background-color: currentColor;
+		content: "" / "(external link)";
+		display: inline-block;
+		height: 0.8em;
+		margin-inline-start: 0.5ch;
+		mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg>');
+		mask-size: cover;
+		width: 0.8em;
 	}
 
 	header {
@@ -265,7 +273,7 @@
 	.toc a,
 	.toc-sidebar a {
 		font-size: var(--text-sm);
-		color: var(--link);
+		color: var(--text-1);
 	}
 
 	.toc a:hover,
@@ -382,4 +390,3 @@
 		font-size: var(--text-xs);
 	}
 </style>
-
