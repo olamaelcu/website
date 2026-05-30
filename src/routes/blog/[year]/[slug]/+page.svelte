@@ -238,6 +238,7 @@
 
 	.toc summary {
 		cursor: pointer;
+		color: var(--text-1);
 	}
 
 	.toc summary button {
