@@ -32,3 +32,6 @@
 	has encouraged this forward move.
 </p>
 <p>It's pronounced <i>/oʊˈmɛl iː kuːl/</i> (oh-mel-lee-cool), by the way.</p>
+<p>
+	Want to get in touch? Email <a href="mailto:contact@olamaelcu.net">contact@olamaelcu.net</a>.
+</p>

@@ -54,6 +54,7 @@
 	</main>
 	<footer>
 		Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a><br />
+		Contact: <a href="mailto:contact@olamaelcu.net">contact@olamaelcu.net</a><br />
 		<a href={resolve('/terms')}>Terms</a>&nbsp;&mdash;
 		<a href={resolve('/privacy')}>Privacy</a>&nbsp;&mdash;
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
