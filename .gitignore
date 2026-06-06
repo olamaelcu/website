@@ -15,3 +15,4 @@ Thumbs.db
 src/lib/commit.ts
 data.db
 test-results/
+.worktree/
