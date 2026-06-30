@@ -18,7 +18,7 @@
 
 <SEO
 	title="Livtet | Olamaelcu"
-	description="A local-first, ATProto-friendly book management system"
+	description="A book collection manager shaped around the Works and Editions you actually own, available across desktop, Android, and iOS."
 	canonical="https://www.olamaelcu.net/projects/livtet"
 	openGraphType="article"
 	twitterCard="summary"
@@ -26,18 +26,19 @@
 
 <ProjectPage {title} {status} {projectKey}>
 	<p>
-		A local-first book collection manager for desktop and mobile. Keep your library on your own
-		terms — your data lives on your device, with optional sync to services you already use. Works
-		with the Fediverse and ATProto so you can share reading activity on your own terms.
+		A book collection manager built around the Works and Editions you actually own, available across
+		desktop, Android, and iOS, with your library living on your own device.
 	</p>
-	<h2>Features</h2>
+	<h2>What's in the box today</h2>
+	<p>
+		Desktop is available today, the Android app is available today, and the iOS app is on the way.
+	</p>
+	<h2>Heading next</h2>
+	<p>What is still on the way, in plain language.</p>
 	<ul>
-		<li>
-			Manage your full book collection — physical, digital, and audiobooks — in one place
-		</li>
-		<li>Sync reading progress and collections with e-readers like Kobo and Kindle</li>
-		<li>Capture annotations, create reading lists, and search across your entire library</li>
-		<li>Share what you're reading through ATProto and the Fediverse</li>
-		<li>Look up books from Open Library, WorldCat, and other catalog sources</li>
+		<li>Sharing reading activity with the social networks you already use.</li>
+		<li>Annotation capture that travels with the Editions you own.</li>
+		<li>Sync to e-readers you already own.</li>
+		<li>Catalog lookups from a wider range of sources.</li>
 	</ul>
 </ProjectPage>

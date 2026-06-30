@@ -17,7 +17,7 @@
 
 <SEO
 	title="Spadat | Olamaelcu"
-	description="A 4-player partnership Spades card game built on the AT Protocol"
+	description="A 4-player partnership Spades card game where every player helps shuffle the deck and every hand can be checked afterward — fair play, on the up-and-up."
 	canonical="https://www.olamaelcu.net/projects/spadat"
 	openGraphType="article"
 	twitterCard="summary"
@@ -25,54 +25,51 @@
 
 <ProjectPage {title} {status} {projectKey}>
 	<p>
-		A 4-player online Spades card game. Find a partner, pick your rules, and play matches where
-		everyone can verify the results were fair. Built with <a
-			href="https://godot-rust.github.io/">Godot and Rust</a
-		>.
+		A 4-player online Spades card game where you and a partner go head-to-head against another pair
+		— North/South versus East/West, bidding books and trying to hit your target before the other
+		side does. Built mobile-first, with fairness baked into the deal itself: every player helps
+		shuffle the deck, so no one can rig the cards.
 	</p>
+	<h2>What makes it different</h2>
 	<p>
-		What makes it different: every hand uses a shuffle that all 4 players help create — no one can
-		rig the deal. After each hand, the full record becomes public so anyone can double-check the
-		game was on the up-and-up.
+		Every hand uses a shuffle that all four players help create together, so nobody — not even the
+		server — can rig the deal. After the hand finishes, the full record becomes public, which means
+		anyone can double-check the game was on the up-and-up. The same rules engine runs on your phone
+		and on the server, so what you see on screen is exactly what the server scores.
 	</p>
-	<h2>How to Play</h2>
-	<p>
-		Join a lobby with 3 friends. Partners sit across from each other — North/South versus East/West.
-		Bid how many books you'll take, then play cards trying to win books. Your partnership's
-		combined bid determines your target. First to 500 points (or whatever the host sets) wins.
-	</p>
-	<h2>Rule Options</h2>
-	<p>
-		Pick from several rule presets or customize nearly every detail:
-	</p>
+	<h2>Rule options</h2>
+	<p>Pick from several rule presets or customize nearly every detail:</p>
 	<ul>
 		<li>
-			<strong>Standard</strong> — The classic version most people know. Nil bids allowed, 500 points
-			to win.
+			<strong>Standard</strong> — The classic version most people know. Nil bids allowed, 500 points to
+			win.
 		</li>
 		<li>
 			<strong>Tournament</strong> — Stricter timing and bidding. Great for competitive matches.
 		</li>
 		<li>
-			<strong>NYC Rules</strong> — Street-style with jokers, faster games (first to 350), and
-			no nil bids allowed.
+			<strong>NYC Rules</strong> — Street-style with jokers, faster games (first to 350), no nil bids.
 		</li>
 		<li>
-			<strong>Casual</strong> — Relaxed rules for fun games with friends. No bag penalties, longer
-			turn timers.
+			<strong>Casual</strong> — Relaxed rules for fun games with friends. No bag penalties, longer turn
+			timers.
 		</li>
 		<li>
 			<strong>Custom</strong> — Fine-tune everything from deck type to scoring rules.
 		</li>
 	</ul>
-	<h2>Platforms</h2>
-	<p>Built for mobile first — coming to Android and iOS. Desktop support planned for Windows, macOS, and Linux.</p>
-	<h2>Fair Play</h2>
-	<p>
-		The deck gets shuffled using randomness from all 4 players plus the server. Each player contributes
-		a secret random number, and only after everyone commits their hash do the numbers get revealed.
-		This means no single player can control the deal. After the hand finishes, the complete game
-		record becomes public — seeds, deck order, every play — so anyone can independently verify the
-		game was fair.
-	</p>
+	<h2>What's heading next</h2>
+	<p>The mobile build is the foundation. Here is what is on the way:</p>
+	<ul>
+		<li>A desktop build for Windows, macOS, and Linux, sharing the same rules engine as mobile.</li>
+		<li>
+			Cross-platform polish: matching controls, animations, and accessibility across phone and
+			desktop.
+		</li>
+		<li>Spectator mode and full hand replay so anyone can review a finished game move by move.</li>
+		<li>
+			Achievements and leaderboards powered by the sister service, with the same public records
+			underneath.
+		</li>
+	</ul>
 </ProjectPage>
