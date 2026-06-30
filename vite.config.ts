@@ -14,7 +14,7 @@ export default defineConfig({
 		ogImagePlugin()
 	],
 	server: {
-		allowedHosts: ['.ngrok-free.app']
+		allowedHosts: ['.ngrok-free.app', 'intel-framework.tail68f81e.ts.net']
 	},
 	test: {
 		expect: { requireAssertions: true },
