@@ -34,11 +34,29 @@
 		Desktop is available today, the Android app is available today, and the iOS app is on the way.
 	</p>
 	<h2>Heading next</h2>
-	<p>What is still on the way, in plain language.</p>
+	<p>
+		A few of the directions in flight, kept short so the live roadmap below stays the source of
+		truth.
+	</p>
 	<ul>
-		<li>Sharing reading activity with the social networks you already use.</li>
-		<li>Annotation capture that travels with the Editions you own.</li>
-		<li>Sync to e-readers you already own.</li>
-		<li>Catalog lookups from a wider range of sources.</li>
+		<li>
+			A hosted place to publish a reading list as a public web link that anyone can follow and get
+			notified about, even without the app.
+		</li>
+		<li>
+			A browseable catalog of installable plugins, so trusted plugins are easier to find and install
+			than they are today.
+		</li>
+		<li>
+			Series and volume grouping on the work page, so omnibus editions and custom reading orders
+			have a place to live.
+		</li>
+		<li>
+			A full hosted, browser-based version of the app for the moments when no device is handy.
+		</li>
+		<li>
+			Richer book previews when you share from your phone, so the book drops into chats and messages
+			as something tappable rather than a plain link.
+		</li>
 	</ul>
 </ProjectPage>
