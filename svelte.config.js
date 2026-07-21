@@ -35,7 +35,8 @@ const config = {
 					'self',
 					'https://o428404.ingest.us.sentry.io',
 					'https://public.api.bsky.app',
-					'https://plausible.io'
+					'https://plausible.io',
+					'https://ka-f.fontawesome.com'
 				],
 				'worker-src': ["'self'", 'blob:'],
 				'frame-ancestors': ["'none'"],

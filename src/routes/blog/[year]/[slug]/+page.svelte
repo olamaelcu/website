@@ -122,7 +122,11 @@
 			<h2>Comments</h2>
 			<bsky-comments post={post.bskyPostUri}></bsky-comments>
 			<p class="bsky-empty-notice">
-				Comments are hosted on the Atmosphere (Bluesky). <a href={bskyPostUrl(post.bskyPostUri)} target="_blank" rel="noopener noreferrer">View the post on blacksky.community</a> to join the conversation.
+				Comments are hosted on the Atmosphere (Bluesky). <a
+					href={bskyPostUrl(post.bskyPostUri)}
+					target="_blank"
+					rel="noopener noreferrer">View the post on blacksky.community</a
+				> to join the conversation.
 			</p>
 		</section>
 	{/if}

@@ -59,13 +59,17 @@ html {
 	font-size: 100%;
 	background-color: var(--surface-1);
 	color: var(--text-1);
+	padding: 0;
+	margin: 0;
 }
 
 body {
 	font-family: var(--font-sans);
 	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
+	padding: 0;
+	margin: 0;
+	background-color: var(--surface-1);
+	color: var(--text-1);
 }
 
 a {
@@ -83,38 +87,118 @@ cite {
 	font-family: var(--font-serif);
 }
 
-header {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-content: center;
-	max-width: 50rem;
-	width: 100vw;
-	margin: 0 auto;
+wa-page {
+	--main-width: 50rem;
+	background-color: inherit;
+	color: inherit;
 
-	a.logotype {
-		margin: var(--wa-space-m);
-		font-family: var(--font-display);
-		font-size: var(--wa-font-size-xl);
-		text-decoration: none;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-
-		img {
-			height: var(--wa-space-xl);
-			margin-right: var(--wa-space-2xs);
-		}
+	&::part(base) {
+		background-color: inherit;
 	}
 
-	nav {
+	&::part(header) {
+		background-color: inherit;
+	}
+
+	&::part(menu) {
+		background-color: inherit;
+	}
+
+	&::part(footer) {
+		background-color: inherit;
+	}
+
+	/* Hide the desktop inline nav on mobile — the wa-page drawer takes over */
+	&[view='mobile'] nav.desktop-nav {
+		display: none;
+	}
+
+	/* On desktop, hide the drawer nav source — only used for the mobile drawer */
+	&[view='desktop'] nav[slot='navigation'] {
+		display: none;
+	}
+
+	/* On desktop, hide the auto-hamburger button */
+	&[view='desktop']::part(navigation-toggle) {
+		display: none;
+	}
+
+	/* Style the links inside the mobile drawer */
+	&[view='mobile'] nav[slot='navigation'] {
 		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
+		flex-direction: column;
+		gap: var(--wa-space-xs);
+		padding: var(--wa-space-m);
 
 		a {
-			margin: var(--wa-space-xs);
+			text-decoration: none;
+			color: var(--text-1);
+			padding: var(--wa-space-xs) 0;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+/* Shared header bar styles — used by both wa-page header slot and SSR fallback */
+.header-bar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 50rem;
+	margin: 0 auto;
+	background-color: inherit;
+}
+
+a.logotype {
+	margin: var(--wa-space-m);
+	font-family: var(--font-display);
+	font-size: var(--wa-font-size-xl);
+	text-decoration: none;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: var(--text-1);
+
+	img {
+		height: var(--wa-space-xl);
+		margin-right: var(--wa-space-2xs);
+	}
+}
+
+nav.desktop-nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0 var(--wa-space-m);
+
+	a {
+		margin: var(--wa-space-xs);
+		text-decoration: none;
+		color: var(--text-1);
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+/* SSR fallback header — matches the mounted wa-page header layout */
+header {
+	margin-top: 0.25rem;
+
+	.header-bar {
+		margin: 0 auto;
+	}
+
+	nav.desktop-nav {
+		@media (width <= 40rem) {
+			display: none;
 		}
 	}
 }
@@ -137,19 +221,19 @@ main {
 	}
 }
 
-footer {
+footer,
+footer[slot='footer'] {
 	padding: var(--wa-space-l);
 	background-color: var(--surface-1);
 	color: var(--text-1);
 	font-family: var(--font-mono);
 	font-size: var(--text-sm);
 	text-align: center;
-}
+	display: block;
 
-@media (width <= 40rem) {
-	header > a.logotype > span,
-	header > nav.lang > a > span {
-		display: none;
+	.footer-content {
+		max-width: 60rem;
+		margin: 0 auto;
 	}
 }
 

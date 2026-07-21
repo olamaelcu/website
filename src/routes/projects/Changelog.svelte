@@ -54,7 +54,13 @@
 {:else if entriesQuery.isError}
 	<div class="changelog-error">
 		<p>Failed to load roadmap.</p>
-		<wa-button role="button" tabindex="0" onclick={() => entriesQuery.refetch()} onkeydown={(e: KeyboardEvent) => (e.key === 'Enter' || e.key === ' ') && entriesQuery.refetch()}>Retry</wa-button>
+		<wa-button
+			role="button"
+			tabindex="0"
+			onclick={() => entriesQuery.refetch()}
+			onkeydown={(e: KeyboardEvent) =>
+				(e.key === 'Enter' || e.key === ' ') && entriesQuery.refetch()}>Retry</wa-button
+		>
 	</div>
 {:else if entries.length > 0}
 	<section class="changelog">
