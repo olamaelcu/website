@@ -151,7 +151,7 @@ wa-page {
 	width: 100%;
 	max-width: 50rem;
 	margin: 0 auto;
-	background-color: inherit;
+	background-color: var(--surface-1);
 }
 
 a.logotype {
