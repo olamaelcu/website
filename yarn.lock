@@ -4946,6 +4946,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"marked-footnote@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "marked-footnote@npm:1.4.0"
+  peerDependencies:
+    marked: ">=7.0.0"
+  checksum: 10c0/9feb37756ce923d247d23db09b49b284bd5d7bfb5a2af09f359a6fe3cbe26d836c12b2fce4a48bd3766b0ea71383d3d1e51ebd61931c17c892f0277c2a478eb1
+  languageName: node
+  linkType: hard
+
 "marked@npm:^11.2.0":
   version: 11.2.0
   resolution: "marked@npm:11.2.0"
@@ -5183,6 +5192,7 @@ __metadata:
     gray-matter: "npm:^4.0.3"
     isomorphic-dompurify: "npm:^3.12.0"
     marked: "npm:^18.0.3"
+    marked-footnote: "npm:^1.4.0"
     playwright: "npm:^1.59.1"
     postcss: "npm:^8.5.12"
     postcss-custom-media: "npm:^12.0.1"

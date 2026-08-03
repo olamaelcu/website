@@ -68,6 +68,7 @@
 		"gray-matter": "^4.0.3",
 		"isomorphic-dompurify": "^3.12.0",
 		"marked": "^18.0.3",
+		"marked-footnote": "^1.4.0",
 		"satori": "^0.26.0",
 		"svelte-meta-tags": "^4.6.0"
 	},

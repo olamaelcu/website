@@ -1,6 +1,13 @@
 import matter from 'gray-matter';
-import { marked } from 'marked';
+import { Marked } from 'marked';
+import markedFootnote from 'marked-footnote';
 import createDOMPurify from 'isomorphic-dompurify';
+
+const md = new Marked().use(markedFootnote());
+
+export function renderMarkdown(markdown: string): string {
+	return createDOMPurify.sanitize(md.parse(markdown) as string);
+}
 
 export interface Author {
 	did: string;
@@ -99,9 +106,18 @@ function parsePost(filePath: string, raw: string): Post {
 	const audience = data.audience ? String(data.audience) : undefined;
 
 	// Parse and sanitize content, extract TOC, add UTM params
-	const rawHtml = createDOMPurify.sanitize(marked(content) as string);
-	const { content: tocContent, toc } = extractToc(rawHtml);
-	const processedContent = addUtmToLinks(tocContent, slug);
+	const rawHtml = renderMarkdown(content);
+
+	// marked-footnote emits <section class="footnotes">…</section> at the end.
+	// Strip it before TOC extraction so the "Footnotes" heading doesn't leak
+	// into the article's table of contents, then re-append it.
+	const FOOTNOTE_SECTION = /<section class="footnotes"[\s\S]*?<\/section>/;
+	const footnoteMatch = rawHtml.match(FOOTNOTE_SECTION);
+	const footnoteSection = footnoteMatch ? footnoteMatch[0] : '';
+	const articleBody = footnoteSection ? rawHtml.replace(FOOTNOTE_SECTION, '') : rawHtml;
+
+	const { content: tocContent, toc } = extractToc(articleBody);
+	const processedContent = addUtmToLinks(tocContent, slug) + footnoteSection;
 
 	return {
 		slug,

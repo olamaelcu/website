@@ -392,4 +392,36 @@
 	.webmention-source {
 		font-size: var(--text-xs);
 	}
+
+	:global(.footnotes) {
+		margin-top: var(--wa-space-l);
+		padding-top: var(--wa-space-s);
+		border-top: 1px solid var(--border-1);
+		font-size: var(--text-sm);
+		color: var(--text-1);
+		opacity: 0.85;
+	}
+
+	main :global(.footnotes ol) {
+		padding-left: 1.25rem;
+	}
+
+	main :global(.footnotes li) {
+		margin-bottom: 0.25rem;
+	}
+
+	main :global(sup[data-footnote-ref]) {
+		font-size: 0.75em;
+		line-height: 0;
+	}
+
+	main :global(sup[data-footnote-ref] a) {
+		text-decoration: none;
+	}
+
+	main :global(a[data-footnote-backref]) {
+		margin-left: 0.25rem;
+		text-decoration: none;
+		font-size: 0.85em;
+	}
 </style>
