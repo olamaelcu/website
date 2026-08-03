@@ -9,7 +9,9 @@ checksum = "sha256:9e7905fdee722f9650a03ae644b51c4c6effd3b98ac93c588700072ab35c9
 url = "https://nodejs.org/dist/v22.12.0/node-v22.12.0-linux-arm64.tar.gz"
 
 [tools.node."platforms.linux-arm64-musl"]
-url = "https://unofficial-builds.nodejs.org/download/release/v22.12.0/node-v22.12.0-linux-arm64-musl.tar.gz"
+checksum = "sha256:3157e7c002b6e964bdbefb331ec38db1e2dceb064ab11c038275155461b22ce3"
+url = "https://nodejs.org/dist/v22.12.0/node-v22.12.0.tar.gz"
+install = "source"
 
 [tools.node."platforms.linux-x64"]
 checksum = "sha256:e05a4d65232ae2b27b3d77da2e368522fb46b923335b8e0d5f77624c32484044"

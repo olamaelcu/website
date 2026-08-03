@@ -210,7 +210,6 @@
 		font-size: var(--text-xs);
 		color: var(--text-1);
 		opacity: 0.6;
-		text-align: center;
 		margin-bottom: 0.25rem;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
@@ -220,7 +219,6 @@
 		font-size: var(--text-sm);
 		color: var(--text-1);
 		opacity: 0.8;
-		text-align: center;
 		margin-bottom: var(--wa-space-m);
 	}
 
