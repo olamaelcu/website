@@ -76,7 +76,7 @@ Proto, about Livtet on [its UserInput page][8] or sending e-mail to
 [5]: https://atproto.com
 [6]: https://biblio.livtet.olamaelcu.net
 [7]: https://livtet.olamaelcu.net
-[8]: https://livtet.olamaelcu.net/u/omg.jacky.wtf
+[8]: https://livtet.olamaelcu.net/u/omg.jacky.wtf/shelves
 [9]: https://github.com/olamaelcu/livtet-mobile
 [10]: https://tunjid.com/projects/heron-a-graceful-atprotocol-client-6908053ec712ce6892dc8174
 [11]: https://discourse.atmosphere.community/t/in-which-a-book-lexicon-is-born/1042
