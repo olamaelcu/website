@@ -31,6 +31,11 @@
 		experimentation and simple everyday use. The users make up the community of people who finally
 		get to develop the perspectives of the experience &mdash; the actual consumer.
 	</p>
+	<h2>Support</h2>
+	<p>
+		Help out by testing out <a href="https://waitlist.olamaelcu.net">the new projects</a>, funding
+		it on <a href="/about/support">a donation basis</a> and spreading the word!
+	</p>
 	<p class="cta">
 		Sign up for <strong>alpha access</strong> at
 		<a href="https://waitlist.olamaelcu.net?utm_source=landing" target="_blank"

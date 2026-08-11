@@ -12,9 +12,13 @@
 	twitterImage={`${SITE_URL}/og-default.png`}
 />
 
-<h1>Support</h1>
-<p>
+<h1 style="font-size: 275%">Support</h1>
+<p style="font-size: 150%;">
 	You can donate to our <a href="https://liberapay.com/Olamaelcu/">LiberaPay</a> page (requires an
-	account) or send tips to Jacky's <a href="https://www.paypal.com/paypalme/jalcine">Paypal</a>.
-	Anything helps!
+	account), paying for a coffee on <a href="https://ko-fi.com/jackyalcine">Ko-Fi</a> or send tips to
+	Jacky's <a href="https://www.paypal.com/paypalme/jalcine">Paypal</a>. Anything helps! The goal is
+	to raise $0/2,000 of monthly support.
+</p>
+<p>
+	<progress value="0"></progress>
 </p>

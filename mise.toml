@@ -5,3 +5,6 @@ turso = "latest"
 [tasks.sql]
 description = "Connects to the landing database over Turso"
 run = "turso db shell landing"
+
+[tasks.dev]
+run = "yarn dev"

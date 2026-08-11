@@ -130,31 +130,6 @@
 			</p>
 		</section>
 	{/if}
-
-	<div
-		style="border-radius:1.55rem;corner-shape:squircle;overflow:hidden;max-width:100%;width:400px;background-color:#fcfaf5; margin: 0 auto;"
-	>
-		<iframe
-			id="sr-subscribe-olamaelcu-publication"
-			src="https://standard-reader.app/embed/subscribe/did:plc:ejggqolmgpylroktvaktibik/olamaelcu-publication"
-			width="400"
-			height="150"
-			style="border:0;color-scheme:normal;display:block;width:100%"
-			title="Subscribe to Olamaelcu"
-			loading="lazy"
-		></iframe>
-	</div>
-	<script>
-		window.addEventListener('message', function (e) {
-			if (e.data?.type !== 'standard-reader-subscribe-resize' || typeof e.data.height !== 'number')
-				return;
-			var f = document.getElementById('sr-subscribe-olamaelcu-publication');
-			if (f && e.source === f.contentWindow) {
-				f.style.height = Math.ceil(e.data.height) + 'px';
-			}
-		});
-	</script>
-
 	{#if webmentions && webmentions.length > 0}
 		<section id="webmentions" class="webmentions">
 			<h2>Webmentions</h2>

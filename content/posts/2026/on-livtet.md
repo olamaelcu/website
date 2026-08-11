@@ -66,7 +66,7 @@ you can unlock with a simple API.
 ---
 
 Let me know what you think by mentioning <code>@olamaelcu.net</code> on AT
-Proto, about Livtet on [its UserInput page][8] or sending e-mail to
+Proto, about Livtet on [its UserInput page][12] or sending e-mail to
 <jacky@olamaelcu.net>!
 
 [1]: https://www.jacky.wtf/essays/2024/using-lua-with-livtet/
@@ -80,6 +80,7 @@ Proto, about Livtet on [its UserInput page][8] or sending e-mail to
 [9]: https://github.com/olamaelcu/livtet-mobile
 [10]: https://tunjid.com/projects/heron-a-graceful-atprotocol-client-6908053ec712ce6892dc8174
 [11]: https://discourse.atmosphere.community/t/in-which-a-book-lexicon-is-born/1042
+[12]: https://userinput.app/s/did:plc:ejggqolmgpylroktvaktibik/3ms42jyyi4p2f?lang=en
 
 [^1]:
     My words here - I understand that the act of making things easier to use

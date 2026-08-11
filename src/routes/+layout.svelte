@@ -78,7 +78,8 @@
 			</main>
 			<footer slot="footer">
 				<div class="footer-content">
-					Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a><br />
+					Olamaelcu, a software lab by <a href="https://www.jacky.wtf/?ref=olamaelcu">Jacky</a><br
+					/>
 					Contact: <a href="mailto:contact@olamaelcu.net">contact@olamaelcu.net</a><br />
 					<a href={resolve('/terms')}>Terms</a>&nbsp;&mdash;
 					<a href={resolve('/privacy')}>Privacy</a>&nbsp;&mdash;
@@ -103,6 +104,7 @@
 					<a href={resolve('/projects')}>Projects</a>
 					<a href="https://waitlist.olamaelcu.net">Waitlist</a>
 					<a href="https://dl.olamaelcu.net">Downloads</a>
+					<a href={resolve('/about/support')}>Support</a>
 				</nav>
 			</div>
 		</header>
@@ -115,11 +117,12 @@
 				Contact: <a href="mailto:contact@olamaelcu.net">contact@olamaelcu.net</a><br />
 				<a href={resolve('/terms')}>Terms</a>&nbsp;&mdash;
 				<a href={resolve('/privacy')}>Privacy</a>&nbsp;&mdash;
-				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 				<a rel="nofollow noindex" href="/access/">Traffic</a>&nbsp;&mdash;
 				<a href={resolve('/stack')}>Stack</a>&nbsp;&mdash;
+				<a href={resolve('/about/support')}>Support</a>
 				<a rel="me" href="https://www.linkedin.com/company/104865492">LinkedIn</a>&nbsp;&mdash;
-				<a rel="me" href="https://blacksky.community/profile/olamaelcu.net">Atmosphere (Blacksky)</a>
+				<a rel="me" href="https://blacksky.community/profile/olamaelcu.net">Atmosphere (Blacksky)</a
+				>
 			</div>
 		</footer>
 	{/if}
