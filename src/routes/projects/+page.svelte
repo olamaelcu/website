@@ -26,20 +26,6 @@
 	<h1>Projects</h1>
 	<ul class="projects">
 		<li>
-			<a href={resolve('/projects/spadat')}>
-				<strong>Spadat</strong>
-				<span>4-player Spades card game with verifiable matches via AT Protocol</span>
-				<ProjectStatus status={projectStatus('spadat')} />
-			</a>
-		</li>
-		<li>
-			<a href={resolve('/projects/scratchback')}>
-				<strong>Scratchback</strong>
-				<span>Game state sync and achievements via ATProto for developers</span>
-				<ProjectStatus status={projectStatus('scratchback')} />
-			</a>
-		</li>
-		<li>
 			<a href={resolve('/projects/beats')}>
 				<strong>Beats</strong>
 				<span>Music curation from your social graph</span>

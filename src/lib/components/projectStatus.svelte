@@ -26,6 +26,9 @@
 				label = 'General Availabilty';
 				colorClass = 'release';
 				break;
+			case STATUSES.INACTIVE:
+				label = 'Unavailable';
+				colorClass = 'inactive';
 		}
 	});
 </script>
@@ -44,7 +47,8 @@
 		box-shadow: var(--wa-shadow-s);
 	}
 
-	.incubating {
+	.incubating,
+	.inactive {
 		background-color: var(--wa-color-purple-80);
 		color: var(--wa-color-neutral-05);
 	}
@@ -65,7 +69,8 @@
 	}
 
 	@media (prefers-color-scheme: dark) {
-		.incubating {
+		.incubating,
+		.inactive {
 			background-color: var(--wa-color-neutral-40);
 			color: var(--wa-color-neutral-95);
 		}
