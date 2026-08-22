@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { MetaTags } from 'svelte-meta-tags';
+	import prismLightCss from 'prismjs/themes/prism.css?url';
+	import prismDarkCss from 'prismjs/themes/prism-tomorrow.css?url';
 
 	let { data }: { data: PageData } = $props();
 	let { post, metaTags, webmentions } = $derived(data);
@@ -40,6 +42,8 @@
 		<script type="module" src="https://esm.sh/gh/loueed/bsky@v1.0.0/comments"></script>
 	{/if}
 	<link rel="webmention" href="https://webmention.io/olamaelcu.net/webmention" />
+	<link rel="stylesheet" href={prismLightCss} />
+	<link rel="stylesheet" href={prismDarkCss} media="(prefers-color-scheme: dark)" />
 </svelte:head>
 
 <MetaTags
@@ -422,5 +426,53 @@
 		margin-left: 0.25rem;
 		text-decoration: none;
 		font-size: 0.85em;
+	}
+
+	main :global(pre[class*='language-']) {
+		position: relative;
+		font-family: var(--font-mono);
+		font-size: var(--text-sm);
+		padding: var(--wa-space-m);
+		margin: var(--wa-space-m) 0;
+		border-radius: 0.25rem;
+		overflow-x: auto;
+	}
+
+	main :global(pre[class*='language-'].line-numbers) {
+		padding-left: calc(var(--wa-space-m) + 2.5rem);
+	}
+
+	main :global(.line-numbers-rows) {
+		position: absolute;
+		pointer-events: none;
+		top: 0;
+		left: 0;
+		width: 2.5rem;
+		border-right: 1px solid var(--border-1);
+		user-select: none;
+		padding-top: var(--wa-space-m);
+		font-family: var(--font-mono);
+		font-size: var(--text-sm);
+		line-height: inherit;
+	}
+
+	main :global(.line-numbers-rows > span) {
+		display: block;
+		counter-increment: linenumbers;
+		padding-right: 0.5rem;
+		text-align: right;
+	}
+
+	main :global(.line-numbers-rows > span::before) {
+		content: counter(linenumbers);
+		opacity: 0.5;
+	}
+
+	main :global(:not(pre) > code) {
+		background: var(--surface-2);
+		padding: 0.1em 0.3em;
+		border-radius: 0.2em;
+		font-family: var(--font-mono);
+		font-size: 0.92em;
 	}
 </style>

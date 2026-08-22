@@ -1,12 +1,53 @@
 import matter from 'gray-matter';
 import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
 import markedFootnote from 'marked-footnote';
+import * as PrismModule from 'prismjs';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-tsx';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-markdown';
+import 'prismjs/components/prism-yaml';
 import createDOMPurify from 'isomorphic-dompurify';
 
-const md = new Marked().use(markedFootnote());
+const Prism = (PrismModule as unknown as { default: typeof import('prismjs') }).default;
+
+const md = new Marked()
+	.use(
+		markedHighlight({
+			langPrefix: 'language-',
+			highlight(code, lang) {
+				const grammar = Prism.languages[lang] ?? Prism.languages.markup;
+				return Prism.highlight(code, grammar, lang);
+			}
+		})
+	)
+	.use(markedFootnote());
+
+function addLineNumbers(html: string): string {
+	return html.replace(
+		/<pre><code class="language-([\w-]+)">([\s\S]*?)<\/code><\/pre>/g,
+		(_match, lang: string, body: string) => {
+			const trimmed = body.replace(/\n$/, '');
+			if (!trimmed) return _match;
+			const lineCount = trimmed.split('\n').length;
+			const rows =
+				'<span class="line-numbers-rows" aria-hidden="true">' +
+				Array.from({ length: lineCount }, () => '<span></span>').join('') +
+				'</span>';
+			return `<pre class="language-${lang} line-numbers"><code class="language-${lang}">${body}</code>${rows}</pre>`;
+		}
+	);
+}
 
 export function renderMarkdown(markdown: string): string {
-	return createDOMPurify.sanitize(md.parse(markdown) as string);
+	return createDOMPurify.sanitize(addLineNumbers(md.parse(markdown) as string));
 }
 
 export interface Author {
