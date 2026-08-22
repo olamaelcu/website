@@ -1,5 +1,5 @@
 ---
-title: 'On getting consensus on the lexicon for books'
+title: 'A place of consensus making for the book lexicon'
 date: 2026-08-22
 description: 'We will not agree on how to organize the information and that is okay.'
 tags: ['lexicon', 'discussion']
@@ -383,6 +383,71 @@ return 501 if the AppView doesn't support such a query:
 - `community.lexicon.book.searchPublishers`
 - `community.lexicon.book.searchWorks`
 
+In order to discover what other lexicons and queries that a bibliographic
+AppView supports, the following query _MUST_ be implemented (along with
+`.book.searchEditions`):
+
+```
+GET /xrpc/community.lexicon.book.compatibility
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "queries": [
+    {"nsid": "book.searchEditions"},
+    {"nsid": "book.searchContributors"}
+  ]
+}
+```
+
+A client can call this in advance without having to hit a 501 when calling an
+endpoint unexpectedly. This idea was taken from the IndieWeb with [Micropub's
+extension for querying for syndication targets][4] to allow for a progressive
+interface. The following is the query schema:
+
+```javascript
+{
+ "lexicon": 1,
+ "id": "community.lexicon.book.compatibility",
+ "defs": {
+  "main": {
+   "type": "query",
+   "description": "List the XRPC queries (and procedures) this AppView implements under community.lexicon.book.*. Clients use this instead of probing each NSID and tolerating 501 responses.",
+   "output": {
+    "encoding": "application/json",
+    "schema": {
+     "type": "object",
+     "required": ["queries"],
+     "properties": {
+      "queries": {
+       "type": "array",
+       "items": { "type": "ref", "ref": "#queryRef" }
+      }
+     }
+    }
+   }
+  },
+  "queryRef": {
+   "type": "object",
+   "required": ["nsid"],
+   "properties": {
+    "nsid": {
+     "type": "string",
+     "format": "nsid",
+     "description": "Truncated NSID relative to the 'community.lexicon' authority (e.g. 'book.searchWorks'). The full NSID is reconstructed by prepending 'community.lexicon.'."
+    },
+    "type": {
+     "type": "string",
+     "knownValues": ["query", "procedure"],
+     "description": "Whether this endpoint is a query (GET) or procedure (POST). Omit if the AppView only exposes queries."
+    }
+   }
+  }
+ }
+}
+```
+
 ---
 
 It's also _very open_ to conversation (would it make more sense to inline this
@@ -405,5 +470,5 @@ interoperability.
 [1]: https://discourse.atmosphere.community/t/in-which-a-book-lexicon-is-born/1042/32
 [2]: https://discourse.atmosphere.community/t/in-which-a-book-lexicon-is-born/1042/26?u=omg.jacky.wtf
 [3]: https://discourse.atmosphere.community/t/handling-reviews-for-the-book-lexicon/1085/3
+[4]: https://micropub.spec.indieweb.org/#syndication-targets
 [nick]: https://nickthesick.com/blog/Home
-

@@ -438,6 +438,10 @@
 		overflow-x: auto;
 	}
 
+	main :global(pre[class*='language-'] > code[class*='language-']) {
+		font-family: var(--font-mono);
+	}
+
 	main :global(pre[class*='language-'].line-numbers) {
 		padding-left: calc(var(--wa-space-m) + 2.5rem);
 	}
