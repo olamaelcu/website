@@ -38,8 +38,9 @@
 	cookies through your browser at any time.
 </p>
 <p>
-	<strong>Analytics:</strong> This site uses Plausible Analytics, a privacy-first analytics service
-	that does not use cookies and does not collect personal data. For more details, visit
+	<strong>Analytics:</strong> This site uses self-hosted Plausible Analytics, running at
+	analytics.olamaelcu.net. It is a privacy-first analytics service that does not use cookies and
+	does not collect personal data. For more details, visit
 	<a href="https://plausible.io/privacy-friendly-web-analytics">Plausible's Privacy Policy</a>.
 </p>
 

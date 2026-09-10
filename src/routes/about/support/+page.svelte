@@ -19,6 +19,7 @@
 	Jacky's <a href="https://www.paypal.com/paypalme/jalcine">Paypal</a>. Anything helps! The goal is
 	to raise $0/2,000 of monthly support.
 </p>
+<p>You can also support Jacky directly via <a href="https://github.com/sponsors/jalcine">GitHub's sponsorship program</a>.</p>
 <p>
 	<progress value="0"></progress>
 </p>
