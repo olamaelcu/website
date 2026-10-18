@@ -1,25 +1,24 @@
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: [vitePreprocess({ style: true, script: true })],
 	kit: {
-		adapter: adapter(),
+		// Static build for GitHub Pages. Everything is prerendered; `404.html`
+		// is served by GitHub Pages for any path that wasn't prerendered.
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: '404.html',
+			precompress: false,
+			strict: false
+		}),
 		prerender: {
-			handleHttpError: ({ path, referrer, message }) => {
+			handleHttpError: ({ path, message }) => {
+				// Tolerate the handful of routes that intentionally 404 during a crawl.
 				if (path === '/access/') return;
 				throw new Error(message);
-			}
-		},
-
-		experimental: {
-			tracing: {
-				server: true
-			},
-
-			instrumentation: {
-				server: true
 			}
 		},
 
@@ -29,7 +28,13 @@ const config = {
 				'default-src': ["'self'"],
 				'script-src': ["'self'", 'https://analytics.olamaelcu.net'],
 				'style-src': ["'self'", "'unsafe-inline'"],
-				'img-src': ['self', 'data:', 'https://cdn.bsky.app', 'https://avatar-cdn.bsky.app'],
+				'img-src': [
+					'self',
+					'data:',
+					'https://cdn.bsky.app',
+					'https://avatar-cdn.bsky.app',
+					'https://icons.duckduckgo.com'
+				],
 				'font-src': ["'self'"],
 				'connect-src': [
 					'self',

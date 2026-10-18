@@ -1,16 +1,8 @@
-interface Project {
-	name: string;
-	status: string;
-}
+import { projects } from '$lib/projects';
 
 export const prerender = true;
 
-export const load = async ({ fetch }) => {
-	const response = await fetch('/api/projects');
-	if (!response.ok) {
-		throw new Error(`Failed to fetch projects: ${response.status}`);
-	}
-	const projects: Project[] = await response.json();
+export const load = async () => {
 	return {
 		projects
 	};

@@ -40,8 +40,8 @@ test.describe('Beats project page', () => {
 	});
 
 	test('seat count displays with mocked API', async ({ page }) => {
-		// Mock /api/seat-counts returning { "beats": 10, ... }
-		await page.route('/api/seat-counts', async (route) => {
+		// Mock /data/seat-counts.json returning { "beats": 10, ... }
+		await page.route('/data/seat-counts.json', async (route) => {
 			await route.fulfill({
 				status: 200,
 				contentType: 'application/json',

@@ -1,6 +1,5 @@
 import { db } from './db/waitlist';
 import { sql } from 'drizzle-orm';
-import * as Sentry from '@sentry/sveltekit';
 
 export enum STATUSES {
 	INCUBATING = 'incubate',
@@ -56,7 +55,6 @@ export async function getProjectData(): Promise<Record<string, ProjectData>> {
 		return result;
 	} catch (error) {
 		console.error('[waitlist] Failed to fetch project data:', error);
-		Sentry.captureMessage('[waitlist] Failed to fetch project data, returning empty', 'warning');
 		return {};
 	}
 }

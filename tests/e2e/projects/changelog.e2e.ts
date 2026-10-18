@@ -18,7 +18,7 @@ const mockEntries = [
 ];
 
 test('roadmap renders with mocked API', async ({ page }) => {
-	await page.route(/\/api\/roadmap\/\w+/, async (route) => {
+	await page.route(/\/data\/roadmap\/\w+\.json/, async (route) => {
 		await route.fulfill({
 			status: 200,
 			contentType: 'application/json',
@@ -32,7 +32,7 @@ test('roadmap renders with mocked API', async ({ page }) => {
 });
 
 test('error state shows on API failure', async ({ page }) => {
-	await page.route(/\/api\/roadmap\/\w+/, async (route) => {
+	await page.route(/\/data\/roadmap\/\w+\.json/, async (route) => {
 		await route.fulfill({
 			status: 500,
 			contentType: 'application/json',
@@ -49,7 +49,7 @@ test('error state shows on API failure', async ({ page }) => {
 test('retry button resets error and refetches', async ({ page }) => {
 	let requestCount = 0;
 
-	await page.route(/\/api\/roadmap\/\w+/, async (route) => {
+	await page.route(/\/data\/roadmap\/\w+\.json/, async (route) => {
 		requestCount++;
 		if (requestCount === 1) {
 			await route.fulfill({

@@ -18,12 +18,13 @@
 	const entriesQuery = createQuery(() => ({
 		queryKey: ['roadmap', projectKey],
 		queryFn: async () => {
-			const r = await fetch(`/api/roadmap/${projectKey}`);
+			const r = await fetch(`/data/roadmap/${projectKey}.json`);
+			// No snapshot for this project means it simply has no roadmap yet.
+			if (r.status === 404) return [] as Entry[];
 			if (!r.ok) throw new Error(`HTTP ${r.status}`);
 			return r.json() as Promise<Entry[]>;
 		},
-		retry: false,
-		refetchInterval: 1000 * 15
+		retry: false
 	}));
 
 	let entries = $derived(entriesQuery.data ?? []);

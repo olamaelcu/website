@@ -10,7 +10,7 @@
 
 	const projectsQuery = createQuery(() => ({
 		queryKey: ['projects'],
-		queryFn: () => fetch('/api/projects').then((r) => r.json())
+		queryFn: () => fetch('/data/projects.json').then((r) => r.json())
 	}));
 
 	let status = $derived(projectsQuery.data?.[projectKey]?.status ?? STATUSES.INCUBATING);

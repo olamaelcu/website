@@ -14,8 +14,7 @@
 
 	const seatCountsQuery = createQuery(() => ({
 		queryKey: ['seat-counts'],
-		queryFn: () => fetch('/api/seat-counts').then((r) => r.json()),
-		refetchInterval: 1000 * 15
+		queryFn: () => fetch('/data/seat-counts.json').then((r) => r.json())
 	}));
 
 	let seatData = $derived<SeatCount>(

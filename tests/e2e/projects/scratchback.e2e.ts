@@ -31,7 +31,7 @@ test.describe('Scratchback project page', () => {
 	});
 
 	test('seat count displays with mocked API', async ({ page }) => {
-		await page.route('/api/seat-counts', async (route) => {
+		await page.route('/data/seat-counts.json', async (route) => {
 			await route.fulfill({
 				json: {
 					scratchback: { seatsTaken: 42, maxSeats: null }

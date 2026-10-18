@@ -69,9 +69,9 @@ test.describe('Projects listing page', () => {
 	});
 
 	test('seat count API responds correctly when mocked', async ({ page }) => {
-		// Mock /api/seat-counts to return test data
+		// Mock /data/seat-counts.json to return test data
 		let apiCalled = false;
-		await page.route('/api/seat-counts', async (route) => {
+		await page.route('/data/seat-counts.json', async (route) => {
 			apiCalled = true;
 			await route.fulfill({
 				status: 200,
