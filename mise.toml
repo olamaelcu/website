@@ -8,3 +8,10 @@ run = "turso db shell landing"
 
 [tasks.dev]
 run = "yarn dev"
+
+[tasks.deploy]
+description = "Build the static site and sync it to lescayes"
+run = """
+  yarn build
+  rsync -az --delete --delay-updates --chmod=D755,F644 build/ veve@hs.olamaelcu.net:/srv/www/landing/
+"""
