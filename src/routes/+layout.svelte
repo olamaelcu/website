@@ -50,7 +50,7 @@
 					<a href={resolve('/blog')}>Blog</a>
 					<a href={resolve('/projects')}>Projects</a>
 					<a href="https://waitlist.olamaelcu.net">Waitlist</a>
-					<a href="https://dl.olamaelcu.net">Downloads</a>
+					<a href="https://releases.olamaelcu.net">Downloads</a>
 					<a href={resolve('/about/support')}>Support</a>
 				</nav>
 			</div>
